@@ -3,7 +3,7 @@ $(document).ready(function () {
   // 1️⃣ Variables principales
   // =============================
   const searchOverlay = $('#search');
-  const searchInput = $('#search-input'); // Assurez-vous que l'input possède bien id="search-input"
+  const searchInput = $('#search-input'); // Assurez-vous que l'input possède id="search-input"
   let resultsDropdown = null;
 
   // Crée le conteneur pour les suggestions
@@ -30,7 +30,7 @@ $(document).ready(function () {
   createDropdown();
 
   // =============================
-  // 2️⃣ Gestion ouverture/fermeture du search overlay
+  // 2️⃣ Gestion ouverture/fermeture overlay
   // =============================
   $('a[href="#search"]').on('click', function (event) {
     event.preventDefault();
@@ -54,6 +54,7 @@ $(document).ready(function () {
       const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
       if (!response.ok) return [];
       const data = await response.json();
+      console.log('API results:', data); // <== debug
       return data.success ? data.data : [];
     } catch (error) {
       console.error('Search API error:', error);
@@ -74,7 +75,7 @@ $(document).ready(function () {
 
     const html = results
       .map(item => {
-        const title = item.name || item.title || '';
+        const title = item.title || '';
         const slug = item.slug || '';
         const type = item.type.charAt(0).toUpperCase() + item.type.slice(1); // Produit, Blog, Recipe
         const image = item.image || '';
@@ -112,8 +113,8 @@ $(document).ready(function () {
         console.log('Input vide, dropdown vidé');
         return;
       }
+
       const results = await fetchSearchResults(query);
-      console.log('API results:', results);
       renderResults(results);
     }, 300); // délai pour limiter les requêtes
   });
@@ -135,7 +136,7 @@ $(document).ready(function () {
   }
 
   // =============================
-  // 7️⃣ Fermer le dropdown si click en dehors
+  // 7️⃣ Fermer le dropdown si clic en dehors
   // =============================
   $(document).on('click', function (e) {
     if (!$(e.target).closest('#search, #search-results-dropdown').length) {
