@@ -1,3 +1,10 @@
+function truncateText(text, maxLength = 120) {
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength).trim() + '...';
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
   const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
 
@@ -96,13 +103,16 @@ document.addEventListener('DOMContentLoaded', function () {
               </div>
               <div class="card__body">
                 <h4 class="card__title">${product.name || 'Produit'}</h4>
-                <p class="card__text">
-                  ${product.short_description || product.description || ''}
-                </p>
+              <p class="card__text">
+               ${truncateText(
+                 product.short_description || product.description || '',
+                 120
+                )}
+              </p>
                 <div class="price">
                   ${product.original_price && product.price < product.original_price
-                    ? `<span class="price-old">${product.original_price} XFA</span>`
-                    : ''}
+              ? `<span class="price-old">${product.original_price} XFA</span>`
+              : ''}
                   <span class="price-new">${product.price || 0} XFA</span>
                 </div>
                 <div style="display:flex; gap:8px; margin-top:auto;">

@@ -181,9 +181,18 @@ Filtres sidebar pour page Shop selon spécifications Tilda
   color: var(--color-text);
   font-size: var(--font-size-small);
   margin-bottom: var(--spacing-md);
-  flex-grow: 1;
   line-height: 1.5;
+
+  /* 🔒 Limitation visuelle du texte */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* nombre de lignes visibles */
+  overflow: hidden;
+
+  /* ✅ Hauteur stable pour toutes les cartes */
+  min-height: calc(1.5em * 3);
 }
+
 
 .products-grid .price {
   display: flex;
