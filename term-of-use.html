@@ -49,28 +49,31 @@
     <link href="assets/css/aos.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-<!-- Back to top button -->
-<a id="button"></a>
-<div class="sub_banner position-relative">
-    <div class="top-bar-con">
-        <div class="container">
-            <div class="top-bar-box">
-                <div class="top-bar-info">
-                    <p class="text mb-0">Winter sale discount off <span>60%</span> on all of your orders!</p>
-                </div>
-                <div class="top-bar-social">
-                    <div class="other_list">
-                        <div class="country-selector lang-dropdown">
-                            <div class="caption"><img src="./assets/images/header-flag1.png" alt="image">En <img src="assets/images/header-dropdown.png" alt="image"></div>
-                            <div class="list" id="lang-dropdown">
-                                <div class="item">
-                                    <img src="./assets/images/header-flag1.png" alt="image">
-                                    <a class="text-decoration-none" href="./index.html" data-country="UK">En</a>
-                                </div>
-                                <div class="item">
-                                    <img src="./assets/images/header-flag2.png" alt="image">
-                                    <a class="text-decoration-none" href="./index.html" data-country="SE">USA</a>
+    <!-- Back to top button -->
+    <a id="button"></a>
+    <div class="sub_banner position-relative">
+        <div class="top-bar-con">
+            <div class="container">
+                <div class="top-bar-box">
+                    <div class="top-bar-info">
+                        <p class="text mb-0">Winter sale discount off <span>60%</span> on all of your orders!</p>
+                    </div>
+                    <div class="top-bar-social">
+                        <div class="other_list">
+                            <div class="country-selector lang-dropdown">
+                                <div class="caption"><img src="./assets/images/header-flag1.png" alt="image">En <img
+                                        src="assets/images/header-dropdown.png" alt="image"></div>
+                                <div class="list" id="lang-dropdown">
+                                    <div class="item">
+                                        <img src="./assets/images/header-flag1.png" alt="image">
+                                        <a class="text-decoration-none" href="./index.html" data-country="UK">En</a>
+                                    </div>
+                                    <div class="item">
+                                        <img src="./assets/images/header-flag2.png" alt="image">
+                                        <a class="text-decoration-none" href="./index.html" data-country="SE">USA</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,74 +81,78 @@
                 </div>
             </div>
         </div>
-    </div>
-    <header class="header">
-        <div class="header__container">
-            <div class="header__left">
-                <a href="index.html" class="header__logo">
-                    <img id="site-logo" alt="Logo" class="img-fluid">
-                </a>
-                <div class="header__country-selector">
-                    <button class="country-dropdown lang-dropdown" aria-label="Sélectionner pays/région" aria-expanded="false">
-                        <img src="assets/images/header-flag1.png" alt="France" class="country-dropdown__flag" onerror="this.style.display='none'">
-                        <span>FR</span>
-                        <i class="fa-solid fa-chevron-down country-dropdown__arrow"></i>
-                    </button>
-                    <div id="lang-dropdown" role="menu">
-                        <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
-                            <img src="assets/images/header-flag1.png" alt="France" class="lang-dropdown-item__flag" onerror="this.style.display='none'">
-                            <span>France</span>
-                        </div>
-                        <div class="lang-dropdown-item" role="menuitem" data-lang="en">
-                            <img src="assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag" onerror="this.style.display='none'">
-                            <span>English</span>
+        <header class="header">
+            <div class="header__container">
+                <div class="header__left">
+                    <a href="index.html" class="header__logo">
+                        <img id="site-logo" alt="Logo" class="img-fluid">
+                    </a>
+                    <div class="header__country-selector">
+                        <button class="country-dropdown lang-dropdown" aria-label="Sélectionner pays/région"
+                            aria-expanded="false">
+                            <img src="assets/images/header-flag1.png" alt="France" class="country-dropdown__flag"
+                                onerror="this.style.display='none'">
+                            <span>FR</span>
+                            <i class="fa-solid fa-chevron-down country-dropdown__arrow"></i>
+                        </button>
+                        <div id="lang-dropdown" role="menu">
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
+                                <img src="assets/images/header-flag1.png" alt="France" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>France</span>
+                            </div>
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="en">
+                                <img src="assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>English</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="header__search">
-                <form role="search" id="searchform" method="get">
-                    <input type="search" name="q" class="search-input" placeholder="Rechercher..." aria-label="Rechercher">
-                    <button type="submit" class="search-button" aria-label="Rechercher">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="header__search">
+                    <form role="search" id="searchform" method="get">
+                        <input type="search" id="search-input" name="q" class="search-input" placeholder="Rechercher..."
+                            aria-label="Rechercher">
+                        <button type="submit" class="search-button" aria-label="Rechercher">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <nav class="header__nav" id="headerNav">
+                    <ul class="nav-menu">
+                        <li class="nav-menu__item">
+                            <a href="products.html" class="nav-menu__link">Nos produits</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="contact.html" class="nav-menu__link">Contacts</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="recette.html" class="nav-menu__link">Nos recettes</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="blog.html" class="nav-menu__link">Blogs</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="sustainability.html" class="nav-menu__link">Durabilité du riz</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    <a href="./cart.html" class="header__action header__action--cart" aria-label="Panier">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
                     </button>
-                </form>
+                </div>
             </div>
-            <nav class="header__nav" id="headerNav">
-                <ul class="nav-menu">
-                    <li class="nav-menu__item">
-                        <a href="products.html" class="nav-menu__link">Shop</a>
-                    </li>
-                    <li class="nav-menu__item">
-                        <a href="contact.html" class="nav-menu__link">Contact</a>
-                    </li>
-                    <li class="nav-menu__item">
-                        <a href="recette.html" class="nav-menu__link">Recipes</a>
-                    </li>
-                    <li class="nav-menu__item">
-                        <a href="blog.html" class="nav-menu__link">Discover</a>
-                    </li>
-                    <li class="nav-menu__item">
-                        <a href="sustainability.html" class="nav-menu__link">Rice Sustainability</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header__actions">
-                <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
-                    <i class="fa-solid fa-user"></i>
-                </a>
-                <a href="./cart.html" class="header__action header__action--cart" aria-label="Panier">
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <span class="cart-count">0</span>
-                </a>
-                <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </div>
-    </header>
+        </header>
     </div>
     <main>
         <!-- Assistance Hero -->
@@ -153,7 +160,8 @@
             <div class="container">
                 <div class="assistance-hero__content">
                     <h1 class="assistance-hero__title">Conditions d'utilisation</h1>
-                    <p class="assistance-hero__subtitle">Veuillez lire attentivement nos conditions d'utilisation avant d'utiliser notre site web.</p>
+                    <p class="assistance-hero__subtitle">Veuillez lire attentivement nos conditions d'utilisation avant
+                        d'utiliser notre site web.</p>
                     <div class="assistance-hero__breadcrumb">
                         <a href="index.html" class="assistance-hero__breadcrumb-link">Home</a>
                         <span class="assistance-hero__breadcrumb-separator">/</span>
@@ -167,53 +175,66 @@
         <section class="assistance-content">
             <div class="container">
                 <h4>Conditions d'utilisation</h4>
-                <p>Bienvenue sur AVANTI! Avant d'accéder ou d'utiliser notre site web, veuillez lire attentivement ces conditions d'utilisation. En accédant ou en utilisant une partie du site, vous acceptez d'être lié par ces conditions d'utilisation.</p>
-                
+                <p>Bienvenue sur AVANTI! Avant d'accéder ou d'utiliser notre site web, veuillez lire attentivement ces
+                    conditions d'utilisation. En accédant ou en utilisant une partie du site, vous acceptez d'être lié
+                    par ces conditions d'utilisation.</p>
+
                 <h5>1. Utilisation du site web :</h5>
-                <p>Votre utilisation de notre site web est soumise à ces conditions d'utilisation. Vous devez avoir au moins 18 ans pour utiliser nos services.</p>
-                
+                <p>Votre utilisation de notre site web est soumise à ces conditions d'utilisation. Vous devez avoir au
+                    moins 18 ans pour utiliser nos services.</p>
+
                 <h5>2. Compte utilisateur :</h5>
-                <p>Vous êtes responsable de la confidentialité de votre compte et de votre mot de passe. Vous acceptez de fournir des informations exactes et complètes lors de la création d'un compte.</p>
-                
+                <p>Vous êtes responsable de la confidentialité de votre compte et de votre mot de passe. Vous acceptez
+                    de fournir des informations exactes et complètes lors de la création d'un compte.</p>
+
                 <h5>3. Propriété intellectuelle :</h5>
-                <p>Tout le contenu de ce site web, y compris les textes, graphiques, logos et images, est la propriété d'AVANTI et protégé par les lois sur le droit d'auteur. Vous ne pouvez pas reproduire, distribuer ou transmettre aucun contenu sans consentement écrit préalable.</p>
-                
+                <p>Tout le contenu de ce site web, y compris les textes, graphiques, logos et images, est la propriété
+                    d'AVANTI et protégé par les lois sur le droit d'auteur. Vous ne pouvez pas reproduire, distribuer ou
+                    transmettre aucun contenu sans consentement écrit préalable.</p>
+
                 <h5>4. Paiement et facturation :</h5>
                 <p>Le paiement de nos services est requis à l'avance. Tous les frais sont non remboursables.</p>
-                
+
                 <h5>5. Résiliation :</h5>
-                <p>Nous nous réservons le droit de suspendre ou de résilier votre compte à tout moment en cas de violation de ces conditions d'utilisation. Veuillez consulter nos conditions d'utilisation complètes pour plus d'informations détaillées.</p>
-                
-                <p>Vous avez le droit d'accéder, de mettre à jour ou de supprimer vos informations personnelles à tout moment. Vous pouvez vous désinscrire de la réception d'emails promotionnels en suivant les instructions fournies dans l'email. En utilisant notre site web, vous acceptez les termes de cette politique de confidentialité. Si vous avez des questions ou des préoccupations, veuillez nous contacter.</p>
-                
+                <p>Nous nous réservons le droit de suspendre ou de résilier votre compte à tout moment en cas de
+                    violation de ces conditions d'utilisation. Veuillez consulter nos conditions d'utilisation complètes
+                    pour plus d'informations détaillées.</p>
+
+                <p>Vous avez le droit d'accéder, de mettre à jour ou de supprimer vos informations personnelles à tout
+                    moment. Vous pouvez vous désinscrire de la réception d'emails promotionnels en suivant les
+                    instructions fournies dans l'email. En utilisant notre site web, vous acceptez les termes de cette
+                    politique de confidentialité. Si vous avez des questions ou des préoccupations, veuillez nous
+                    contacter.</p>
+
                 <p>Veuillez consulter nos conditions d'utilisation complètes pour plus d'informations détaillées.</p>
             </div>
         </section>
     </main>
     <!-- Footer -->
     <section class="footer-con position-relative"></section>
-<!-- PRE LOADER -->
-<div class="loader-mask">
-    <div class="loader">
-        <div></div>
-        <div></div>
+    <!-- PRE LOADER -->
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
     </div>
-</div>
-<!-- Latest compiled JavaScript -->
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/js/config.js"></script>
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/aos.js"></script>
-<script src="assets/js/owl.carousel.js"></script>
-<script src="assets/js/carousel.js"></script>
-<script src="assets/js/animation.js"></script>
-<script src="assets/js/back-to-top-button.js"></script>
-<script src="assets/js/preloader.js"></script>
-<script src="assets/js/search.js"></script>
-<script src="assets/js/country_dropdown.js"></script>
-<script src="assets/api/global.js"></script>
-<script src="assets/js/header.js"></script>
-<script src="assets/js/footer-loader.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/back-to-top-button.js"></script>
+    <script src="assets/js/preloader.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/country_dropdown.js"></script>
+    <script src="assets/api/global.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer-loader.js"></script>
 </body>
+
 </html>
