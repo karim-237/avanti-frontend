@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const imageUrl = cat.image_path || cat.image_url || cat.category_image || cat.icon_url || cat.image || '';
             const fallbackSvg = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3ERiz%3C/text%3E%3C/svg%3E';
             return `
-            <a href="products.html?view=shop&category=${cat.slug || ''}" class="category-card">
+            <a href="products.html?category=${cat.slug || ''}" class="category-card">
               <div class="category-card__image-wrapper">
                 <img src="${imageUrl || fallbackSvg}" alt="${cat.name || 'Category'}" class="category-card__image" loading="lazy" onerror="if(this.src.indexOf('data:image/svg')===-1){this.src='${fallbackSvg}';this.onerror=null;}">
               </div>
