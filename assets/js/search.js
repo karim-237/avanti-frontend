@@ -1,6 +1,5 @@
 const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
 
-
 $(document).ready(function () {
   // =============================
   // 1️⃣ Variables principales
@@ -76,11 +75,18 @@ $(document).ready(function () {
       return;
     }
 
+    // ✅ Map personnalisée pour les labels
+    const typeLabels = {
+      product: 'Nos produits',
+      blog: 'Blogs',
+      recipe: 'Nos recettes'
+    };
+
     const html = results
       .map(item => {
         const title = item.title || '';
         const slug = item.slug || '';
-        const type = item.type.charAt(0).toUpperCase() + item.type.slice(1); // Produit, Blog, Recipe
+        const type = typeLabels[item.type] || item.type; // utilisation de la map
         const image = item.image || '';
         return `
           <a href="${getDetailUrl(item.type, slug)}" class="search-result-item" style="
