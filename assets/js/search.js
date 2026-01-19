@@ -142,7 +142,7 @@ $(document).ready(function () {
       default:
         return '#';
     }
-  }
+  } 
 
   // =============================
   // 7️⃣ Fermer le dropdown si clic en dehors
