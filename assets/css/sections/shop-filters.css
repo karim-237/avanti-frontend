@@ -186,7 +186,7 @@ Filtres sidebar pour page Shop selon spécifications Tilda
   /* 🔒 Limitation visuelle du texte */
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3; /* nombre de lignes visibles */
+  -webkit-line-clamp: 2; /* nombre de lignes visibles */
   overflow: hidden;
 
   /* ✅ Hauteur stable pour toutes les cartes */
