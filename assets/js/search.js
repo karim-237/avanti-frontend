@@ -3,7 +3,7 @@ $(document).ready(function () {
   // 1️⃣ Variables principales
   // =============================
   const searchOverlay = $('#search');
-  const searchInput = $('#search-input'); // Assure-toi d'avoir mis cet id sur l'input
+  const searchInput = $('#search-input'); // Assurez-vous que l'input possède bien id="search-input"
   let resultsDropdown = null;
 
   // Crée le conteneur pour les suggestions
@@ -20,7 +20,8 @@ $(document).ready(function () {
         'max-height': '400px',
         overflow: 'auto',
         'border-radius': '4px',
-        'padding': '4px 0'
+        'padding': '4px 0',
+        display: 'none'
       });
       searchInput.parent().css('position', 'relative').append(resultsDropdown);
     }
@@ -38,9 +39,9 @@ $(document).ready(function () {
   });
 
   $('#search, #search button.close').on('click keyup', function (event) {
-    if (event.target == this || event.target.className == 'close' || event.keyCode === 27) {
+    if (event.target === this || event.target.className === 'close' || event.keyCode === 27) {
       searchOverlay.removeClass('open');
-      resultsDropdown.empty();
+      resultsDropdown.empty().hide();
     }
   });
 
@@ -48,8 +49,7 @@ $(document).ready(function () {
   // 3️⃣ Fonction pour récupérer les suggestions
   // =============================
   async function fetchSearchResults(query) {
-    if (!query || query.length < 2) return []; // Evite les requêtes trop courtes
-
+    if (!query || query.length < 2) return [];
     try {
       const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
       if (!response.ok) return [];
@@ -68,7 +68,7 @@ $(document).ready(function () {
     if (!resultsDropdown) return;
 
     if (!results || results.length === 0) {
-      resultsDropdown.html('<p style="padding: 8px; color: #666;">Aucun résultat</p>');
+      resultsDropdown.html('<p style="padding: 8px; color: #666;">Aucun résultat</p>').show();
       return;
     }
 
@@ -76,8 +76,8 @@ $(document).ready(function () {
       .map(item => {
         const title = item.name || item.title || '';
         const slug = item.slug || '';
-        const type = item.type.charAt(0).toUpperCase() + item.type.slice(1); // produit, blog, recette
-        const image = item.image_path || item.image || '';
+        const type = item.type.charAt(0).toUpperCase() + item.type.slice(1); // Produit, Blog, Recipe
+        const image = item.image || '';
         return `
           <a href="${getDetailUrl(item.type, slug)}" class="search-result-item" style="
             display:flex; align-items:center; padding:6px 12px; text-decoration:none; color:#333; border-bottom:1px solid #eee;
@@ -93,7 +93,7 @@ $(document).ready(function () {
       })
       .join('');
 
-    resultsDropdown.html(html);
+    resultsDropdown.html(html).show();
   }
 
   // =============================
@@ -103,10 +103,17 @@ $(document).ready(function () {
 
   searchInput.on('keyup', function () {
     const query = $(this).val().trim();
+    console.log('Search input:', query);
 
     clearTimeout(typingTimeout);
     typingTimeout = setTimeout(async () => {
+      if (!query) {
+        resultsDropdown.empty().hide();
+        console.log('Input vide, dropdown vidé');
+        return;
+      }
       const results = await fetchSearchResults(query);
+      console.log('API results:', results);
       renderResults(results);
     }, 300); // délai pour limiter les requêtes
   });
@@ -126,4 +133,13 @@ $(document).ready(function () {
         return '#';
     }
   }
+
+  // =============================
+  // 7️⃣ Fermer le dropdown si click en dehors
+  // =============================
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('#search, #search-results-dropdown').length) {
+      resultsDropdown.empty().hide();
+    }
+  });
 });
