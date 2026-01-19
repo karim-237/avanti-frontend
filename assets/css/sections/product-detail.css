@@ -1,0 +1,166 @@
+/*------------------------------------------------------------------
+[Product Detail Page - Tilda Design System]
+
+Product detail page selon spécifications Tilda
+-------------------------------------------------------------------*/
+
+.product-detail {
+  padding: var(--section-padding-desktop) 0;
+}
+
+.product-detail__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.product-detail__image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-gray-light);
+}
+
+.product-detail__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.product-detail__category-badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-magenta);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.product-detail__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h1);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.product-detail__badges {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.product-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-small);
+}
+
+.product-badge__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.product-detail__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.rating-stars {
+  display: flex;
+  gap: 2px;
+  color: var(--color-accent);
+}
+
+.product-detail__price {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.product-detail__price-old {
+  font-size: var(--font-size-body);
+  color: var(--color-text-light);
+  text-decoration: line-through;
+}
+
+.product-detail__price-new {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+}
+
+.product-detail__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.product-detail__description {
+  color: var(--color-text);
+  line-height: var(--line-height-relaxed);
+}
+
+.nutritional-info {
+  background-color: var(--color-gray-light);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+}
+
+.nutritional-info__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h5);
+  margin-bottom: var(--spacing-md);
+}
+
+.nutritional-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nutritional-table td {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-bottom: var(--border-thin) solid var(--border-color-light);
+}
+
+.nutritional-table td:last-child {
+  text-align: right;
+  font-weight: var(--font-weight-semibold);
+}
+
+.related-products {
+  margin-top: var(--spacing-2xl);
+}
+
+.related-products__title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-h2);
+  margin-bottom: var(--spacing-xl);
+}
+
+@media (max-width: 1023px) {
+  .product-detail__container {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .product-detail__image-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}

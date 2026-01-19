@@ -1,0 +1,1375 @@
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Helper function to set image with error handling
+  function setImageWithErrorHandler(imgElement, src) {
+    if (!imgElement || !src) return;
+    imgElement.src = src;
+    imgElement.onerror = function() {
+      if (this.src.indexOf('placeholder') === -1) {
+        this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';
+        this.onerror = null;
+      }
+    };
+  }
+
+  // -------------------------------
+  // FETCH SITE SETTINGS
+  // -------------------------------
+  fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Site settings API returned HTML instead of JSON');
+        return {};
+      }
+      return res.json().catch(() => ({}));
+    })
+    .then(settings => {
+      if (!settings || Object.keys(settings).length === 0) {
+        console.warn('Site settings empty or invalid');
+        return;
+      }
+      if (settings.maintenance_mode && !window.location.pathname.includes("coming_soon.html")) {
+        window.location.href = "coming_soon.html";
+        return;
+      }
+
+      const title = document.getElementById("site-title");
+      if (title) title.textContent = settings.site_name;
+
+      const favicon = document.getElementById("favicon");
+      if (favicon) favicon.href = settings.favicon_path;
+
+      const logo = document.getElementById("site-logo");
+      if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
+
+      // Maintenance page
+      if (window.location.pathname.includes("coming_soon.html")) {
+        const msg = document.getElementById("maintenance-message");
+        if (msg) msg.textContent = settings.maintenance_message || "Site en maintenance";
+      }
+
+      // -------------------------------
+      // FOOTER LOGO DYNAMIQUE
+      // -------------------------------
+      const footerLogo = document.querySelector(".footer-logo img");
+      if (footerLogo && settings.logo_path) setImageWithErrorHandler(footerLogo, settings.logo_path);
+    })
+    .catch(err => console.error("Error loading site settings:", err));
+
+  // -------------------------------
+  // FETCH HOME BANNERS
+  // -------------------------------
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/home-banners") //https://avanti-backend-67wk.onrender.com/api
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Home banners API returned HTML instead of JSON');
+        return [];
+      }
+      return res.json().catch(() => []);
+    })
+    .then(banners => {
+      if (!Array.isArray(banners) || banners.length === 0) return;
+      const slides = document.querySelectorAll("#bannerCarouselControls .carousel-item .banner-slide");
+      slides.forEach((slide, index) => {
+        const banner = banners[index];
+        if (!banner) return;
+        slide.style.backgroundImage = `url('${banner.image_path}')`;
+        slide.style.backgroundSize = "cover";
+        slide.style.backgroundPosition = "center";
+
+        let btn = slide.querySelector(".primary_btn");
+        if (!btn && banner.button_text && banner.button_url) {
+          const container = slide.querySelector(".container") || document.createElement("div");
+          container.classList.add("container", "text-center");
+          btn = document.createElement("a");
+          btn.classList.add("primary_btn");
+          container.appendChild(btn);
+          slide.appendChild(container);
+        }
+        if (btn && banner.button_text && banner.button_url) {
+          btn.textContent = banner.button_text;
+          btn.href = banner.button_url;
+          btn.style.display = "inline-block";
+        }
+      });
+    })
+    .catch(err => console.error("Error loading home banners:", err));
+
+  // -------------------------------
+  // DISCOUNT SECTION
+  // -------------------------------
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/discount-sections")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Discount sections API returned HTML instead of JSON');
+        return [];
+      }
+      return res.json().catch(() => []);
+    })
+    .then(data => {
+      if (!data || data.length < 3) return;
+
+      const img1 = document.querySelector(".discount-image1 img");
+      const img2 = document.querySelector(".discount-image2 img");
+      const img3 = document.querySelector(".discount-image3 img");
+      if (img1) setImageWithErrorHandler(img1, data[0].image_path);
+      if (img2) setImageWithErrorHandler(img2, data[1].image_path);
+      if (img3) setImageWithErrorHandler(img3, data[2].image_path);
+
+      document.querySelector(".content1 h6").innerText = data[0].title;
+      document.querySelector(".content2 h6").innerText = data[1].title;
+      document.querySelector(".content3 h6").innerText = data[2].title;
+
+      document.querySelector(".content1 .text span").innerHTML = data[0].description;
+      document.querySelector(".content2 .text span").innerHTML = data[1].description;
+      document.querySelector(".content3 .text span").innerHTML = data[2].description;
+
+      if (data[1].button_text) {
+        const btn2 = document.querySelector(".content2 .primary_btn");
+        btn2.innerText = data[1].button_text;
+        btn2.href = data[1].button_url;
+      }
+
+      if (data[2].button_text) {
+        const btn3 = document.querySelector(".content3 .primary_btn");
+        btn3.innerText = data[2].button_text;
+        btn3.href = data[2].button_url;
+      }
+    })
+    .catch(err => console.error("Error loading discount sections:", err));
+
+  // -------------------------------
+  // CHOOSE SECTION
+  // -------------------------------
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/choose-section")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Choose section API returned HTML instead of JSON');
+        return {};
+      }
+      return res.json().catch(() => ({}));
+    })
+    .then(data => {
+      if (!data || !data.section || !data.benefits) return;
+
+      document.querySelector(".choose_content h6").innerText = data.section.subtitle;
+      document.querySelector(".choose_content h2").innerText = data.section.title;
+      document.querySelector(".choose_content p").innerText = data.section.description;
+
+      const benefitBoxes = document.querySelectorAll(".beneft-box");
+      data.benefits.forEach((benefit, index) => {
+        if (!benefitBoxes[index]) return;
+        benefitBoxes[index].querySelector("h5").innerHTML = benefit.title;
+        benefitBoxes[index].querySelector("p").innerText = benefit.description;
+      });
+    })
+    .catch(err => console.error("Error loading choose section:", err));
+
+  // -------------------------------
+  // FETCH CATEGORIES + PRODUCTS
+  // -------------------------------
+  Promise.all([
+    fetch("http://https://avanti-backend-67wk.onrender.com/api/product-categories").then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
+      return res.json().catch(() => []);
+    }),
+    fetch("http://https://avanti-backend-67wk.onrender.com/api/products").then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
+      return res.json().catch(() => []);
+    })
+  ])
+    .then(([categories, products]) => {
+      const tabLinks = document.querySelectorAll(".nav-tabs li a");
+      tabLinks.forEach((tab, index) => {
+        if (categories[index]) {
+          tab.innerText = categories[index].name;
+          tab.setAttribute("href", `#${categories[index].slug}`);
+        }
+      });
+
+      document.querySelectorAll(".feature-box").forEach(box => {
+        const img = box.querySelector("img");
+        const title = box.querySelector("h4");
+        const desc = box.querySelector(".price1");
+        if (img) img.src = "";
+        if (title) title.innerText = "";
+        if (desc) desc.innerText = "";
+      });
+
+      categories.forEach(category => {
+        const tabPane = document.getElementById(category.slug);
+        if (!tabPane) return;
+
+        const boxes = tabPane.querySelectorAll(".feature-box");
+        const categoryProducts = products.filter(p => p.category_slug === category.slug);
+
+        categoryProducts.forEach((product, index) => {
+          if (!boxes[index]) return;
+          const img = boxes[index].querySelector("img");
+          if (img && product.image_path) setImageWithErrorHandler(img, product.image_path);
+          boxes[index].querySelector("h4").innerText = product.name;
+          boxes[index].querySelector(".price1").innerText = product.description;
+        });
+      });
+    })
+    .catch(err => console.error("Error loading products & categories:", err));
+
+  // -------------------------------
+  // FETCH ABOUT SECTION
+  // -------------------------------
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/about/about-section")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('About section API returned HTML instead of JSON');
+        return { success: false, data: null };
+      }
+      return res.json().catch(() => ({ success: false, data: null }));
+    })
+    .then(result => {
+      if (!result.success || !result.data) return;
+      const data = result.data;
+
+      const leftImg = document.getElementById("about-left-image");
+      const rightImg = document.getElementById("about-right-image");
+      if (leftImg && data.left_image) setImageWithErrorHandler(leftImg, data.left_image);
+      if (rightImg && data.right_image) setImageWithErrorHandler(rightImg, data.right_image);
+
+      const mainImg = document.getElementById("about-main-image");
+      const secondaryImg = document.getElementById("about-secondary-image");
+      if (mainImg && data.main_image) setImageWithErrorHandler(mainImg, data.main_image);
+      if (secondaryImg && data.secondary_image) setImageWithErrorHandler(secondaryImg, data.secondary_image);
+
+      const videoLink = document.getElementById("about-video-link");
+      if (videoLink) videoLink.href = data.video_url;
+
+      const expYears = document.getElementById("experience-years");
+      const expText = document.getElementById("experience-text");
+      const satPercent = document.getElementById("satisfaction-percent");
+      const satText = document.getElementById("satisfaction-text");
+      const prodSold = document.getElementById("products-sold");
+      const prodSuffix = document.getElementById("products-suffix");
+      const prodText = document.getElementById("products-text");
+
+      if (expYears) expYears.textContent = data.experience_years;
+      if (expText) expText.textContent = data.experience_text;
+      if (satPercent) satPercent.textContent = data.satisfaction_percent;
+      if (satText) satText.textContent = data.satisfaction_text;
+      if (prodSold) prodSold.textContent = data.products_sold;
+      if (prodSuffix) prodSuffix.textContent = "k+";
+      if (prodText) prodText.textContent = data.products_text;
+
+      const smallTitle = document.getElementById("about-small-title");
+      const mainTitle = document.getElementById("about-main-title");
+      const description = document.getElementById("about-description");
+      if (smallTitle) smallTitle.textContent = data.small_title;
+      if (mainTitle) mainTitle.textContent = data.main_title;
+      if (description) description.textContent = data.description;
+    })
+    .catch(err => console.error("Error loading about section:", err));
+
+  // -------------------------------
+  // DYNAMISE LES BLOGS
+  // -------------------------------
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/blogs")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Blogs API returned HTML instead of JSON');
+        return { success: false, data: [] };
+      }
+      return res.json().catch(() => ({ success: false, data: [] }));
+    })
+    .then(data => {
+      if (!data.success || !data.data || data.data.length === 0) return;
+      const blogs = data.data;
+      const blogSections = document.querySelectorAll(".mini-blog-section");
+
+      blogSections.forEach((section, index) => {
+        const blog = blogs[index];
+        if (!blog) return;
+
+        const img = section.querySelector("img");
+        if (img && blog.image_url) setImageWithErrorHandler(img, blog.image_url);
+
+        const dateEl = section.querySelector(".blog-date");
+        if (blog.publish_date && dateEl) {
+          const d = new Date(blog.publish_date + 'T00:00:00');
+          const options = { day: '2-digit', month: 'short', year: 'numeric' };
+          dateEl.textContent = d.toLocaleDateString('fr-FR', options);
+        }
+
+        const title = section.querySelector(".blog-title");
+        if (title) title.textContent = blog.title;
+
+        const desc = section.querySelector(".blog-short-description");
+        if (desc) desc.textContent = blog.short_description;
+
+        const link = section.querySelector(".read-more");
+        if (link) link.href = `single-blog.html?slug=${blog.slug}`;
+
+      });
+    })
+    .catch(err => console.error("Error loading blogs:", err));
+
+  // -------------------------------
+  // NEWSLETTER DYNAMIQUE
+  // -------------------------------
+  const newsletterSection = document.querySelector(".update-con");
+  if (newsletterSection) {
+    fetch("http://https://avanti-backend-67wk.onrender.com/api/newsletter/section")
+      .then(res => {
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          console.warn('Newsletter section API returned HTML instead of JSON');
+          return { success: false, data: null };
+        }
+        return res.json().catch(() => ({ success: false, data: null }));
+      })
+      .then(result => {
+        if (!result.success || !result.data) return;
+        const data = result.data;
+
+        const leftImg = newsletterSection.querySelector(".update-leftimage img");
+        if (leftImg && data.image_url) setImageWithErrorHandler(leftImg, data.image_url);
+
+        const subtitle = newsletterSection.querySelector(".update_content h6");
+        const title = newsletterSection.querySelector(".update_content h2");
+        if (subtitle) subtitle.textContent = data.subtitle || subtitle.textContent;
+        if (title) title.textContent = data.title || title.textContent;
+      })
+      .catch(err => console.error("Erreur chargement section newsletter:", err));
+
+    const newsletterForm = newsletterSection.querySelector("form");
+    const emailInput = newsletterForm.querySelector("input[name='email']");
+    newsletterForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      try {
+        const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/newsletter", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        alert(data.message || "Erreur");
+        if (data.success) emailInput.value = "";
+      } catch (err) {
+        console.error(err);
+        alert("Erreur serveur");
+      }
+    });
+  }
+
+  // -------------------------------
+  // FOOTER DYNAMIQUE
+  // -------------------------------
+  const footerSection = document.querySelector(".footer-con");
+  if (footerSection) {
+
+    // Contacts
+    fetch("http://https://avanti-backend-67wk.onrender.com/api/footer/contacts")
+      .then(res => {
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          console.warn('Footer contacts API returned HTML instead of JSON');
+          return { success: false, data: null };
+        }
+        return res.json().catch(() => ({ success: false, data: null }));
+      })
+      .then(result => {
+        if (!result.success || !result.data) return;
+        const data = result.data;
+
+        const phoneEl = footerSection.querySelector(".icon li i.fa-phone")?.parentElement.querySelector("a");
+        const emailEl = footerSection.querySelector(".icon li i.fa-envelope")?.parentElement.querySelector("a");
+        const addressEl = footerSection.querySelector(".icon li i.fa-location-dot")?.parentElement.querySelector("a");
+
+        if (phoneEl) { phoneEl.textContent = data.phone; phoneEl.href = `tel:${data.phone}`; }
+        if (emailEl) { emailEl.textContent = data.email; emailEl.href = `mailto:${data.email}`; }
+        if (addressEl) { addressEl.textContent = data.address; }
+      })
+      .catch(err => console.error("Erreur chargement contacts footer:", err));
+
+    // Social Links
+    fetch("http://https://avanti-backend-67wk.onrender.com/api/footer/social-links")
+      .then(res => {
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          console.warn('Footer social links API returned HTML instead of JSON');
+          return { success: false, data: [] };
+        }
+        return res.json().catch(() => ({ success: false, data: [] }));
+      })
+      .then(result => {
+        if (!result.success || !result.data) return;
+        const socialContainer = footerSection.querySelector(".social-icons");
+        if (!socialContainer) return;
+
+        socialContainer.innerHTML = ""; // vider les icônes statiques
+        result.data.forEach(link => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = link.url;
+          a.classList.add("text-decoration-none");
+          a.target = "_blank";
+          a.innerHTML = `<i class="fa-brands ${link.icon} social-networks"></i>`;
+          li.appendChild(a);
+          socialContainer.appendChild(li);
+        });
+      })
+      .catch(err => console.error("Erreur chargement social links footer:", err));
+  }
+
+});
+
+
+// Contacts html
+document.addEventListener("DOMContentLoaded", () => {
+
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/site-contact")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Site contact API returned HTML instead of JSON');
+        return { success: false, data: null };
+      }
+      return res.json().catch(() => ({ success: false, data: null }));
+    })
+    .then(res => {
+      if (!res.success || !res.data) return;
+
+      const data = res.data;
+
+      /* Adresse */
+      const addressEl = document.getElementById("contact-address");
+      if (addressEl) {
+        addressEl.textContent = data.address_text;
+        addressEl.href = data.address_url;
+      }
+
+      /* Téléphones */
+      const phoneContainer = document.getElementById("contact-phones");
+      if (phoneContainer) {
+        phoneContainer.innerHTML = "";
+        (data.phone_numbers || []).forEach(phone => {
+          phoneContainer.innerHTML += `
+            <a href="tel:${phone}" class="d-block">${phone}</a>
+          `;
+        });
+      }
+
+      /* Emails */
+      const emailContainer = document.getElementById("contact-emails");
+      if (emailContainer) {
+        emailContainer.innerHTML = "";
+        (data.emails || []).forEach(email => {
+          emailContainer.innerHTML += `
+            <a href="mailto:${email}" class="d-block">${email}</a>
+          `;
+        });
+      }
+
+      /* Map */
+      const mapIframe = document.getElementById("contact-map");
+      if (mapIframe && data.map_url) {
+        mapIframe.src = data.map_url;
+      }
+    })
+    .catch(err => console.error("Erreur contact page:", err));
+});
+
+
+// -------------------------------
+// DYNAMISE LES BLOGS
+// -------------------------------
+fetch("http://https://avanti-backend-67wk.onrender.com/api/blogs")
+  .then(res => {
+    if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+      console.warn('Blogs API returned HTML instead of JSON');
+      return { success: false, data: [] };
+    }
+    return res.json().catch(() => ({ success: false, data: [] }));
+  })
+  .then(data => {
+    if (!data.success || !data.data || data.data.length === 0) return;
+    const blogs = data.data;
+
+    // Mini-blog sections sur la page d'accueil
+    const blogSections = document.querySelectorAll(".mini-blog-section");
+    blogSections.forEach((section, index) => {
+      const blog = blogs[index];
+      if (!blog) return;
+
+      // Image
+      const img = section.querySelector("img");
+      if (img && blog.image_url) setImageWithErrorHandler(img, blog.image_url);
+
+      // Date
+      const dateEl = section.querySelector(".blog-date");
+      if (blog.publish_date && dateEl) {
+        const d = new Date(blog.publish_date + 'T00:00:00');
+        const options = { day: '2-digit', month: 'short', year: 'numeric' };
+        dateEl.textContent = d.toLocaleDateString('fr-FR', options);
+      }
+
+      // Titre et description courte
+      const title = section.querySelector(".blog-title");
+      if (title) title.textContent = blog.title;
+
+      const desc = section.querySelector(".blog-short-description");
+      if (desc) desc.textContent = blog.short_description;
+
+      // Lien vers page blog
+      const link = section.querySelector(".read-more");
+      if (link) link.href = `single-bloc.html?slug=${blog.slug}`;
+
+
+      // Tags dynamiques (si existants)
+      const tagsContainer = section.querySelector(".blog-tags");
+      if (tagsContainer && blog.blogs_post_tags) {
+        tagsContainer.innerHTML = "";
+        blog.blogs_post_tags.forEach(tag => {
+          const span = document.createElement("span");
+          span.classList.add("blog-tag");
+          span.textContent = tag.name;
+          tagsContainer.appendChild(span);
+        });
+      }
+
+      // "À la une" (featured)
+      if (blog.featured) {
+        section.classList.add("featured-blog");
+      }
+    });
+  })
+  .catch(err => console.error("Error loading blogs:", err));
+
+
+// -------------------------------
+// -------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const blogsContainer = document.getElementById("blogs-container");
+  const tabs = document.querySelectorAll("#myTab .nav-link");
+
+  if (!blogsContainer) return;
+
+  /**
+   * Récupérer un paramètre depuis l'URL
+   */
+  function getQueryParam(param) {
+    return new URLSearchParams(window.location.search).get(param);
+  }
+
+  /**
+   * Charger les blogs par catégorie et/ou tag
+   */
+  function loadBlogs(categorySlug = null, tagSlug = null) {
+    blogsContainer.innerHTML = "<p>Chargement...</p>";
+
+    let url = "http://https://avanti-backend-67wk.onrender.com/api/blogs";
+    const params = [];
+
+    if (categorySlug) {
+      params.push(`category=${encodeURIComponent(categorySlug)}`);
+    }
+
+    if (tagSlug) {
+      params.push(`tag=${encodeURIComponent(tagSlug)}`);
+    }
+
+    if (params.length) {
+      url += "?" + params.join("&");
+    }
+
+    fetch(url)
+      .then(res => {
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          console.warn('Blogs API returned HTML instead of JSON');
+          return { success: false, data: [] };
+        }
+        return res.json().catch(() => ({ success: false, data: [] }));
+      })
+      .then(data => {
+        if (!data.success || !Array.isArray(data.data) || data.data.length === 0) {
+          blogsContainer.innerHTML = "<p>Aucun article disponible</p>";
+          return;
+        }
+
+        blogsContainer.innerHTML = "";
+
+        data.data.forEach(blog => {
+          const date = blog.publish_date
+            ? new Date(blog.publish_date).toLocaleDateString("fr-FR", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
+            })
+            : "";
+
+          const articleHTML = `
+            <div class="single-blog-box">
+              <figure class="mb-0">
+                <img src="${blog.single_image}" alt="${blog.title}" class="img-fluid">
+              </figure>
+
+              <div class="single-blog-details">
+                <ul class="list-unstyled">
+                  <li class="position-relative"><i class="fas fa-user"></i> Posté par ${blog.author || "Admin"}</li>
+                  <li class="position-relative"><i class="fas fa-calendar-alt"></i> ${date}</li>
+                </ul>
+
+                <h4>
+                  <a href="single-blog.html?slug=${blog.slug}">
+                    ${blog.title}
+                  </a>
+                </h4>
+
+                <p>${blog.short_description || ""}</p>
+
+                <div class="generic-btn2">
+                  <a href="single-blog.html?slug=${blog.slug}">
+                    Lire plus
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+
+          blogsContainer.insertAdjacentHTML("beforeend", articleHTML);
+        });
+      })
+      .catch(err => {
+        console.error("Erreur chargement blogs :", err);
+        blogsContainer.innerHTML = "<p>Erreur lors du chargement des articles</p>";
+      });
+  }
+
+  /**
+   * Gestion des clics sur les tabs catégories
+   */
+  if (tabs.length) {
+    tabs.forEach(tab => {
+      tab.addEventListener("click", e => {
+        e.preventDefault();
+
+        const slug = tab.dataset.slug;
+        if (!slug) return;
+
+        // Active state
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        // Reset l'URL (on enlève ?tag)
+        history.pushState(null, "", "blog.html");
+
+        // Charger les blogs par catégorie
+        loadBlogs(slug, null);
+      });
+    });
+  }
+
+  /**
+   * Chargement initial (priorité au TAG s'il existe)
+   */
+  const tagFromUrl = getQueryParam("tag");
+
+  if (tagFromUrl) {
+    // Désactiver tous les tabs catégories
+    tabs.forEach(t => t.classList.remove("active"));
+
+    // Charger les blogs par tag
+    loadBlogs(null, tagFromUrl);
+  } else if (tabs.length) {
+    // Charger la catégorie active par défaut
+    const defaultTab =
+      document.querySelector("#myTab .nav-link.active") || tabs[0];
+
+    if (defaultTab && defaultTab.dataset.slug) {
+      defaultTab.classList.add("active");
+      loadBlogs(defaultTab.dataset.slug);
+    }
+  } else {
+    // Fallback : charger tous les blogs
+    loadBlogs();
+  }
+});
+
+
+
+
+
+// =======================================================
+// SINGLE BLOG PAGE (single-bloc.html)
+// =======================================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (!window.location.pathname.includes("single-blog.html")) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+
+  if (!slug) {
+    console.error("Slug manquant");
+    return;
+  }
+
+  fetch(`http://https://avanti-backend-67wk.onrender.com/api/blogs/${slug}`)
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Single blog API returned HTML instead of JSON');
+        return { success: false, data: null };
+      }
+      return res.json().catch(() => ({ success: false, data: null }));
+    })
+    .then(data => {
+      console.log("API RAW:", data);
+
+      if (!data.success || !data.data) return;
+
+      // ✅ CORRECTION MAJEURE ICI
+      const { blog, tags, comments, featured } = data.data;
+
+      if (!blog) return;
+
+      /* IMAGE PRINCIPALE */
+      const mainImage = document.querySelector(".single-blog-image img");
+      if (mainImage && blog.single_image_xl) {
+        setImageWithErrorHandler(mainImage, blog.single_image_xl);
+        mainImage.alt = blog.title;
+      }
+
+      /* TITRE */
+      const titleEl = document.querySelector(".single-blog-content h4");
+      if (titleEl) titleEl.textContent = blog.title;
+
+      /* AUTEUR */
+      const authorEl = document.querySelector(".single-blog-meta .author");
+      if (authorEl) authorEl.textContent = blog.author_name || "Admin";
+
+      /* DATE */
+      const dateEl = document.querySelector(".single-blog-meta .date");
+      if (dateEl && blog.publish_date) {
+        dateEl.textContent = new Date(blog.publish_date)
+          .toLocaleDateString("fr-FR", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+          });
+      }
+
+      /* CONTENU */
+      const contentEl = document.querySelector(".single-blog-text");
+      if (contentEl) contentEl.innerHTML = blog.full_content;
+
+      /* QUOTE */
+      const quoteEl = document.querySelector(".single-blog-quote p");
+      if (quoteEl && blog.quote) quoteEl.textContent = blog.quote || "";
+
+      /* PARAGRAPHE 1 : sous le bloc quote */
+      const paragraph1El = document.querySelector(".text.text-size-16[data-aos][data-aos-duration]");
+      if (paragraph1El && blog.paragraph_1) {
+        paragraph1El.textContent = blog.paragraph_1;
+      }
+
+      /* PARAGRAPHE 2 : dans content3 */
+      const paragraph2El = document.querySelector(".content3 .text.text-size-16");
+      if (paragraph2El && blog.paragraph_2) {
+        paragraph2El.textContent = blog.paragraph_2;
+      }
+
+      /* IMAGE SECONDAIRE */
+      const secondImage = document.querySelector(".single-blog-image2 img");
+      if (secondImage && blog.image_secondary) {
+        setImageWithErrorHandler(secondImage, blog.image_secondary);
+      }
+
+      /* TAGS */
+      const tagsEl = document.querySelector(".single-blog-tags");
+      if (tagsEl && tags?.length) {
+        tagsEl.innerHTML = "";
+        tags.forEach(tag => {
+          tagsEl.innerHTML += `<li><a class="button text-decoration-none">${tag.name}</a></li>`;
+        });
+      }
+
+      /* AUTEUR BIO */
+      const authorName = document.querySelector(".blog-author h4");
+      const authorBio = document.querySelector(".blog-author p");
+      if (authorName) authorName.textContent = blog.author_name || "Admin";
+      if (authorBio) authorBio.textContent = blog.author_bio || "";
+
+      /* COMMENTAIRES */
+      const commentsEl = document.querySelector(".blog-comments");
+      if (commentsEl) {
+        commentsEl.innerHTML = "";
+        if (comments?.length) {
+          comments.forEach(c => {
+            commentsEl.innerHTML += `
+        <div class="comment-single">
+          <h5>${c.author_name}</h5>
+          <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
+          <p>${c.message}</p>
+        </div>
+      `;
+          });
+        } else {
+          commentsEl.innerHTML = "<p>Aucun commentaire pour le moment</p>";
+        }
+      }
+
+      /* À LA UNE */
+      const featuredEl = document.querySelector(".box5");
+      if (featuredEl && featured?.length) {
+        featuredEl.innerHTML = "<h4>À la Une</h4>";
+        featured.forEach(f => {
+          featuredEl.innerHTML += `
+            <div class="feed">
+              <img src="${f.image_url}" class="img-fluid">
+              <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
+            </div>
+          `;
+        });
+      }
+
+    })
+    .catch(err => console.error(err));
+});
+
+
+// === SECTION TAGS ===
+const sidebarTagsEl = document.querySelector(".box4 ul.tag");
+
+if (sidebarTagsEl) {
+  fetch("http://https://avanti-backend-67wk.onrender.com/api/tags")
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Tags API returned HTML instead of JSON');
+        return { success: false, data: [] };
+      }
+      return res.json().catch(() => ({ success: false, data: [] }));
+    })
+    .then(data => {
+      if (!data.success || !data.data) return;
+
+      sidebarTagsEl.innerHTML = "";
+      data.data.forEach(tag => {
+        // On crée un lien vers blog.html filtré par tag
+        sidebarTagsEl.innerHTML += `
+          <li>
+            <a href="blog.html?tag=${tag.slug}" class="button text-decoration-none">
+              ${tag.name}
+            </a>
+          </li>
+        `;
+      });
+    })
+    .catch(err => console.error("Erreur récupération tags:", err));
+}
+
+
+
+// -------------------------------
+// DYNAMISE LES CATEGORIES DE BLOG
+// -------------------------------
+document.addEventListener("DOMContentLoaded", async () => {
+  const tabIds = [
+    "tab-1",
+    "tab-2",
+    "tab-3",
+    "tab-4",
+    "tab-5",
+    "tab-6"
+  ]; // ID des <a> dans ton HTML correspondant aux tabs
+
+  try {
+    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/blog-categories");
+    const data = await res.json();
+
+    if (!data.success || !Array.isArray(data.data)) return;
+
+    // On ne garde que les 6 premières
+    const categories = data.data.slice(0, 6);
+
+    categories.forEach((category, index) => {
+      const tab = document.getElementById(tabIds[index]);
+      if (!tab) return;
+
+      // Mettre à jour le texte
+      tab.textContent = category.name;
+
+      // Mettre à jour le lien pour filtrer les blogs
+      tab.href = `blog.html?category=${category.slug}`;
+    });
+  } catch (err) {
+    console.error("Erreur récupération catégories de blog :", err);
+  }
+});
+
+
+
+// =======================================================
+// HOME PAGE – PRODUITS (index.html)
+// =======================================================
+document.addEventListener("DOMContentLoaded", async () => {
+  const productTabs = document.querySelectorAll("#productTabs .nav-link");
+  const productBoxes = document.querySelectorAll(".feature-box");
+
+  if (!productTabs.length || !productBoxes.length) return;
+
+  /* ===============================
+     Charger dynamiquement les catégories
+     =============================== */
+  try {
+    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/product-categories?limit=5");
+    const data = await res.json();
+
+    if (!data.success || !Array.isArray(data.data)) return;
+
+    const categories = data.data.slice(0, 5);
+
+    categories.forEach((category, index) => {
+      const tab = productTabs[index];
+      if (!tab) return;
+
+      // Mettre à jour le texte et le data-slug du tab
+      tab.textContent = category.name;
+      tab.dataset.slug = category.slug;
+
+      // Mettre le href pour que l'URL soit correcte
+      tab.href = `index.html?category=${category.slug}`;
+
+      // Activer le premier tab par défaut
+      if (index === 0) tab.classList.add("active");
+      else tab.classList.remove("active");
+    });
+  } catch (err) {
+    console.error("Erreur chargement catégories produits :", err);
+  }
+
+  /* ===============================
+     Fonction pour charger les produits
+     =============================== */
+  function loadProductsByCategory(slug) {
+    fetch(`http://https://avanti-backend-67wk.onrender.com/api/products?category=${encodeURIComponent(slug)}&limit=6`)
+      .then(res => {
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          console.warn('Products API returned HTML instead of JSON');
+          return { success: false, data: [] };
+        }
+        return res.json().catch(() => ({ success: false, data: [] }));
+      })
+      .then(response => {
+        if (!response.success || !Array.isArray(response.data)) return;
+
+        productBoxes.forEach(box => {
+          box.closest(".col-lg-4").style.display = "none";
+        });
+
+        response.data.forEach((product, index) => {
+          const box = productBoxes[index];
+          if (!box) return;
+
+          box.closest(".col-lg-4").style.display = "block";
+
+          const img = box.querySelector(".feature-image img");
+          if (img && product.image_path) {
+            setImageWithErrorHandler(img, product.image_path);
+            img.alt = product.name;
+          }
+
+          const title = box.querySelector(".lower_content h4");
+          if (title) title.textContent = product.name;
+
+          const link = box.querySelector(".lower_content a");
+          if (link) link.href = `product-detail.html?slug=${product.slug}`;
+
+          const priceBox = box.querySelector(".price");
+          if (priceBox) {
+            priceBox.innerHTML = `<span class="price1">${product.description || "Description non disponible"}</span>`;
+          }
+        });
+      })
+      .catch(err => console.error("Erreur chargement produits :", err));
+  }
+
+  /* ===============================
+     Gestion du clic sur les tabs
+     =============================== */
+  productTabs.forEach(tab => {
+    tab.addEventListener("click", e => {
+      e.preventDefault();
+
+      productTabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      // Charger les produits de cette catégorie
+      loadProductsByCategory(tab.dataset.slug);
+
+      // Mettre l'URL à jour sans recharger la page
+      history.replaceState(null, "", `index.html?category=${tab.dataset.slug}`);
+    });
+  });
+
+  /* ===============================
+     Chargement initial
+     =============================== */
+  // Vérifier si une catégorie est présente dans l'URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoryFromURL = urlParams.get("category");
+  const initialTab = Array.from(productTabs).find(
+    tab => tab.dataset.slug === categoryFromURL
+  ) || document.querySelector("#productTabs .nav-link.active") || productTabs[0];
+
+  if (initialTab) loadProductsByCategory(initialTab.dataset.slug);
+});
+
+
+
+// =======================================================
+// PAGE DETAILS – PRODUITS (product-detail.html)
+// =======================================================
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const slug = new URLSearchParams(window.location.search).get("slug");
+  if (!slug) return;
+
+  try {
+    const res = await fetch(`http://https://avanti-backend-67wk.onrender.com/api/products/slug?slug=${encodeURIComponent(slug)}`);
+    const data = await res.json();
+    if (!data.success || !data.data.length) return;
+    const product = data.data[0];
+
+    // 1. Nom et description
+    document.getElementById("productName").textContent = product.name;
+    document.getElementById("productDescription").textContent = product.description || "Description non disponible";
+
+    // 2. Images principales
+    const images = [product.image_path, product.image_2, product.image_3, product.image_4].filter(Boolean);
+    images.forEach((src, idx) => {
+      const imgEl = document.getElementById(`productImage${idx + 1}`);
+      if (imgEl) setImageWithErrorHandler(imgEl, src);
+    });
+
+    // 3. Vignettes
+    const thumbs = document.querySelectorAll(".tab-thumb");
+    thumbs.forEach((thumb, idx) => {
+      if (images[idx]) setImageWithErrorHandler(thumb, images[idx]);
+    });
+
+  } catch (err) {
+    console.error("Erreur chargement produit :", err);
+  }
+});
+
+
+//
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const featureBoxes = document.querySelectorAll(".feature-box");
+  if (!featureBoxes.length) return;
+
+  try {
+    // Récupérer les produits
+    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/products?limit=8");
+    if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+      console.warn('Products API returned HTML instead of JSON');
+      return;
+    }
+    const data = await res.json().catch(() => ({ success: false, data: [] }));
+    if (!data.success || !Array.isArray(data.data)) return;
+
+    const products = data.data;
+
+    featureBoxes.forEach((box, index) => {
+      const product = products[index];
+
+      if (!product) {
+        // Masquer les boxes en trop
+        const item = box.closest(".item");
+        if (item) item.style.display = "none";
+        return;
+      }
+
+      // Image principale
+      const imgEl = box.querySelector(".feature-image img");
+      if (imgEl && product.image_path) {
+        setImageWithErrorHandler(imgEl, product.image_path);
+        imgEl.alt = product.name;
+      }
+
+      // Nom du produit
+      const titleEl = box.querySelector(".lower_content h4");
+      if (titleEl) titleEl.textContent = product.name;
+
+      // Description ou prix dans le bloc price
+      const priceEl = box.querySelector(".price");
+      if (priceEl) {
+        priceEl.innerHTML = `<span class="price1">${product.description || "Description non disponible"}</span>`;
+      }
+
+      // Lien vers la page produit
+      const linkEl = box.querySelector(".image .icon a[href*='contact.html'], .image .icon a[href*='index.html']");
+      if (linkEl) linkEl.href = `product-detail.html?slug=${product.slug}`;
+    });
+  } catch (err) {
+    console.error("Erreur chargement Autres Produits :", err);
+  }
+});
+
+
+// -------------------------------
+// DYNAMISE LES CATEGORIES DE RECETTES
+// -------------------------------
+document.addEventListener("DOMContentLoaded", async () => {
+  const tabIds = [
+    "cat-1",
+    "cat-2",
+    "cat-3",
+    "cat-4",
+    "cat-5",
+    "cat-6"
+  ]; // IDs des <a> pour les tabs
+
+  try {
+    // 1️⃣ Récupérer les catégories de recettes
+    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/recipes/recipe-categories?limit=6");
+    const data = await res.json();
+
+    if (!data.success || !Array.isArray(data.data)) return;
+
+    const categories = data.data;
+
+    // 2️⃣ Remplir les tabs dynamiquement
+    categories.forEach((category, index) => {
+      const tab = document.getElementById(tabIds[index]);
+      if (!tab) return;
+
+      tab.textContent = category.name;
+      tab.dataset.slug = category.slug; // stocker le slug pour filtrage
+      tab.href = `recette.html?category=${category.slug}`; // lien (optionnel)
+    });
+
+    // 3️⃣ Ajouter le click handler pour filtrer les recettes
+    categories.forEach((category, index) => {
+      const tab = document.getElementById(tabIds[index]);
+      if (!tab) return;
+
+      tab.addEventListener("click", async (e) => {
+        e.preventDefault();
+
+        // Activer le tab cliqué
+        tabIds.forEach(id => document.getElementById(id)?.classList.remove("active"));
+        tab.classList.add("active");
+
+        // Charger les recettes de cette catégorie
+        await loadRecipesByCategory(category.slug);
+
+        // Mettre à jour l'URL
+        history.replaceState(null, "", `recette.html?category=${category.slug}`);
+      });
+    });
+
+    // 4️⃣ Chargement initial : catégorie depuis l'URL ou premier tab
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryFromURL = urlParams.get("category");
+    const initialCategory = categoryFromURL || categories[0]?.slug;
+    if (initialCategory) await loadRecipesByCategory(initialCategory);
+
+  } catch (err) {
+    console.error("Erreur récupération catégories de recettes :", err);
+  }
+
+  /**
+   * Charger les recettes d'une catégorie
+   */
+  async function loadRecipesByCategory(slug) {
+    const container = document.getElementById("recipes-container");
+    if (!container) return;
+
+    container.innerHTML = "<p>Chargement...</p>";
+
+    try {
+      const res = await fetch(`http://https://avanti-backend-67wk.onrender.com/api/recipes/category/${encodeURIComponent(slug)}`);
+      const data = await res.json();
+
+      if (!data.success || !data.data?.recipes?.length) {
+        container.innerHTML = "<p>Aucune recette disponible</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+
+      data.data.recipes.forEach(recipe => {
+        const date = recipe.created_at
+          ? new Date(recipe.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" })
+          : "";
+
+        const html = `
+          <div class="single-recipe-box">
+            <figure class="mb-0">
+              <img src="${recipe.image_url}" alt="${recipe.title}" class="img-fluid">
+            </figure>
+
+            <div class="single-blog-details">
+              <ul class="list-unstyled">
+              <li class="position-relative"><i class="fa-solid fa-star"></i>
+               <i class="fa-solid fa-star"></i>
+               <i class="fa-solid fa-star"></i>
+               <i class="fa-regular fa-star"></i>
+               <i class="fa-regular fa-star"></i></li>
+              <li class="position-relative"><i class="fa-solid fa-utensils"></i></i> Pour 02 personnes</li>
+              </ul>
+
+              <h4>
+                <a href="single-recipe.html?slug=${recipe.slug}" class="button text-decoration-none">
+                  ${recipe.title}
+                </a>
+              </h4>
+
+              <p>${recipe.short_description || ""}</p>
+
+              <div class="generic-btn2">
+                <a href="single-recipe.html?slug=${recipe.slug}">
+                  Voir la recette
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+        container.insertAdjacentHTML("beforeend", html);
+      });
+    } catch (err) {
+      console.error("Erreur chargement recettes :", err);
+      container.innerHTML = "<p>Erreur serveur</p>";
+    }
+  }
+});
+
+// =======================================================
+// SINGLE RECIPE PAGE (single-recipe.html)
+// =======================================================
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  if (!window.location.pathname.includes("single-recipe.html")) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+
+  if (!slug) {
+    console.error("Slug manquant");
+    return;
+  }
+
+  fetch(`http://https://avanti-backend-67wk.onrender.com/api/recipes/${slug}`)
+    .then(res => {
+      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+        console.warn('Single recipe API returned HTML instead of JSON');
+        return { success: false, data: null };
+      }
+      return res.json().catch(() => ({ success: false, data: null }));
+    })
+    .then(data => {
+      console.log("API RAW:", data);
+
+      if (!data.success || !data.data) return;
+
+      const { recipe, comments, related } = data.data;
+      if (!recipe) return;
+
+      /* IMAGE PRINCIPALE */
+      const mainImage = document.querySelector(".single-recipe-image img");
+      if (mainImage && recipe.image) {
+        setImageWithErrorHandler(mainImage, recipe.image);
+        mainImage.alt = recipe.title;
+      }
+
+      /* TITRE */
+      const titleEl = document.querySelector(".single-recipe-content h4");
+      if (titleEl) titleEl.textContent = recipe.title;
+
+      /* AUTEUR (optionnel, ici Admin par défaut) */
+      const authorEl = document.querySelector(".single-recipe-meta .author");
+      if (authorEl) authorEl.textContent = "";
+
+      /* DATE */
+      const dateEl = document.querySelector(".single-recipe-meta .date");
+      if (dateEl && recipe.created_at) {
+        dateEl.textContent = "Pour 02 personnes ";
+      }
+
+      /* CONTENU PRINCIPAL */
+      const contentEl = document.querySelector(".single-recipe-text");
+      if (contentEl) contentEl.innerHTML = recipe.content || "";
+
+      /* QUOTE (optionnel, pas de colonne spécifique) */
+      const quoteEl = document.querySelector(".single-recipe-quote p");
+      if (quoteEl) quoteEl.textContent = "";
+
+      /* PARAGRAPHE 1 : sous le bloc quote */
+      const paragraph1El = document.querySelector(".text.text-size-16[data-aos][data-aos-duration]");
+      if (paragraph1El && recipe.paragraph_1) {
+        paragraph1El.textContent = recipe.paragraph_1;
+      }
+
+      /* PARAGRAPHE 2 : dans content3 */
+      const paragraph2El = document.querySelector(".content3 .text.text-size-16");
+      if (paragraph2El && recipe.paragraph_2) {
+        paragraph2El.textContent = recipe.paragraph_2;
+      }
+
+      /* IMAGE SECONDAIRE (optionnelle) */
+      const secondImage = document.querySelector(".single-blog-image2 img");
+      if (secondImage) {
+        secondImage.src = ""; // pas de colonne image secondaire pour le moment
+      }
+
+      /* TAGS (optionnel, pas de tags pour recettes pour l'instant) */
+      const tagsEl = document.querySelector(".single-blog-tags");
+      if (tagsEl) tagsEl.innerHTML = "";
+
+      /* AUTEUR BIO (optionnel) */
+      const authorName = document.querySelector(".blog-author h4");
+      const authorBio = document.querySelector(".blog-author p");
+      if (authorName) authorName.textContent = "Admin";
+      if (authorBio) authorBio.textContent = "";
+
+      /* COMMENTAIRES */
+      const commentsEl = document.querySelector(".blog-comments");
+      if (commentsEl) {
+        commentsEl.innerHTML = "";
+        if (comments?.length) {
+          comments.forEach(c => {
+            commentsEl.innerHTML += `
+              <div class="comment-single">
+                <h5>${c.name}</h5>
+                <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
+                <p>${c.comment}</p>
+              </div>
+            `;
+          });
+        } else {
+          commentsEl.innerHTML = "<p>Aucun commentaire pour le moment</p>";
+        }
+      }
+
+      /* RECETTES SIMILAIRES (À la une) */
+      const featuredEl = document.querySelector(".box5");
+      if (featuredEl && related?.length) {
+        featuredEl.innerHTML = "<h4>Recettes similaires</h4>";
+        related.forEach(r => {
+          featuredEl.innerHTML += `
+            <div class="feed">
+              <img src="${r.image}" class="img-fluid">
+              <a href="single-recipe.html?slug=${r.slug}">${r.title}</a>
+            </div>
+          `;
+        });
+      }
+
+    })
+    .catch(err => console.error(err));
+});
+
+

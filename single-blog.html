@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title id="site-title">Chargement...</title>
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-icon-180x180.png">
+    <link id="favicon" rel="icon" type="image/png" sizes="192x192">
+    <link id="favicon" rel="icon" type="image/png">
+    <link id="favicon" rel="icon" type="image/png" sizes="96x96">
+    <link id="favicon" rel="icon" type="image/png" sizes="16x16">
+    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
+    <!-- 1. CSS Reset (modern reset) -->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <!-- 2. CSS Variables (design tokens) -->
+    <link href="assets/css/variables.css" rel="stylesheet" type="text/css">
+    <!-- 3. Typography -->
+    <link href="assets/css/typography.css" rel="stylesheet" type="text/css">
+    <!-- 4. Components -->
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css">
+    <!-- 5. Single Blog CSS -->
+    <link href="assets/css/sections/single-blog.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/header.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/footer.css" rel="stylesheet" type="text/css">
+    <!-- 6. Splide Carousel CSS -->
+    <link href="assets/vendor/splide/splide.min.css" rel="stylesheet" type="text/css">
+
+    <!-- ========== EXISTING CSS (Legacy - will be phased out) ========== -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/js/bootstrap.min.js">
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/blog.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/aos.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Back to top button -->
+    <a id="button"></a>
+    <div class="sub_banner position-relative">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__left">
+                    <a href="index.html" class="header__logo">
+                        <img id="site-logo" alt="Logo" class="img-fluid">
+                    </a>
+                    <div class="header__country-selector">
+                        <button class="country-dropdown lang-dropdown" aria-label="Sélectionner pays/région"
+                            aria-expanded="false">
+                            <img src="assets/images/header-flag1.png" alt="France" class="country-dropdown__flag"
+                                onerror="this.style.display='none'">
+                            <span>FR</span>
+                            <i class="fa-solid fa-chevron-down country-dropdown__arrow"></i>
+                        </button>
+                        <div id="lang-dropdown" role="menu">
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
+                                <img src="assets/images/header-flag1.png" alt="France" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>France</span>
+                            </div>
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="en">
+                                <img src="assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__search">
+                    <form role="search" id="searchform" method="get">
+                        <input type="search" name="q" class="search-input" placeholder="Rechercher..."
+                            aria-label="Rechercher">
+                        <button type="submit" class="search-button" aria-label="Rechercher">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <nav class="header__nav" id="headerNav">
+                    <ul class="nav-menu">
+                        <li class="nav-menu__item">
+                            <a href="products.html" class="nav-menu__link">Nos produits</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="contact.html" class="nav-menu__link">Contacts</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="recette.html" class="nav-menu__link">Nos recettes</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="blog.html" class="nav-menu__link active">Blogs</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="sustainability.html" class="nav-menu__link">Durabilité du riz</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    <a href="./cart.html" class="header__action header__action--cart" aria-label="Panier">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- Sub banner -->
+        <section class="sub_banner_con position-relative">
+            <figure class="subbanner-leftimage image mb-0">
+                <img src="./assets/images/update-leftimage.png" class="img-fluid" alt="image">
+            </figure>
+            <figure class="subbanner-rightimage image mb-0">
+                <img src="./assets/images/about-rightimage.png" class="img-fluid" alt="image">
+            </figure>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-8 col-md-10 col-12 mx-auto">
+                        <div class="sub_banner_content" data-aos="fade-up">
+                            <h1>Articles</h1>
+                            <p class="text-size-18">Découvrez nos actualités, conseils et informations autour du riz et
+                                de nos activités.</p>
+                            <div class="box">
+                                <a href="index.html" class="text-decoration-none">
+                                    <span class="mb-0">Accueil</span>
+                                </a>
+                                <span class="mb-0 slash">/</span>
+                                <span class="mb-0 box_span">Blog</span>
+                                <span class="mb-0 slash">/</span>
+                                <span class="mb-0 box_span">
+                                    <Details> de l'article</Details>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Single Blog -->
+    <section class="singleblog-section blogpage-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                    <div class="main-box">
+                        <figure class="image1 mb-3 single-blog-image" data-aos="fade-up" data-aos-duration="700">
+                            <img src="" alt="" class="img-fluid" loading="lazy">
+                        </figure>
+                        <div class="content1 single-blog-content" data-aos="fade-up" data-aos-duration="700">
+                            <h4>Chargement...</h4>
+                            <div class="span-fa-outer-con single-blog-meta">
+                                <i class="fa-solid fa-user"></i>
+                                <span class="text-size-14 text-mr author">Chargement</span>
+                                <i class="mb-0 calendar fa-solid fa-calendar-days"></i>
+                                <span class="mb-0 text-size-14 date">Chargement</span>
+                            </div>
+                            <p class="text-size-16 single-blog-text">
+                                Chargement
+                            </p>
+                        </div>
+                        <div class="content2 single-blog-quote" data-aos="fade-up" data-aos-duration="700">
+                            <figure class="singleblog-quoteimage">
+                                <img src="assets/images/singleblog-quoteimage.png" alt="image" class="img-fluid"
+                                    loading="lazy">
+                            </figure>
+                            <p class="mb-0 text-white text-size-18">
+                                Chargement
+                            </p>
+                        </div>
+                        <p class="text text-size-16" data-aos="fade-up" data-aos-duration="700">
+                            Chargement
+                        </p>
+                        <div class="content3" data-aos="fade-up" data-aos-duration="700">
+                            <figure class="image1 mb-3 single-blog-image2" data-aos="fade-up">
+                                <img src="" alt="" class="img-fluid" loading="lazy">
+                            </figure>
+                            <p class="text text-size-16">
+                                Chargement
+                            </p>
+                        </div>
+                        <div class="content4" data-aos="fade-up" data-aos-duration="700">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="tag">
+                                        <h4>Tags associés</h4>
+                                        <ul class="mb-0 list-unstyled single-blog-tags">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="icon">
+                                        <h4>Partager l’Article</h4>
+                                        <div class="social-icons position-absolute">
+                                            <ul class="mb-0 list-unstyled ">
+                                                <li><a href="https://www.linkedin.com/login"
+                                                        class="text-decoration-none"><i
+                                                            class="fa-brands fa-linkedin-in social-networks"></i></a>
+                                                </li>
+                                                <li><a href="https://www.instagram.com/" class="text-decoration-none"><i
+                                                            class="fa-brands fa-instagram social-networks"></i></a></li>
+                                                <li><a href="https://www.facebook.com/login/"
+                                                        class="text-decoration-none"><i
+                                                            class="fa-brands fa-facebook-f social-networks"></i></a>
+                                                </li>
+                                                <li><a href="https://twitter.com/i/flow/login"
+                                                        class="text-decoration-none"><i
+                                                            class="fa-brands fa-x-twitter social-networks"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons aos-init aos-animate" data-aos="fade-up">
+                            <a href="single-blog.html" class="prev">
+                                <span class="prev-text">Precédent</span>
+                            </a>
+                            <a href="single-blog.html" class="next">
+                                <span class="next-text">Suivant</span>
+                            </a>
+                        </div>
+                        <div class="content5 blog-author" data-aos="fade-up" data-aos-duration="700">
+                            <figure class="singleblog-review1 mb-0">
+                                <img src="./assets/images/singleblog-review1.jpg" alt="image" class="img-fluid"
+                                    loading="lazy">
+                            </figure>
+                            <div class="content">
+                                <h4></h4>
+                                <span class="text-size-16">Directeur Adjoint</span>
+                                <p class="text-size-16">
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="content6" data-aos="fade-up" data-aos-duration="700">
+                            <h4>0 Commentaire(s)</h4>
+                            <div class="comment blog-comments">
+
+                            </div>
+                        </div>
+                        <div class="content7" data-aos="fade-up" data-aos-duration="700">
+                            <h4>Laisser un Commentaire</h4>
+                            <form id="blogpage" method="POST">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group mb-0">
+                                            <textarea class="form_style" placeholder="Votre avis sur l'article ici..."
+                                                rows="3" name="msg"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="text" class="form_style" placeholder="Votre nom" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="email" class="form_style" placeholder="Votre e-mail"
+                                                name="emailid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="text" class="form_style text-mb" placeholder="Votre sujet"
+                                                name="topic">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button text-center">
+                                    <button type="submit" class="post_comment">Publier le Commentaire</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12 column">
+                    <div class="box1" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Rechercher des articles</h4>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" name="search" id="searchblog" class="form-control upper_layer"
+                                        placeholder="Rechercher un titre ici...">
+                                    <div class="input-group-append form-button">
+                                        <button class="btn search" name="btnsearch" id="searchbtn"><i
+                                                class="fa-solid fa-magnifying-glass"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="box1 box2" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Articles Popoulaires</h4>
+                        <ul class="list-unstyled mb-0 featured-posts">
+
+                        </ul>
+                    </div>
+                    <div class="box1 box3" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Suivez Nous</h4>
+                        <div class="social-icons">
+                            <ul class="mb-0 list-unstyled ">
+                                <li><a href="https://www.linkedin.com/login" class="text-decoration-none"><i
+                                            class="fa-brands fa-linkedin-in social-networks"></i></a>
+                                </li>
+                                <li><a href="https://www.instagram.com/" class="text-decoration-none"><i
+                                            class="fa-brands fa-instagram social-networks"></i></a></li>
+                                <li><a href="https://www.facebook.com/login/" class="text-decoration-none"><i
+                                            class="fa-brands fa-facebook-f social-networks"></i></a>
+                                </li>
+                                <li><a href="https://twitter.com/" class="text-decoration-none"><i
+                                            class="fa-brands fa-x-twitter social-networks"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="box1 box4" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Tags</h4>
+                        <ul class="tag mb-0 list-unstyled sidebar-tags">
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <!-- Footer will be loaded by footer-loader.js -->
+    </footer>
+    <section class="footer-con position-relative" style="display: none;">
+        <!-- Legacy footer hidden -->
+    </section>
+    <!-- PRE LOADER -->
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- Latest compiled JavaScript -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/back-to-top-button.js"></script>
+    <script src="assets/js/preloader.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/country_dropdown.js"></script>
+    <script src="assets/api/global.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer-loader.js"></script>
+</body>
+
+</html>
