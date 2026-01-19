@@ -1,3 +1,6 @@
+const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
+
+
 $(document).ready(function () {
   // =============================
   // 1️⃣ Variables principales
@@ -51,7 +54,7 @@ $(document).ready(function () {
   async function fetchSearchResults(query) {
     if (!query || query.length < 2) return [];
     try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+      const response = await fetch(`${API_BASE}/search?q=${encodeURIComponent(query)}`);
       if (!response.ok) return [];
       const data = await response.json();
       console.log('API results:', data); // <== debug
