@@ -110,10 +110,10 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="blog-card__date">${new Date(post.published_at || post.publish_date || Date.now()).toLocaleDateString('fr-FR')}</div>
           <h3 class="blog-card__title">${post.title || 'Article'}</h3>
           <p class="blog-card__description">${post.short_description || post.description || ''}</p>
-          <a href="single-blog.html?slug=${post.slug}" class="blog-card__link">Lire l'article →</a>
+          <a href="single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">Lire l'article →</a>
         </div>
       </article>
     `;
-    }).join('');
+    }).join(''); 
   }
 });
