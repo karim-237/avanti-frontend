@@ -148,12 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <span class="price-new"></span>
             </div>
             <div style="display:flex; gap:8px; margin-top:auto;">
-              <a href="product-detail.html?slug=${product.slug}" class="btn btn--primary btn--sm">
-                Voir le produit
-              </a>
-              <button onclick="addToCart('${product.slug}')" class="btn btn--primary btn--sm">
-                <i class="fa-solid fa-cart-plus"></i>
-              </button>
+              <a href="product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm" style="margin-top: auto;">Voir le produit</a> 
             </div>
           </div>
         </div>

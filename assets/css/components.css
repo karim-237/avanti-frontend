@@ -36,13 +36,15 @@ Boutons, Cards, Forms selon spécifications Tilda
 }
 
 .btn--primary {
-  background-color: var(--color-accent);
+  background-color: #FFD54F;
   color: var(--color-black);
 }
 
 .btn--primary:hover {
-  opacity: 0.8;
-  box-shadow: var(--shadow-button-hover);
+  background-color: #FFD54F;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
 }
 
 .btn--primary:active {

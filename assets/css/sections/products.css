@@ -161,7 +161,7 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
   background-color: var(--color-accent);
   color: var(--color-black);
   border: none;
-  margin-top: auto;
+  margin-top: auto; 
 }
 
 .category-ranges--products-grid .btn--primary:hover {

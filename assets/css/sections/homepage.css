@@ -251,7 +251,7 @@ Sections homepage selon spécifications Tilda
 
 .products-carousel .btn--primary:hover {
   background-color: #FFD54F;
-  opacity: 1;
+  opacity: 1; 
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
 }
