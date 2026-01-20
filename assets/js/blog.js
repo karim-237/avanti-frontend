@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <h2 class="blog-featured-card__title">${post.title || 'Article'}</h2>
           <div class="blog-featured-card__date">${new Date(post.published_at || post.publish_date || Date.now()).toLocaleDateString('fr-FR')}</div>
           <p class="blog-featured-card__description">${post.short_description || post.description || ''}</p>
-          <a href="single-blog.html?slug=${post.slug}" class="blog-featured-card__link">Lire l'article →</a>
+          <a href="single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">Lire l'article →</a>
         </div>
       </article>
     `;
