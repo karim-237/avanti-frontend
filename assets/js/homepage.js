@@ -119,8 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="card__text">${product.short_description || (product.description ? product.description.substring(0, 100) + '...' : '')}</p>
                 <div class="price">
                   ${product.original_price && product.price < product.original_price ? 
-                    `<span class="price-old">${product.original_price.toFixed(2)}XFA</span>` : ''}
-                  <span class="price-new">${(product.price || 0).toFixed(2)}XFA</span>
+                    `<span class="price-old"></span>` : ''}
+                  <span class="price-new"></span>
                 </div>
                 <a href="product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm" style="margin-top: auto;">Voir le produit</a>
               </div>
