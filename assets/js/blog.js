@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <h2 class="blog-featured-card__title">${post.title || 'Article'}</h2>
           <div class="blog-featured-card__date">${new Date(post.published_at || post.publish_date || Date.now()).toLocaleDateString('fr-FR')}</div>
           <p class="blog-featured-card__description">${post.short_description || post.description || ''}</p>
-          <a href="single-blog.html?slug=${post.slug}" class="blog-featured-card__link">Lire plus →</a>
+          <a href="single-blog.html?slug=${post.slug}" class="blog-featured-card__link">Lire l'article →</a>
         </div>
       </article>
     `;
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="blog-card__date">${new Date(post.published_at || post.publish_date || Date.now()).toLocaleDateString('fr-FR')}</div>
           <h3 class="blog-card__title">${post.title || 'Article'}</h3>
           <p class="blog-card__description">${post.short_description || post.description || ''}</p>
-          <a href="single-blog.html?slug=${post.slug}" class="blog-card__link">Lire plus →</a>
+          <a href="single-blog.html?slug=${post.slug}" class="blog-card__link">Lire l'article →</a>
         </div>
       </article>
     `;

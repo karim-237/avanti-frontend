@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <span class="blog-card__category">${post.category || 'Blog'}</span>
               <h3 class="blog-card__title">${post.title || 'Blog post'}</h3>
               <p class="blog-card__text">${post.short_description || ''}</p>
-              <a href="single-blog.html?slug=${post.slug || ''}" class="btn btn--text">Lire plus</a>
+              <a href="single-blog.html?slug=${post.slug || ''}" class="btn btn--text">Lire l'article</a>
             </div>
           </div>
         `;

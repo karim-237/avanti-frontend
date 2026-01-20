@@ -12,7 +12,7 @@ export const translations = {
     
     // Blog
     noBlogPosts: "Aucun article disponible.",
-    readMore: "Lire plus →",
+    readMore: "Lire l'article →",
     blog: "Blog",
     
     // Contact
