@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h4 class="card__title">${product.name || 'Product'}</h4>
                 <div class="price">
                   ${product.original_price && product.price < product.original_price 
-                    ? `<span class="price-old">${product.original_price}XFA</span>` : ''}
-                  <span class="price-new">${product.price || '0'}XFA</span>
+                    ? `<span class="price-old"></span>` : ''}
+                  <span class="price-new"></span>
                 </div>
                 <a href="product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm">Voir</a>
               </div>

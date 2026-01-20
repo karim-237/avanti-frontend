@@ -143,9 +143,9 @@ document.addEventListener('DOMContentLoaded', function () {
             </p>
             <div class="price">
               ${product.original_price && product.price < product.original_price
-                ? `<span class="price-old">${product.original_price} XFA</span>`
+                ? `<span class="price-old"></span>`
                 : ''}
-              <span class="price-new">${product.price || 0} XFA</span>
+              <span class="price-new"></span>
             </div>
             <div style="display:flex; gap:8px; margin-top:auto;">
               <a href="product-detail.html?slug=${product.slug}" class="btn btn--primary btn--sm">
