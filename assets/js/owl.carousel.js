@@ -2272,7 +2272,7 @@
 
 			/*
 					Parses the id's out of the following urls (and probably more):
-					https://www.youtube.com/watch?v=:id
+					https://www.linkedin.com/company/avanti-cameroun/watch?v=:id
 					https://youtu.be/:id
 					https://vimeo.com/:id
 					https://vimeo.com/channels/:channel/:id
