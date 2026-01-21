@@ -1110,100 +1110,92 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+
 // =======================================================
 // SINGLE RECIPE PAGE (single-recipe.html)
 // =======================================================
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  if (!window.location.pathname.includes("single-recipe.html")) return;
+  console.log("✅ single-recipe.js chargé");
 
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
 
+  console.log("🔎 Slug extrait :", slug);
+
   if (!slug) {
-    console.error("Slug manquant");
+    console.error("❌ Slug manquant");
     return;
   }
 
-  fetch(`https://avanti-backend-67wk.onrender.com/api/recipes/${slug}`)
+  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+
+  fetch(`${API_BASE}/recipes/${slug}`)
     .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Single recipe API returned HTML instead of JSON');
+      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) {
+        console.warn("⚠️ Single recipe API returned HTML instead of JSON");
         return { success: false, data: null };
       }
       return res.json().catch(() => ({ success: false, data: null }));
     })
     .then(data => {
-      console.log("API RAW:", data);
+      console.log("📦 API RAW:", data);
 
-      if (!data.success || !data.data) return;
+      if (!data.success || !data.data) {
+        console.error("❌ Pas de données retournées par l'API");
+        return;
+      }
 
       const { recipe, comments, related } = data.data;
-      if (!recipe) return;
 
-      /* IMAGE PRINCIPALE */
-      const mainImage = document.querySelector(".single-recipe-image img");
+      if (!recipe) {
+        console.error("❌ Recette non trouvée dans la réponse");
+        return;
+      }
+
+      // ===================== IMAGE PRINCIPALE =====================
+      const mainImage = document.getElementById("recipe-main-image");
       if (mainImage && recipe.image) {
-        setImageWithErrorHandler(mainImage, recipe.image);
-        mainImage.alt = recipe.title;
+        mainImage.src = recipe.image;
+        mainImage.alt = recipe.title || "Image recette";
+
+        console.log("🖼️ Image SRC injecté :", mainImage.src);
       }
 
-      /* TITRE */
-      const titleEl = document.querySelector(".single-recipe-content h4");
-      if (titleEl) titleEl.textContent = recipe.title;
+      // ===================== TITRE =====================
+      const titleEl = document.getElementById("recipe-title");
+      if (titleEl) titleEl.textContent = recipe.title || "Recette";
 
-      /* AUTEUR (optionnel, ici Admin par défaut) */
-      const authorEl = document.querySelector(".single-recipe-meta .author");
-      if (authorEl) authorEl.textContent = "";
+      // ===================== AUTEUR =====================
+      const authorEl = document.getElementById("recipe-author");
+      if (authorEl) authorEl.textContent = recipe.author || "Avanti";
 
-      /* DATE */
-      const dateEl = document.querySelector(".single-recipe-meta .date");
-      if (dateEl && recipe.created_at) {
-        dateEl.textContent = "Pour 02 personnes ";
+      // ===================== META (ex: pour X personnes) =====================
+      const metaEl = document.getElementById("recipe-meta");
+      if (metaEl) {
+        metaEl.textContent = recipe.servings
+          ? `Pour ${recipe.servings} personnes`
+          : "Recette Avanti";
       }
 
-      /* CONTENU PRINCIPAL */
-      const contentEl = document.querySelector(".single-recipe-text");
-      if (contentEl) contentEl.innerHTML = recipe.content || "";
+      // ===================== INTRO =====================
+      const introEl = document.getElementById("recipe-intro");
+      if (introEl) introEl.innerHTML = recipe.short_description || "";
 
-      /* QUOTE (optionnel, pas de colonne spécifique) */
-      const quoteEl = document.querySelector(".single-recipe-quote p");
-      if (quoteEl) quoteEl.textContent = "";
+      // ===================== PARAGRAPHE 1 =====================
+      const paragraph1El = document.getElementById("recipe-paragraph-1");
+      if (paragraph1El) paragraph1El.textContent = recipe.paragraph_1 || "";
 
-      /* PARAGRAPHE 1 : sous le bloc quote */
-      const paragraph1El = document.querySelector(".text.text-size-16[data-aos][data-aos-duration]");
-      if (paragraph1El && recipe.paragraph_1) {
-        paragraph1El.textContent = recipe.paragraph_1;
-      }
+      // ===================== PARAGRAPHE 2 =====================
+      const paragraph2El = document.getElementById("recipe-paragraph-2");
+      if (paragraph2El) paragraph2El.textContent = recipe.paragraph_2 || "";
 
-      /* PARAGRAPHE 2 : dans content3 */
-      const paragraph2El = document.querySelector(".content3 .text.text-size-16");
-      if (paragraph2El && recipe.paragraph_2) {
-        paragraph2El.textContent = recipe.paragraph_2;
-      }
-
-      /* IMAGE SECONDAIRE (optionnelle) */
-      const secondImage = document.querySelector(".single-blog-image2 img");
-      if (secondImage) {
-        secondImage.src = ""; // pas de colonne image secondaire pour le moment
-      }
-
-      /* TAGS (optionnel, pas de tags pour recettes pour l'instant) */
-      const tagsEl = document.querySelector(".single-blog-tags");
-      if (tagsEl) tagsEl.innerHTML = "";
-
-      /* AUTEUR BIO (optionnel) */
-      const authorName = document.querySelector(".blog-author h4");
-      const authorBio = document.querySelector(".blog-author p");
-      if (authorName) authorName.textContent = "Admin";
-      if (authorBio) authorBio.textContent = "";
-
-      /* COMMENTAIRES */
-      const commentsEl = document.querySelector(".blog-comments");
+      // ===================== COMMENTAIRES =====================
+      const commentsEl = document.getElementById("recipe-comments");
       if (commentsEl) {
         commentsEl.innerHTML = "";
+
         if (comments?.length) {
           comments.forEach(c => {
             commentsEl.innerHTML += `
@@ -1219,22 +1211,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      /* RECETTES SIMILAIRES (À la une) */
-      const featuredEl = document.querySelector(".box5");
-      if (featuredEl && related?.length) {
-        featuredEl.innerHTML = "<h4>Recettes similaires</h4>";
-        related.forEach(r => {
-          featuredEl.innerHTML += `
-            <div class="feed">
-              <img src="${r.image}" class="img-fluid">
-              <a href="single-recipe.html?slug=${r.slug}">${r.title}</a>
-            </div>
-          `;
-        });
+      // ===================== RECETTES SIMILAIRES =====================
+      const relatedEl = document.getElementById("recipe-related");
+      if (relatedEl) {
+        relatedEl.innerHTML = "";
+
+        if (related?.length) {
+          related.forEach(r => {
+            relatedEl.innerHTML += `
+              <li class="mb-3">
+                <div class="feed">
+                  <img src="${r.image}" class="img-fluid" alt="${r.title}">
+                  <a href="single-recipe.html?slug=${r.slug}">${r.title}</a>
+                </div>
+              </li>
+            `;
+          });
+        } else {
+          relatedEl.innerHTML = "<li>Aucune recette similaire</li>";
+        }
       }
 
+      console.log("✅ Recette chargée avec succès");
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error("❌ Erreur fetch recette :", err));
 });
 
 

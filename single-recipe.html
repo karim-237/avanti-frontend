@@ -23,7 +23,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
+     <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
     <!-- 1. CSS Reset (modern reset) -->
     <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
     <!-- 2. CSS Variables (design tokens) -->
@@ -32,7 +32,11 @@
     <link href="assets/css/typography.css" rel="stylesheet" type="text/css">
     <!-- 4. Components -->
     <link href="assets/css/components.css" rel="stylesheet" type="text/css">
-    <!-- 5. Splide Carousel CSS -->
+    <!-- 5. Single Blog CSS -->
+    <link href="assets/css/sections/single-blog.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/header.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/footer.css" rel="stylesheet" type="text/css">
+    <!-- 6. Splide Carousel CSS -->
     <link href="assets/vendor/splide/splide.min.css" rel="stylesheet" type="text/css">
 
     <!-- ========== EXISTING CSS (Legacy - will be phased out) ========== -->
@@ -43,7 +47,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- StyleSheet link CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/homepage.css" rel="stylesheet" type="text/css">
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/single-blog.css" rel="stylesheet" type="text/css">
     <link href="assets/css/blog.css" rel="stylesheet" type="text/css">
     <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
@@ -54,95 +60,92 @@
 <body>
     <!-- Back to top button -->
     <a id="button"></a>
-    <div class="sub_banner position-relative">
+     <div class="sub_banner position-relative">
         <header class="header">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light p-0">
-                    <a class="navbar-brand" href="index.html">
-                        <figure class="logo mb-0"><img src="" id="site-logo" alt="image" class="img-fluid">
-                        </figure>
+            <div class="header__container">
+                <div class="header__left">
+                    <a href="index.html" class="header__logo">
+                        <img id="site-logo" alt="Logo" class="img-fluid">
                     </a>
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link navbar-text-color" href="index.html"> Accueil
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">À propos</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html">Nos produits</a>
-                            </li>
-
-
-                            <li class="nav-item dropdown">
-                                <a class="nav-link navbar-text-color" href="blog.html"> Blog
-                                </a>
-                            </li>
-
-                            <li class="nav-item dropdown active">
-                                <a class="nav-link" href="recette.html">Recettes</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contacts</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="last_list">
-                        <a class="search" href="#search"><img src="assets/images/header-search.png" alt="image"></a>
-                        <a class="cart" href="./cart.html"><img src="assets/images/header-cart.png"
-                                alt="image"><span>0</span></a>
-                        <a class="admin" href="./login.html"><img src="assets/images/header-admin.png" alt="image"></a>
-                    </div>
-                </nav>
-            </div>
-        </header>
-        <!-- Search Form -->
-        <div id="search" class="">
-            <span class="close">X</span>
-            <form role="search" id="searchform" method="get">
-                <input value="" name="q" type="search" placeholder="Type to Search">
-            </form>
-        </div>
-        <!-- Sub banner -->
-        <section class="sub_banner_con position-relative">
-            <figure class="subbanner-leftimage image mb-0">
-                <img src="./assets/images/update-leftimage.png" class="img-fluid" alt="image">
-            </figure>
-            <figure class="subbanner-rightimage image mb-0">
-                <img src="./assets/images/about-rightimage.png" class="img-fluid" alt="image">
-            </figure>
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-8 col-md-10 col-12 mx-auto">
-                        <div class="sub_banner_content" data-aos="fade-up">
-                            <h1>Nos Recettes</h1>
-                            <p class="text-size-18">Découvrez nos actualités, conseils et informations autour du riz et
-                                de nos activités.</p>
-                            <div class="box">
-                                <a href="index.html" class="text-decoration-none">
-                                    <span class="mb-0">Accueil</span>
-                                </a>
-                                <span class="mb-0 slash">/</span>
-                                <span class="mb-0 box_span">Nos recettes</span>
-                                <span class="mb-0 slash">/</span>
-                                <span class="mb-0 box_span">Détails de la recette</span>
+                    <div class="header__country-selector">
+                        <button class="country-dropdown lang-dropdown" aria-label="Sélectionner pays/région"
+                            aria-expanded="false">
+                            <img src="assets/images/header-flag1.png" alt="France" class="country-dropdown__flag"
+                                onerror="this.style.display='none'">
+                            <span>FR</span>
+                            <i class="fa-solid fa-chevron-down country-dropdown__arrow"></i>
+                        </button>
+                        <div id="lang-dropdown" role="menu">
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
+                                <img src="assets/images/header-flag1.png" alt="France" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>France</span>
+                            </div>
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="en">
+                                <img src="assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>English</span>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="header__search">
+                    <form role="search" id="searchform" method="get">
+                        <input type="search" id="search-input" name="q" class="search-input" placeholder="Rechercher..."
+                            aria-label="Rechercher">
+                        <button type="submit" class="search-button" aria-label="Rechercher">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <nav class="header__nav" id="headerNav">
+                    <ul class="nav-menu">
+                        <li class="nav-menu__item">
+                            <a href="products.html" class="nav-menu__link">Nos produits</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="contact.html" class="nav-menu__link">Contacts</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="recette.html" class="nav-menu__link active">Nos recettes</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="blog.html" class="nav-menu__link">Blogs</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="sustainability.html" class="nav-menu__link">Durabilité du riz</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+
+                    <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- Single Blog Hero -->
+        <section class="single-blog-hero">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="index.html" class="breadcrumb__link">Accueil</a>
+                    <span class="breadcrumb__separator">></span>
+                    <span class="breadcrumb__current">Suivre la recette</span>
+                </nav>
+                <h1 class="single-blog-hero__title">LE GUIDE DE CETTE RECETTE</h1>
+                <div class="tab-selector">
+                    <button class="tab-selector__button active" onclick="window.location.href='recette.html'">Toutes les
+                        recettes</button>
+                </div>
             </div>
         </section>
+
     </div>
     <!-- Single Recipe -->
     <section class="singleblog-section blogpage-section">
@@ -151,30 +154,30 @@
                 <div class="col-lg-8 col-md-12 col-sm-12 col-12">
                     <div class="main-box">
                         <figure class="image1 mb-3 single-recipe-image" data-aos="fade-up" data-aos-duration="700">
-                            <img src="" alt="" class="img-fluid" loading="lazy">
+                            <img src="" id="recipe-main-image" alt="" class="img-fluid" loading="lazy">
                         </figure>
                         <div class="content1 single-recipe-content" data-aos="fade-up" data-aos-duration="700">
-                            <h4>Chargement...</h4>
+                            <h4 id="recipe-title">Chargement...</h4>
                             <div class="span-fa-outer-con single-recipe-meta">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-regular fa-star"></i>
                                 <i class="fa-regular fa-star"></i>
-                                <span class="text-size-14 text-mr author"></span>
+                                <span class="text-size-14 text-mr author" id="recipe-author"></span>
                                 <i class="mb-0 calendar fa-solid fa-utensils"></i>
-                                <span class="mb-0 text-size-14 date">Chargement</span>
+                                <span class="mb-0 text-size-14 date" id="recipe-meta">Chargement</span>
                             </div>
-                            <p class="text-size-16 single-recipe-text">
+                            <p class="text-size-16 single-recipe-text" id="recipe-intro">
                                 Chargement
                             </p>
                         </div>
 
-                        <p class="text text-size-16" data-aos="fade-up" data-aos-duration="700">
+                        <p class="text text-size-16" id="recipe-paragraph-1" data-aos="fade-up" data-aos-duration="700">
                             Chargement
                         </p>
-                        <div class="content3" data-aos="fade-up" data-aos-duration="700">
-                            <p class="text text-size-16">
+                        <div class="content3" data-aos="fade-up"  data-aos-duration="700">
+                            <p class="text text-size-16" id="recipe-paragraph-2">
                                 Chargement
                             </p>
                         </div>
@@ -209,10 +212,10 @@
                         </div>
                         <div class="buttons aos-init aos-animate" data-aos="fade-up">
                             <a href="single-blog.html" class="prev">
-                                <span class="prev-text">Precédent</span>
+                                
                             </a>
                             <a href="single-blog.html" class="next">
-                                <span class="next-text">Suivant</span>
+                                
                             </a>
                         </div>
                         <div class="content5 blog-author" data-aos="fade-up" data-aos-duration="700">
@@ -270,7 +273,7 @@
                         <form method="POST">
                             <div class="form-row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" name="search" id="searchblog" class="form-control upper_layer"
+                                    <input type="text" name="search" id="searchrecipe" class="form-control upper_layer"
                                         placeholder="Rechercher un titre ici...">
                                     <div class="input-group-append form-button">
                                         <button class="btn search" name="btnsearch" id="searchbtn"><i
@@ -282,7 +285,7 @@
                     </div>
                     <div class="box1 box2" data-aos="fade-up" data-aos-duration="700">
                         <h4>Recettes Popoulaires</h4>
-                        <ul class="list-unstyled mb-0 featured-posts">
+                        <ul class="list-unstyled mb-0 featured-posts" id="recipe-related">
 
                         </ul>
                     </div>
@@ -412,6 +415,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/config.js"></script>
+    <script src="assets/js/search-recipes.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/aos.js"></script>
