@@ -4,11 +4,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ single-blog.js chargé");
 
-  if (!window.location.pathname.includes("single-blog.html")) return;
-
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
   console.log("🔎 Slug extrait :", slug);
+ 
 
   if (!slug) {
     console.error("❌ Slug manquant");
