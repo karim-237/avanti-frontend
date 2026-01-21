@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ===================== CONTENU =====================
       const contentEl = document.getElementById("blog-content");
-      if (contentEl) contentEl.innerHTML = blog.full_content || "<p>Contenu indisponible.</p>";
+      if (contentEl) contentEl.innerHTML = blog.full_content || "";
 
       // ===================== QUOTE =====================
       const quoteEl = document.getElementById("blog-quote");
