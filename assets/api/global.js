@@ -715,7 +715,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch(`https://avanti-backend-67wk.onrender.com/api/blogs/${slug}`)
+  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
+
+  fetch(`${API_BASE}/blogs/${slug}`)
     .then(res => {
       if (!res.ok || res.headers.get("content-type")?.includes("text/html")) {
         console.warn("⚠️ Single blog API returned HTML instead of JSON");
@@ -742,7 +744,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const mainImage = document.getElementById("main-image");
       if (mainImage) {
         if (blog.single_image_xl) {
-         mainImage.src = blog.single_image_xl;
+          mainImage.src = blog.single_image_xl;
         }
         mainImage.alt = blog.title || "Blog image";
       }
