@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!slug) {
     console.error("❌ Slug manquant");
+    const contentEl = document.getElementById("blog-content");
+    if (contentEl) contentEl.innerHTML = "<p>Blog introuvable (slug manquant).</p>";
     return;
   }
 
@@ -21,31 +23,33 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => {
       if (!res.ok || res.headers.get("content-type")?.includes("text/html")) {
         console.warn("⚠️ Single blog API returned HTML instead of JSON");
-        return { success: false, data: null };
+        return { success: false, message: "Réponse non JSON du serveur", data: null };
       }
-      return res.json().catch(() => ({ success: false, data: null }));
+      return res.json().catch(() => ({ success: false, message: "Erreur JSON", data: null }));
     })
     .then(data => {
       console.log("📦 API RAW:", data);
 
-      if (!data.success || !data.data) {
-        console.error("❌ Pas de données retournées par l'API");
+      if (!data.success) {
+        console.error("❌ Backend a retourné une erreur :", data.message);
+        const contentEl = document.getElementById("blog-content");
+        if (contentEl) contentEl.innerHTML = `<p>Blog introuvable : ${data.message}</p>`;
+        return;
+      }
+
+      if (!data.data || !data.data.blog) {
+        console.error("❌ Blog non trouvé dans la réponse");
+        const contentEl = document.getElementById("blog-content");
+        if (contentEl) contentEl.innerHTML = "<p>Blog introuvable.</p>";
         return;
       }
 
       const { blog, tags, comments, featured } = data.data;
 
-      if (!blog) {
-        console.error("❌ Blog non trouvé dans la réponse");
-        return;
-      }
-
       // ===================== IMAGE PRINCIPALE =====================
       const mainImage = document.getElementById("main-image");
       if (mainImage) {
-        if (blog.single_image_xl) {
-          mainImage.src = blog.single_image_xl;
-        }
+        mainImage.src = blog.single_image_xl || "";
         mainImage.alt = blog.title || "Blog image";
       }
 
@@ -69,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // ===================== CONTENU =====================
       const contentEl = document.getElementById("blog-content");
-      if (contentEl) contentEl.innerHTML = blog.full_content || "";
+      if (contentEl) contentEl.innerHTML = blog.full_content || "<p>Contenu indisponible.</p>";
 
       // ===================== QUOTE =====================
       const quoteEl = document.getElementById("blog-quote");
@@ -106,17 +110,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const commentsEl = document.querySelector(".blog-comments");
       if (commentsEl) {
         commentsEl.innerHTML = comments.length
-          ? comments
-            .map(
+          ? comments.map(
               c => `
-          <div class="comment-single">
-            <h5>${c.author_name}</h5>
-            <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
-            <p>${c.message}</p>
-          </div>
-        `
-            )
-            .join("")
+                <div class="comment-single">
+                  <h5>${c.author_name}</h5>
+                  <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
+                  <p>${c.message}</p>
+                </div>
+              `
+            ).join("")
           : "<p>Aucun commentaire pour le moment</p>";
       }
 
@@ -124,20 +126,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const featuredEl = document.querySelector(".box5");
       if (featuredEl) {
         featuredEl.innerHTML = featured.length
-          ? `<h4>À la Une</h4>${featured
-            .map(
+          ? `<h4>À la Une</h4>${featured.map(
               f => `
-            <div class="feed">
-              <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
-              <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
-            </div>
-          `
-            )
-            .join("")}`
+                <div class="feed">
+                  <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
+                  <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
+                </div>
+              `
+            ).join("")}`
           : "<h4>À la Une</h4><p>Aucun article</p>";
       }
 
       console.log("✅ Blog chargé avec succès");
     })
-    .catch(err => console.error("❌ Erreur fetch blog :", err));
+    .catch(err => {
+      console.error("❌ Erreur fetch blog :", err);
+      const contentEl = document.getElementById("blog-content");
+      if (contentEl) contentEl.innerHTML = "<p>Erreur lors du chargement du blog.</p>";
+    });
 });
