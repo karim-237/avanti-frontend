@@ -7,13 +7,14 @@ selon spécifications Tilda
 
 .assistance-hero {
   position: relative;
-  background-image: url("../../images/banner/Artboard\ 1.jpg");
+  background-image: url("../../images/banner/Artboard\ 11.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: var(--color-white);
+  color: var(--color-white); 
   padding: var(--spacing-2xl) 0;
   margin-bottom: var(--spacing-2xl);
+  opacity: 90%;
 }
 
 .assistance-hero__content {

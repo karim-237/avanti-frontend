@@ -47,7 +47,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- StyleSheet link CSS -->
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/homepage.css" rel="stylesheet" type="text/css">
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/single-blog.css" rel="stylesheet" type="text/css">
     <link href="assets/css/blog.css" rel="stylesheet" type="text/css">
     <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
@@ -119,7 +121,7 @@
                     <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
                         <i class="fa-solid fa-user"></i>
                     </a>
-                  
+
                     <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -128,37 +130,22 @@
                 </div>
             </div>
         </header>
-        <!-- Sub banner -->
-        <section class="sub_banner_con position-relative">
-            <figure class="subbanner-leftimage image mb-0">
-                <img src="./assets/images/update-leftimage.png" class="img-fluid" alt="image">
-            </figure>
-            <figure class="subbanner-rightimage image mb-0">
-                <img src="./assets/images/about-rightimage.png" class="img-fluid" alt="image">
-            </figure>
+        <!-- Single Blog Hero -->
+        <section class="single-blog-hero">
             <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-8 col-md-10 col-12 mx-auto">
-                        <div class="sub_banner_content" data-aos="fade-up">
-                            <h1>Articles</h1>
-                            <p class="text-size-18">Découvrez nos actualités, conseils et informations autour du riz et
-                                de nos activités.</p>
-                            <div class="box">
-                                <a href="index.html" class="text-decoration-none">
-                                    <span class="mb-0">Accueil</span>
-                                </a>
-                                <span class="mb-0 slash">/</span>
-                                <span class="mb-0 box_span">Blog</span>
-                                <span class="mb-0 slash">/</span>
-                                <span class="mb-0 box_span">
-                                    <Details> de l'article</Details>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                <nav class="breadcrumb">
+                    <a href="index.html" class="breadcrumb__link">Accueil</a>
+                    <span class="breadcrumb__separator">></span>
+                    <span class="breadcrumb__current">Détails de l'article</span>
+                </nav>
+                <h1 class="single-blog-hero__title">LES DETAILS DE VOTRE ARTICLE</h1>
+                <div class="tab-selector">
+                    <button class="tab-selector__button active" onclick="window.location.href='blog.html'">Tous les
+                        blogs</button>
                 </div>
             </div>
         </section>
+
     </div>
     <!-- Single Blog -->
     <section class="singleblog-section blogpage-section">
@@ -167,17 +154,17 @@
                 <div class="col-lg-8 col-md-12 col-sm-12 col-12">
                     <div class="main-box">
                         <figure class="image1 mb-3 single-blog-image" data-aos="fade-up" data-aos-duration="700">
-                            <img src="" alt="" class="img-fluid" loading="lazy">
+                            <img src="" alt="" class="img-fluid" loading="lazy" id="main-image">
                         </figure>
                         <div class="content1 single-blog-content" data-aos="fade-up" data-aos-duration="700">
-                            <h4>Chargement...</h4>
+                            <h4 id="blog-title">Chargement...</h4>
                             <div class="span-fa-outer-con single-blog-meta">
                                 <i class="fa-solid fa-user"></i>
-                                <span class="text-size-14 text-mr author">Chargement</span>
+                                <span class="text-size-14 text-mr author" id="author">Chargement</span>
                                 <i class="mb-0 calendar fa-solid fa-calendar-days"></i>
-                                <span class="mb-0 text-size-14 date">Chargement</span>
+                                <span class="mb-0 text-size-14 date" id="date">Chargement</span>
                             </div>
-                            <p class="text-size-16 single-blog-text">
+                            <p class="text-size-16 single-blog-text" id="blog-content">
                                 Chargement
                             </p>
                         </div>
@@ -186,18 +173,18 @@
                                 <img src="assets/images/singleblog-quoteimage.png" alt="image" class="img-fluid"
                                     loading="lazy">
                             </figure>
-                            <p class="mb-0 text-white text-size-18">
+                            <p class="mb-0 text-white text-size-18" id="blog-quote">
                                 Chargement
                             </p>
                         </div>
-                        <p class="text text-size-16" data-aos="fade-up" data-aos-duration="700">
+                        <p class="text text-size-16" data-aos="fade-up" data-aos-duration="700" id="blog-paragraph-1">
                             Chargement
                         </p>
                         <div class="content3" data-aos="fade-up" data-aos-duration="700">
                             <figure class="image1 mb-3 single-blog-image2" data-aos="fade-up">
                                 <img src="" alt="" class="img-fluid" loading="lazy">
                             </figure>
-                            <p class="text text-size-16">
+                            <p class="text text-size-16" id="blog-paragraph-2">
                                 Chargement
                             </p>
                         </div>
@@ -220,7 +207,8 @@
                                                         class="text-decoration-none"><i
                                                             class="fa-brands fa-linkedin-in social-networks"></i></a>
                                                 </li>
-                                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="text-decoration-none"><i
+                                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                                                        class="text-decoration-none"><i
                                                             class="fa-brands fa-instagram social-networks"></i></a></li>
                                                 <li><a href="https://web.facebook.com/profile.php?id=61559510488672/login/"
                                                         class="text-decoration-none"><i
@@ -235,22 +223,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="buttons aos-init aos-animate" data-aos="fade-up">
-                            <a href="single-blog.html" class="prev">
-                                <span class="prev-text">Precédent</span>
-                            </a>
-                            <a href="single-blog.html" class="next">
-                                <span class="next-text">Suivant</span>
-                            </a>
-                        </div>
+
                         <div class="content5 blog-author" data-aos="fade-up" data-aos-duration="700">
-                            <figure class="singleblog-review1 mb-0">
-                                <img src="./assets/images/singleblog-review1.jpg" alt="image" class="img-fluid"
-                                    loading="lazy">
-                            </figure>
+
                             <div class="content">
                                 <h4></h4>
-                                <span class="text-size-16">Directeur Adjoint</span>
+                                <span class="text-size-16">Equipe de communication</span>
                                 <p class="text-size-16">
 
                                 </p>
@@ -330,13 +308,13 @@
                                 <li><a href="https://www.linkedin.com/login" class="text-decoration-none"><i
                                             class="fa-brands fa-linkedin-in social-networks"></i></a>
                                 </li>
-                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="text-decoration-none"><i
+                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                                        class="text-decoration-none"><i
                                             class="fa-brands fa-instagram social-networks"></i></a></li>
-                                <li><a href="https://web.facebook.com/profile.php?id=61559510488672/login/" class="text-decoration-none"><i
+                                <li><a href="https://web.facebook.com/profile.php?id=61559510488672/login/"
+                                        class="text-decoration-none"><i
                                             class="fa-brands fa-facebook-f social-networks"></i></a>
                                 </li>
-                                <li><a href="https://twitter.com/" class="text-decoration-none"><i
-                                            class="fa-brands fa-x-twitter social-networks"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -352,8 +330,108 @@
         </div>
     </section>
     <!-- Footer -->
-    <footer>
-        <!-- Footer will be loaded by footer-loader.js -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__section">
+                    <img id="footer-logo" src="" alt="Logo" class="footer__logo">
+                    <p class="footer__text">Découvrez notre sélection de riz de qualité supérieure, soigneusement choisi
+                        pour votre table.</p>
+                    <div class="footer__social">
+                        <a href="https://web.facebook.com/profile.php?id=61559510488672/" class="footer__social-link"
+                            aria-label="Facebook" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                            class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link"
+                            aria-label="YouTube" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="index.html" class="footer__link">Accueil</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="products.html" class="footer__link">Produits</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="about.html" class="footer__link">À propos</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="blog.html" class="footer__link">Blog</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="recette.html" class="footer__link">Recettes</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="contact.html" class="footer__link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Assistance</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="term-of-use.html" class="footer__link">Conditions d'utilisation</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="privacy-policy.html" class="footer__link">Politique de confidentialité</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="cookie-policy.html" class="footer__link">Politique de cookies</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="faq.html" class="footer__link">FAQ</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="contact.html" class="footer__link">Guide client</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Contactez-nous</h3>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+237123456789" class="footer__contact-link">+237 691 517 706</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:avanticameroun@gmail.com"
+                            class="footer__contact-link">avanticameroun@gmail.com</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BP 3010, Douala -Cameroun</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">Copyright © 2026 avanticameroun.cm. Tous droits réservés.</p>
+                <div class="footer__legal-links">
+                    <a href="term-of-use.html" class="footer__legal-link">Termes et conditions</a>
+                    <a href="privacy-policy.html" class="footer__legal-link">Politique de confidentialité</a>
+                    <a href="cookie-policy.html" class="footer__legal-link">Cookie & Préférences</a>
+                </div>
+            </div>
+        </div>
     </footer>
     <section class="footer-con position-relative" style="display: none;">
         <!-- Legacy footer hidden -->
@@ -368,6 +446,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/js/config.js"></script>
+    <script src="assets/js/search-blogs.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/aos.js"></script>

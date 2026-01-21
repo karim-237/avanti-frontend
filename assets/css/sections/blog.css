@@ -6,13 +6,14 @@ Blog page selon spécifications Tilda
 
 .blog-hero {
   position: relative;
-  background-image: url("../../images/banner/Artboard\ 2.jpg");
+  background-image: url("../../images/banner/Artboard\ 11.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: var(--color-white);
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-2xl) 0; 
   text-align: center;
+  opacity: 90%;
 }
 
 .blog-hero__title {

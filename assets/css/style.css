@@ -26,7 +26,7 @@ Project:  Contrive
 
 #    --e-global-color-primary: #ffffff;
 #    --e-global-color-secondary: #000000;
-#    --e-global-color-accent: #fb704f;
+#    --e-global-color-accent: #ffd54f;
 #    --e-global-color-text: #6a6a6a;
 #	 --e-global-color-white: #ffffff;
 #    --e-global-color-black: #000000;
@@ -57,7 +57,7 @@ body {
 :root {
     --e-global-color-primary: #ffffff;
     --e-global-color-secondary: #000000;
-    --e-global-color-accent: #fb704f;
+    --e-global-color-accent: #ffc107;
     --e-global-color-text: #6a6a6a;
 	--e-global-color-white: #ffffff;
     --e-global-color-black: #000000;
@@ -837,7 +837,7 @@ html{
     margin-right: 0;
 }
 .feature-con .feature-box .dot1 {
-    background-color: #fb704f;
+    background-color: #ffd54f;
 }
 .feature-con .feature-box .dot2 {
     background-color: #2c5858;
@@ -849,7 +849,7 @@ html{
     background-color: #8f7cb2;
 }
 .feature-con .feature-box .dot1:hover::after {
-    border: 1px solid #fb704f;
+    border: 1px solid #ffd54f;
 }
 .feature-con .feature-box .dot2:hover::after {
     border: 1px solid #2c5858;
@@ -2468,7 +2468,7 @@ html{
     margin-right: 0;
 }
 .feature3-con .feature-box .dot1 {
-    background-color: #fb704f;
+    background-color: #ffd54f;
 }
 .feature3-con .feature-box .dot2 {
     background-color: #2c5858;
@@ -2480,7 +2480,7 @@ html{
     background-color: #8f7cb2;
 }
 .feature3-con .feature-box .dot1:hover::after {
-    border: 1px solid #fb704f;
+    border: 1px solid #ffd54f;
 }
 .feature3-con .feature-box .dot2:hover::after {
     border: 1px solid #2c5858;
@@ -4216,8 +4216,8 @@ to {
 
 #productTabs .nav-link.active {
   background: transparent;       /* fond transparent même actif */
-  color: #fb704f;               /* couleur texte actif */
-  border-bottom: 2px solid #fb704f; /* petit underline actif */
+  color: #ffd54f;               /* couleur texte actif */
+  border-bottom: 2px solid #ffd54f; /* petit underline actif */
 }
 
 

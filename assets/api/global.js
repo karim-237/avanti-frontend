@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function setImageWithErrorHandler(imgElement, src) {
     if (!imgElement || !src) return;
     imgElement.src = src;
-    imgElement.onerror = function() {
+    imgElement.onerror = function () {
       if (this.src.indexOf('placeholder') === -1) {
         this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';
         this.onerror = null;
@@ -702,138 +702,144 @@ document.addEventListener("DOMContentLoaded", () => {
 // SINGLE BLOG PAGE (single-bloc.html)
 // =======================================================
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ single-blog.js chargé");
 
   if (!window.location.pathname.includes("single-blog.html")) return;
 
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
+  console.log("🔎 Slug extrait :", slug);
 
   if (!slug) {
-    console.error("Slug manquant");
+    console.error("❌ Slug manquant");
     return;
   }
 
-  fetch(`http://https://avanti-backend-67wk.onrender.com/api/blogs/${slug}`)
+  fetch(`https://avanti-backend-67wk.onrender.com/api/blogs/${slug}`)
     .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Single blog API returned HTML instead of JSON');
+      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) {
+        console.warn("⚠️ Single blog API returned HTML instead of JSON");
         return { success: false, data: null };
       }
       return res.json().catch(() => ({ success: false, data: null }));
     })
     .then(data => {
-      console.log("API RAW:", data);
+      console.log("📦 API RAW:", data);
 
-      if (!data.success || !data.data) return;
+      if (!data.success || !data.data) {
+        console.error("❌ Pas de données retournées par l'API");
+        return;
+      }
 
-      // ✅ CORRECTION MAJEURE ICI
       const { blog, tags, comments, featured } = data.data;
 
-      if (!blog) return;
-
-      /* IMAGE PRINCIPALE */
-      const mainImage = document.querySelector(".single-blog-image img");
-      if (mainImage && blog.single_image_xl) {
-        setImageWithErrorHandler(mainImage, blog.single_image_xl);
-        mainImage.alt = blog.title;
+      if (!blog) {
+        console.error("❌ Blog non trouvé dans la réponse");
+        return;
       }
 
-      /* TITRE */
-      const titleEl = document.querySelector(".single-blog-content h4");
-      if (titleEl) titleEl.textContent = blog.title;
+      // ===================== IMAGE PRINCIPALE =====================
+      const mainImage = document.getElementById("main-image");
+      if (mainImage) {
+        if (blog.single_image_xl) {
+         mainImage.src = blog.single_image_xl;
+        }
+        mainImage.alt = blog.title || "Blog image";
+      }
 
-      /* AUTEUR */
-      const authorEl = document.querySelector(".single-blog-meta .author");
-      if (authorEl) authorEl.textContent = blog.author_name || "Admin";
+      // ===================== TITRE =====================
+      const titleEl = document.getElementById("blog-title");
+      if (titleEl) titleEl.textContent = blog.title || "Titre indisponible";
 
-      /* DATE */
-      const dateEl = document.querySelector(".single-blog-meta .date");
+      // ===================== AUTEUR =====================
+      const authorEl = document.getElementById("author");
+      if (authorEl) authorEl.textContent = "Avanti";
+
+      // ===================== DATE =====================
+      const dateEl = document.getElementById("date");
       if (dateEl && blog.publish_date) {
-        dateEl.textContent = new Date(blog.publish_date)
-          .toLocaleDateString("fr-FR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric"
-          });
+        dateEl.textContent = new Date(blog.publish_date).toLocaleDateString("fr-FR", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        });
       }
 
-      /* CONTENU */
-      const contentEl = document.querySelector(".single-blog-text");
-      if (contentEl) contentEl.innerHTML = blog.full_content;
+      // ===================== CONTENU =====================
+      const contentEl = document.getElementById("blog-content");
+      if (contentEl) contentEl.innerHTML = blog.full_content || "";
 
-      /* QUOTE */
-      const quoteEl = document.querySelector(".single-blog-quote p");
-      if (quoteEl && blog.quote) quoteEl.textContent = blog.quote || "";
+      // ===================== QUOTE =====================
+      const quoteEl = document.getElementById("blog-quote");
+      if (quoteEl) quoteEl.textContent = blog.quote || "";
 
-      /* PARAGRAPHE 1 : sous le bloc quote */
-      const paragraph1El = document.querySelector(".text.text-size-16[data-aos][data-aos-duration]");
-      if (paragraph1El && blog.paragraph_1) {
-        paragraph1El.textContent = blog.paragraph_1;
-      }
+      // ===================== PARAGRAPHES =====================
+      const paragraph1El = document.getElementById("blog-paragraph-1");
+      if (paragraph1El) paragraph1El.textContent = blog.paragraph_1 || "";
 
-      /* PARAGRAPHE 2 : dans content3 */
-      const paragraph2El = document.querySelector(".content3 .text.text-size-16");
-      if (paragraph2El && blog.paragraph_2) {
-        paragraph2El.textContent = blog.paragraph_2;
-      }
+      const paragraph2El = document.getElementById("blog-paragraph-2");
+      if (paragraph2El) paragraph2El.textContent = blog.paragraph_2 || "";
 
-      /* IMAGE SECONDAIRE */
+      // ===================== IMAGE SECONDAIRE =====================
       const secondImage = document.querySelector(".single-blog-image2 img");
       if (secondImage && blog.image_secondary) {
         setImageWithErrorHandler(secondImage, blog.image_secondary);
       }
 
-      /* TAGS */
+      // ===================== TAGS =====================
       const tagsEl = document.querySelector(".single-blog-tags");
-      if (tagsEl && tags?.length) {
-        tagsEl.innerHTML = "";
-        tags.forEach(tag => {
-          tagsEl.innerHTML += `<li><a class="button text-decoration-none">${tag.name}</a></li>`;
-        });
+      if (tagsEl) {
+        tagsEl.innerHTML = tags.length
+          ? tags.map(tag => `<li><a class="button text-decoration-none">${tag.name}</a></li>`).join("")
+          : "<li>Aucun tag</li>";
       }
 
-      /* AUTEUR BIO */
+      // ===================== AUTEUR BIO =====================
       const authorName = document.querySelector(".blog-author h4");
       const authorBio = document.querySelector(".blog-author p");
-      if (authorName) authorName.textContent = blog.author_name || "Admin";
+      if (authorName) authorName.textContent = "Avanti";
       if (authorBio) authorBio.textContent = blog.author_bio || "";
 
-      /* COMMENTAIRES */
+      // ===================== COMMENTAIRES =====================
       const commentsEl = document.querySelector(".blog-comments");
       if (commentsEl) {
-        commentsEl.innerHTML = "";
-        if (comments?.length) {
-          comments.forEach(c => {
-            commentsEl.innerHTML += `
-        <div class="comment-single">
-          <h5>${c.author_name}</h5>
-          <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
-          <p>${c.message}</p>
-        </div>
-      `;
-          });
-        } else {
-          commentsEl.innerHTML = "<p>Aucun commentaire pour le moment</p>";
-        }
+        commentsEl.innerHTML = comments.length
+          ? comments
+            .map(
+              c => `
+          <div class="comment-single">
+            <h5>${c.author_name}</h5>
+            <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
+            <p>${c.message}</p>
+          </div>
+        `
+            )
+            .join("")
+          : "<p>Aucun commentaire pour le moment</p>";
       }
 
-      /* À LA UNE */
+      // ===================== ARTICLES À LA UNE =====================
       const featuredEl = document.querySelector(".box5");
-      if (featuredEl && featured?.length) {
-        featuredEl.innerHTML = "<h4>À la Une</h4>";
-        featured.forEach(f => {
-          featuredEl.innerHTML += `
+      if (featuredEl) {
+        featuredEl.innerHTML = featured.length
+          ? `<h4>À la Une</h4>${featured
+            .map(
+              f => `
             <div class="feed">
-              <img src="${f.image_url}" class="img-fluid">
+              <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
               <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
             </div>
-          `;
-        });
+          `
+            )
+            .join("")}`
+          : "<h4>À la Une</h4><p>Aucun article</p>";
       }
 
+      console.log("✅ Blog chargé avec succès");
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error("❌ Erreur fetch blog :", err));
 });
+
 
 
 // === SECTION TAGS ===
