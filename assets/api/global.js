@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // FETCH HOME BANNERS
   // -------------------------------
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/home-banners") //https://avanti-backend-67wk.onrender.com/api
+  fetch("https://avanti-backend-67wk.onrender.com/api/home-banners") //https://avanti-backend-67wk.onrender.com/api
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Home banners API returned HTML instead of JSON');
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // DISCOUNT SECTION
   // -------------------------------
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/discount-sections")
+  fetch("https://avanti-backend-67wk.onrender.com/api/discount-sections")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Discount sections API returned HTML instead of JSON');
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // CHOOSE SECTION
   // -------------------------------
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/choose-section")
+  fetch("https://avanti-backend-67wk.onrender.com/api/choose-section")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Choose section API returned HTML instead of JSON');
@@ -172,11 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // FETCH CATEGORIES + PRODUCTS
   // -------------------------------
   Promise.all([
-    fetch("http://https://avanti-backend-67wk.onrender.com/api/product-categories").then(res => {
+    fetch("https://avanti-backend-67wk.onrender.com/api/product-categories").then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
       return res.json().catch(() => []);
     }),
-    fetch("http://https://avanti-backend-67wk.onrender.com/api/products").then(res => {
+    fetch("https://avanti-backend-67wk.onrender.com/api/products").then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
       return res.json().catch(() => []);
     })
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // FETCH ABOUT SECTION
   // -------------------------------
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/about/about-section")
+  fetch("https://avanti-backend-67wk.onrender.com/api/about/about-section")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('About section API returned HTML instead of JSON');
@@ -273,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // DYNAMISE LES BLOGS
   // -------------------------------
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/blogs")
+  fetch("https://avanti-backend-67wk.onrender.com/api/blogs")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Blogs API returned HTML instead of JSON');
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   const newsletterSection = document.querySelector(".update-con");
   if (newsletterSection) {
-    fetch("http://https://avanti-backend-67wk.onrender.com/api/newsletter/section")
+    fetch("https://avanti-backend-67wk.onrender.com/api/newsletter/section")
       .then(res => {
         if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
           console.warn('Newsletter section API returned HTML instead of JSON');
@@ -348,7 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!email) return;
 
       try {
-        const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/newsletter", {
+        const res = await fetch("https://avanti-backend-67wk.onrender.com/api/newsletter", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email })
@@ -370,7 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (footerSection) {
 
     // Contacts
-    fetch("http://https://avanti-backend-67wk.onrender.com/api/footer/contacts")
+    fetch("https://avanti-backend-67wk.onrender.com/api/footer/contacts")
       .then(res => {
         if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
           console.warn('Footer contacts API returned HTML instead of JSON');
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(err => console.error("Erreur chargement contacts footer:", err));
 
     // Social Links
-    fetch("http://https://avanti-backend-67wk.onrender.com/api/footer/social-links")
+    fetch("https://avanti-backend-67wk.onrender.com/api/footer/social-links")
       .then(res => {
         if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
           console.warn('Footer social links API returned HTML instead of JSON');
@@ -427,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Contacts html
 document.addEventListener("DOMContentLoaded", () => {
 
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/site-contact")
+  fetch("https://avanti-backend-67wk.onrender.com/api/site-contact")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Site contact API returned HTML instead of JSON');
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // -------------------------------
 // DYNAMISE LES BLOGS
 // -------------------------------
-fetch("http://https://avanti-backend-67wk.onrender.com/api/blogs")
+fetch("https://avanti-backend-67wk.onrender.com/api/blogs")
   .then(res => {
     if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
       console.warn('Blogs API returned HTML instead of JSON');
@@ -566,7 +566,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadBlogs(categorySlug = null, tagSlug = null) {
     blogsContainer.innerHTML = "<p>Chargement...</p>";
 
-    let url = "http://https://avanti-backend-67wk.onrender.com/api/blogs";
+    let url = "https://avanti-backend-67wk.onrender.com/api/blogs";
     const params = [];
 
     if (categorySlug) {
@@ -848,7 +848,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const sidebarTagsEl = document.querySelector(".box4 ul.tag");
 
 if (sidebarTagsEl) {
-  fetch("http://https://avanti-backend-67wk.onrender.com/api/tags")
+  fetch("https://avanti-backend-67wk.onrender.com/api/tags")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Tags API returned HTML instead of JSON');
@@ -890,7 +890,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   ]; // ID des <a> dans ton HTML correspondant aux tabs
 
   try {
-    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/blog-categories");
+    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/blog-categories");
     const data = await res.json();
 
     if (!data.success || !Array.isArray(data.data)) return;
@@ -928,7 +928,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      Charger dynamiquement les catégories
      =============================== */
   try {
-    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/product-categories?limit=5");
+    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/product-categories?limit=5");
     const data = await res.json();
 
     if (!data.success || !Array.isArray(data.data)) return;
@@ -958,7 +958,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      Fonction pour charger les produits
      =============================== */
   function loadProductsByCategory(slug) {
-    fetch(`http://https://avanti-backend-67wk.onrender.com/api/products?category=${encodeURIComponent(slug)}&limit=6`)
+    fetch(`https://avanti-backend-67wk.onrender.com/api/products?category=${encodeURIComponent(slug)}&limit=6`)
       .then(res => {
         if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
           console.warn('Products API returned HTML instead of JSON');
@@ -1042,7 +1042,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!slug) return;
 
   try {
-    const res = await fetch(`http://https://avanti-backend-67wk.onrender.com/api/products/slug?slug=${encodeURIComponent(slug)}`);
+    const res = await fetch(`https://avanti-backend-67wk.onrender.com/api/products/slug?slug=${encodeURIComponent(slug)}`);
     const data = await res.json();
     if (!data.success || !data.data.length) return;
     const product = data.data[0];
@@ -1078,7 +1078,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Récupérer les produits
-    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/products?limit=8");
+    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/products?limit=8");
     if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
       console.warn('Products API returned HTML instead of JSON');
       return;
@@ -1140,7 +1140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // 1️⃣ Récupérer les catégories de recettes
-    const res = await fetch("http://https://avanti-backend-67wk.onrender.com/api/recipes/recipe-categories?limit=6");
+    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/recipes/recipe-categories?limit=6");
     const data = await res.json();
 
     if (!data.success || !Array.isArray(data.data)) return;
@@ -1197,7 +1197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     container.innerHTML = "<p>Chargement...</p>";
 
     try {
-      const res = await fetch(`http://https://avanti-backend-67wk.onrender.com/api/recipes/category/${encodeURIComponent(slug)}`);
+      const res = await fetch(`https://avanti-backend-67wk.onrender.com/api/recipes/category/${encodeURIComponent(slug)}`);
       const data = await res.json();
 
       if (!data.success || !data.data?.recipes?.length) {
@@ -1270,7 +1270,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  fetch(`http://https://avanti-backend-67wk.onrender.com/api/recipes/${slug}`)
+  fetch(`https://avanti-backend-67wk.onrender.com/api/recipes/${slug}`)
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Single recipe API returned HTML instead of JSON');
