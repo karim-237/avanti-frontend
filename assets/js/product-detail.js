@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function() {
           return;
         }
 
-        document.getElementById('productBreadcrumbName').textContent = product.name || 'PRODUCT';
+        document.getElementById('productBreadcrumbName').textContent = product.name || 'PRODUIT';
         document.getElementById('productTitle').textContent = product.name || '';
-        document.getElementById('productCategoryBadge').textContent = product.category || 'Product';
+        document.getElementById('productCategoryBadge').textContent = product.category || 'Produit';
         
         const imageWrapper = document.getElementById('productImageWrapper');
         if (product.category) {
