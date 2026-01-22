@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const priceOld = document.getElementById('productPriceOld');
         const priceNew = document.getElementById('productPriceNew');
         if (product.original_price && product.price < product.original_price) {
-          priceOld.textContent = `${product.original_price}XFA`;
+          priceOld.textContent = ``;
           priceOld.style.display = 'inline';
         } else {
           priceOld.style.display = 'none';
         }
-        priceNew.textContent = `${product.price || '0'}XFA`;
+        priceNew.textContent = ``;
 
         const nutritionalTable = document.getElementById('nutritionalTable');
         if (nutritionalTable && product.nutritional) {
