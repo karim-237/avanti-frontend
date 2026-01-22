@@ -2,13 +2,13 @@
 [Typography - Tilda Design System]
 
 Typographie pour AVANTI Frontend v2.0
-Polices: Playfair Display (headings) + Roboto (body)
+Polices: Roboto Display (headings) + Roboto (body)
 Fluide et responsive avec clamp()
 -------------------------------------------------------------------*/
 
 /* ==================== FONT IMPORTS ==================== */
-/* Google Fonts - Playfair Display & Roboto */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+/* Google Fonts - Roboto Display & Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Display:wght@400;500;600;700;900&family=Roboto:wght@300;400;500;700&display=swap');
 
 /* ==================== BASE TYPOGRAPHY ==================== */
 body {

@@ -162,7 +162,7 @@ Contact forms use jQuery validation plugin. Main logic in `assets/js/contact-for
 - **White**: `#FFFFFF`
 
 ### Typography
-- **Headings**: Playfair Display (serif)
+- **Headings**: Roboto Display (serif)
 - **Body**: Roboto, Arial (sans-serif)
 - **H1**: 32-48px
 - **H2**: 24-32px

@@ -53,7 +53,7 @@
 **Fichiers:** `assets/css/typography.css`, `assets/css/variables.css`
 
 **Actions:**
-- ✅ Implémenter Playfair Display pour headings (serif)
+- ✅ Implémenter Roboto Display pour headings (serif)
 - ✅ Implémenter Roboto pour body (sans-serif)
 - ✅ Tailles fluides avec clamp():
   - H1: `clamp(2rem, 5vw + 1rem, 3rem)` (32-48px)
@@ -764,7 +764,7 @@
 
 ### Design System
 - [ ] Couleurs Tilda exactes appliquées partout
-- [ ] Typographie Playfair Display + Roboto
+- [ ] Typographie Roboto Display + Roboto
 - [ ] Espacements 8px base respectés
 - [ ] Boutons PRIMARY jaune #FFC107
 - [ ] Cards border-radius 12-16px

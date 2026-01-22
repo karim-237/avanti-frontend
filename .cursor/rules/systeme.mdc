@@ -72,7 +72,7 @@ TABLE DES MATIERES - GUIDE COMPLET
 3. TYPOGRAPHIE
 
 3.1 Polices:
-- Heading: Serif (Playfair Display)
+- Heading: Serif (Roboto Display)
 - Body: Sans-serif (Roboto, Arial)
 
 3.2 Tailles de texte:
@@ -242,7 +242,7 @@ tilda-website/
   --spacing-xl: 32px;
   
   /* Typography */
-  --font-serif: 'Playfair Display', serif;
+  --font-serif: 'Roboto Display', serif;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-size-h1: 2.5rem;
   --font-size-body: 1rem;
