@@ -7,16 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug");
   console.log("🔎 Slug extrait :", slug);
- 
 
+  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
+
+  // =======================================================
+  // 🔹 1) CHARGEMENT DU BLOG PRINCIPAL
+  // =======================================================
   if (!slug) {
     console.error("❌ Slug manquant");
     const contentEl = document.getElementById("blog-content");
     if (contentEl) contentEl.innerHTML = "<p>Blog introuvable (slug manquant).</p>";
     return;
   }
-
-  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
 
   fetch(`${API_BASE}/blogs/${slug}`)
     .then(res => {
@@ -143,4 +145,57 @@ document.addEventListener("DOMContentLoaded", () => {
       const contentEl = document.getElementById("blog-content");
       if (contentEl) contentEl.innerHTML = "<p>Erreur lors du chargement du blog.</p>";
     });
+
+  // =======================================================
+  // 🔹 2) CHARGEMENT DES 5 DERNIERS BLOGS (Articles populaires)
+  // =======================================================
+  const latestBlogsEl = document.getElementById("latest-blogs");
+
+  if (latestBlogsEl) {
+    fetch(`${API_BASE}/blogs/latest`)
+      .then(res => {
+        if (!res.ok) throw new Error("Erreur API latest blogs");
+        return res.json();
+      })
+      .then(data => {
+        if (!data.success || !Array.isArray(data.data)) {
+          console.warn("⚠️ Réponse latest blogs invalide :", data);
+          latestBlogsEl.innerHTML = "<li>Aucun article disponible</li>";
+          return;
+        }
+
+        latestBlogsEl.innerHTML = data.data.length
+          ? data.data.map(
+              b => `
+                <li class="d-flex mb-3">
+                  <img 
+                    src="${b.image_url || ''}" 
+                    alt="${b.title}" 
+                    style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
+                  >
+                  <div>
+                    <a href="single-blog.html?slug=${b.slug}" class="fw-bold d-block">
+                      ${b.title}
+                    </a>
+                    <small class="text-muted">
+                      ${new Date(b.publish_date).toLocaleDateString("fr-FR", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </small>
+                  </div>
+                </li>
+              `
+            ).join("")
+          : "<li>Aucun article disponible</li>";
+      })
+      .catch(err => {
+        console.error("❌ Erreur fetch latest blogs :", err);
+        latestBlogsEl.innerHTML = "<li>Erreur de chargement</li>";
+      });
+  } else {
+    console.warn("⚠️ Élément #latest-blogs introuvable dans le DOM");
+  }
+
 });
