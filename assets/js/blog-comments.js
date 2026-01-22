@@ -77,59 +77,61 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // -------------------------------------------------------
-  // ➕ Submit nouveau commentaire
-  // -------------------------------------------------------
-  if (formEl) {
-    formEl.addEventListener("submit", e => {
-      e.preventDefault();
+ // -------------------------------------------------------
+// ➕ Submit nouveau commentaire
+// -------------------------------------------------------
+if (formEl) {
+  formEl.addEventListener("submit", e => {
+    e.preventDefault(); // ⛔ empêche POST HTML
 
-      if (!currentBlogId) {
-        alert("Blog introuvable.");
-        return;
-      }
+    if (!currentBlogId) {
+      alert("Blog introuvable.");
+      return;
+    }
 
-      const payload = {
-        blog_id: currentBlogId,
-        author_name: document.getElementById("comment-author").value.trim(),
-        email: document.getElementById("comment-email").value.trim(),
-        message: document.getElementById("comment-message").value.trim()
-      };
+    const payload = {
+      blog_id: currentBlogId,
+      author_name: document.getElementById("comment-author").value.trim(),
+      email: document.getElementById("comment-email").value.trim(),
+      message: document.getElementById("comment-message").value.trim()
+    };
 
-      if (!payload.author_name || !payload.email || !payload.message) {
-        alert("Veuillez remplir tous les champs requis.");
-        return;
-      }
+    if (!payload.author_name || !payload.email || !payload.message) {
+      alert("Veuillez remplir tous les champs requis.");
+      return;
+    }
 
-      fetch(`${API_BASE}/comments/blog`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+    fetch(`${API_BASE}/comments/blog`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error("Erreur API add comment");
+        return res.json();
       })
-        .then(res => {
-          if (!res.ok) throw new Error("Erreur API add comment");
-          return res.json();
-        })
-        .then(data => {
-          if (!data.success) {
-            alert(data.message || "Erreur lors de l’envoi du commentaire");
-            return;
-          }
+      .then(data => {
+        if (!data.success) {
+          alert(data.message || "Erreur lors de l’envoi du commentaire");
+          return;
+        }
 
-          console.log("✅ Commentaire ajouté :", data.data);
+        console.log("✅ Commentaire ajouté :", data.data);
 
-          // reset form
-          formEl.reset();
+        alert("Commentaire publié avec succès 🎉");
 
-          // reload comments
-          loadComments();
-        })
-        .catch(err => {
-          console.error("❌ Erreur ajout commentaire :", err);
-          alert("Erreur lors de l’envoi du commentaire");
-        });
-    });
-  }
+        // 🔁 Reload page après succès
+        setTimeout(() => {
+          window.location.reload();
+        }, 800);
+      })
+      .catch(err => {
+        console.error("❌ Erreur ajout commentaire :", err);
+        alert("Erreur lors de l’envoi du commentaire");
+      });
+  });
+}
+
 
   // -------------------------------------------------------
   // 🔐 Petite protection XSS basique

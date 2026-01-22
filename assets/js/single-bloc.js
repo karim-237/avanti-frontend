@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const slug = params.get("slug");
   console.log("🔎 Slug extrait :", slug);
 
-  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
+  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  let CURRENT_BLOG_ID = null;
 
   // =======================================================
   // 🔹 1) CHARGEMENT DU BLOG PRINCIPAL
@@ -46,12 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const { blog, tags, comments, featured } = data.data;
+      CURRENT_BLOG_ID = blog.id; // ✅ stocké pour les commentaires
 
-      // 🔹 Initialiser les commentaires dynamiques
-      if (window.setCurrentBlogId && blog.id) {
-        window.setCurrentBlogId(blog.id);
+      // Injecter dans blog-comments.js si disponible
+      if (window.setCurrentBlogId) {
+        window.setCurrentBlogId(CURRENT_BLOG_ID);
       }
-
 
       // ===================== IMAGE PRINCIPALE =====================
       const mainImage = document.getElementById("main-image");
@@ -96,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // ===================== IMAGE SECONDAIRE =====================
       const secondImage = document.querySelector(".single-blog-image2 img");
       if (secondImage && blog.image_secondary) {
-        setImageWithErrorHandler(secondImage, blog.image_secondary);
+        secondImage.src = blog.image_secondary;
+        secondImage.onerror = () => (secondImage.style.display = "none");
       }
 
       // ===================== TAGS =====================
@@ -119,12 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
         commentsEl.innerHTML = comments.length
           ? comments.map(
             c => `
-                <div class="comment-single">
-                  <h5>${c.author_name}</h5>
-                  <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
-                  <p>${c.message}</p>
-                </div>
-              `
+              <div class="comment-single">
+                <h5>${c.author_name}</h5>
+                <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
+                <p>${c.message}</p>
+              </div>
+            `
           ).join("")
           : "<p>Aucun commentaire pour le moment</p>";
       }
@@ -135,11 +137,11 @@ document.addEventListener("DOMContentLoaded", () => {
         featuredEl.innerHTML = featured.length
           ? `<h4>À la Une</h4>${featured.map(
             f => `
-                <div class="feed">
-                  <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
-                  <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
-                </div>
-              `
+              <div class="feed">
+                <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
+                <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
+              </div>
+            `
           ).join("")}`
           : "<h4>À la Une</h4><p>Aucun article</p>";
       }
@@ -153,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // =======================================================
-  // 🔹 2) CHARGEMENT DES 5 DERNIERS BLOGS (Articles populaires)
+  // 🔹 2) CHARGEMENT DES 5 DERNIERS BLOGS
   // =======================================================
   const latestBlogsEl = document.getElementById("latest-blogs");
 
@@ -173,26 +175,26 @@ document.addEventListener("DOMContentLoaded", () => {
         latestBlogsEl.innerHTML = data.data.length
           ? data.data.map(
             b => `
-                <li class="d-flex mb-3">
-                  <img 
-                    src="${b.image_url || ''}" 
-                    alt="${b.title}" 
-                    style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
-                  >
-                  <div>
-                    <a href="single-blog.html?slug=${b.slug}" class="fw-bold d-block">
-                      ${b.title}
-                    </a>
-                    <small class="text-muted">
-                      ${new Date(b.publish_date).toLocaleDateString("fr-FR", {
+              <li class="d-flex mb-3">
+                <img 
+                  src="${b.image_url || ""}" 
+                  alt="${b.title}" 
+                  style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
+                >
+                <div>
+                  <a href="single-blog.html?slug=${b.slug}" class="fw-bold d-block">
+                    ${b.title}
+                  </a>
+                  <small class="text-muted">
+                    ${new Date(b.publish_date).toLocaleDateString("fr-FR", {
               day: "2-digit",
               month: "short",
               year: "numeric",
             })}
-                    </small>
-                  </div>
-                </li>
-              `
+                  </small>
+                </div>
+              </li>
+            `
           ).join("")
           : "<li>Aucun article disponible</li>";
       })
@@ -203,5 +205,4 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.warn("⚠️ Élément #latest-blogs introuvable dans le DOM");
   }
-
 });
