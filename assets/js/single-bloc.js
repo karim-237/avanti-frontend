@@ -47,6 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const { blog, tags, comments, featured } = data.data;
 
+      // 🔹 Initialiser les commentaires dynamiques
+      if (window.setCurrentBlogId && blog.id) {
+        window.setCurrentBlogId(blog.id);
+      }
+
+
       // ===================== IMAGE PRINCIPALE =====================
       const mainImage = document.getElementById("main-image");
       if (mainImage) {
@@ -112,14 +118,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (commentsEl) {
         commentsEl.innerHTML = comments.length
           ? comments.map(
-              c => `
+            c => `
                 <div class="comment-single">
                   <h5>${c.author_name}</h5>
                   <span>${new Date(c.created_at).toLocaleDateString("fr-FR")}</span>
                   <p>${c.message}</p>
                 </div>
               `
-            ).join("")
+          ).join("")
           : "<p>Aucun commentaire pour le moment</p>";
       }
 
@@ -128,13 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (featuredEl) {
         featuredEl.innerHTML = featured.length
           ? `<h4>À la Une</h4>${featured.map(
-              f => `
+            f => `
                 <div class="feed">
                   <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
                   <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
                 </div>
               `
-            ).join("")}`
+          ).join("")}`
           : "<h4>À la Une</h4><p>Aucun article</p>";
       }
 
@@ -166,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         latestBlogsEl.innerHTML = data.data.length
           ? data.data.map(
-              b => `
+            b => `
                 <li class="d-flex mb-3">
                   <img 
                     src="${b.image_url || ''}" 
@@ -179,15 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     </a>
                     <small class="text-muted">
                       ${new Date(b.publish_date).toLocaleDateString("fr-FR", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
-                      })}
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            })}
                     </small>
                   </div>
                 </li>
               `
-            ).join("")
+          ).join("")
           : "<li>Aucun article disponible</li>";
       })
       .catch(err => {

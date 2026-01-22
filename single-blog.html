@@ -233,18 +233,18 @@
                             </div>
                         </div>
                         <div class="content6" data-aos="fade-up" data-aos-duration="700">
-                            <h4>0 Commentaire(s)</h4>
-                            <div class="comment blog-comments">
+                            <h4 id="comments-count">0 Commentaire(s)</h4>
+                            <div id="blog-comments" class="comment blog-comments">
 
                             </div>
                         </div>
                         <div class="content7" data-aos="fade-up" data-aos-duration="700">
                             <h4>Laisser un Commentaire</h4>
-                            <form id="blogpage" method="POST">
+                            <form id="blog-comment-form" method="POST">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group mb-0">
-                                            <textarea class="form_style" placeholder="Votre avis sur l'article ici..."
+                                            <textarea class="form_style"  id="comment-message" placeholder="Votre avis sur l'article ici..."
                                                 rows="3" name="msg"></textarea>
                                         </div>
                                     </div>
@@ -252,21 +252,13 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group mb-0">
-                                            <input type="text" class="form_style" placeholder="Votre nom" name="name">
+                                            <input type="text" id="comment-author" class="form_style" placeholder="Votre nom" name="name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group mb-0">
-                                            <input type="email" class="form_style" placeholder="Votre e-mail"
+                                            <input type="email"  id="comment-email" class="form_style" placeholder="Votre e-mail"
                                                 name="emailid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group mb-0">
-                                            <input type="text" class="form_style text-mb" placeholder="Votre sujet"
-                                                name="topic">
                                         </div>
                                     </div>
                                 </div>
