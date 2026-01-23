@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =======================================================
   // 🔹 2) CHARGEMENT DES 5 DERNIERS BLOGS
   // =======================================================
-  const latestBlogsEl = document.getElementById("latest-blogs");
+  const latestBlogsEl = document.getElementById("latest-blogs"); 
 
   if (latestBlogsEl) {
     fetch(`${API_BASE}/blogs/latest`)
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   alt="${b.title}" 
                   style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
                 >
-                <div>
+                <div style="text-align: left; flex: 1;">
                   <a href="single-blog.html?slug=${b.slug}" class="fw-bold d-block">
                     ${b.title}
                   </a>
