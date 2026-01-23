@@ -313,55 +313,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Error loading blogs:", err));
 
-  // -------------------------------
-  // NEWSLETTER DYNAMIQUE
-  // -------------------------------
-  const newsletterSection = document.querySelector(".update-con");
-  if (newsletterSection) {
-    fetch("https://avanti-backend-67wk.onrender.com/api/newsletter/section")
-      .then(res => {
-        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-          console.warn('Newsletter section API returned HTML instead of JSON');
-          return { success: false, data: null };
-        }
-        return res.json().catch(() => ({ success: false, data: null }));
-      })
-      .then(result => {
-        if (!result.success || !result.data) return;
-        const data = result.data;
-
-        const leftImg = newsletterSection.querySelector(".update-leftimage img");
-        if (leftImg && data.image_url) setImageWithErrorHandler(leftImg, data.image_url);
-
-        const subtitle = newsletterSection.querySelector(".update_content h6");
-        const title = newsletterSection.querySelector(".update_content h2");
-        if (subtitle) subtitle.textContent = data.subtitle || subtitle.textContent;
-        if (title) title.textContent = data.title || title.textContent;
-      })
-      .catch(err => console.error("Erreur chargement section newsletter:", err));
-
-    const newsletterForm = newsletterSection.querySelector("form");
-    const emailInput = newsletterForm.querySelector("input[name='email']");
-    newsletterForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = emailInput.value.trim();
-      if (!email) return;
-
-      try {
-        const res = await fetch("https://avanti-backend-67wk.onrender.com/api/newsletter", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email })
-        });
-        const data = await res.json();
-        alert(data.message || "Erreur");
-        if (data.success) emailInput.value = "";
-      } catch (err) {
-        console.error(err);
-        alert("Erreur serveur");
-      }
-    });
-  }
+ 
 
   // -------------------------------
   // FOOTER DYNAMIQUE

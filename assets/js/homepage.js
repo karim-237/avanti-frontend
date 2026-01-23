@@ -253,28 +253,5 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
-  function initNewsletter() {
-    const form = document.getElementById('newsletterForm');
-    if (!form) return;
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = this.querySelector('input[type="email"]').value;
-      
-      fetch(`${API_BASE}/newsletter/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert('Merci pour votre inscription!');
-        form.reset();
-      })
-      .catch(err => {
-        console.error('Error subscribing:', err);
-        alert('Erreur lors de l\'inscription. Veuillez réessayer.');
-      });
-    });
-  }
+ 
 });

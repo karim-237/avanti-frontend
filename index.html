@@ -96,6 +96,10 @@
                 </div>
                 <nav class="header__nav" id="headerNav">
                     <ul class="nav-menu">
+                         <li class="nav-menu__item">
+                            <a href="index.html" class="nav-menu__link active">Accueil</a>
+                        </li>
+
                         <li class="nav-menu__item">
                             <a href="products.html" class="nav-menu__link">Nos produits</a>
                         </li>
@@ -111,7 +115,7 @@
                     </ul>
                 </nav>
                 <div class="header__actions">
-                  
+
                     <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -201,9 +205,11 @@
                     <p class="newsletter__text">Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités
                         et offres spéciales</p>
                     <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" class="newsletter-form__input" placeholder="Votre adresse email" required
-                            aria-label="Email">
-                        <button type="submit" class="btn btn--primary">S'abonner</button>
+                        <input type="email" id="newsletterEmail" class="newsletter-form__input"
+                            placeholder="Votre adresse email" required aria-label="Email">
+                        <button type="submit" class="btn btn--primary">
+                            S'abonner
+                        </button>
                     </form>
                 </div>
             </div>
@@ -218,16 +224,16 @@
                     <p class="footer__text">Découvrez notre sélection de riz de qualité supérieure, soigneusement choisi
                         pour votre table.</p>
                     <div class="footer__social">
-                        <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link" aria-label="Facebook"
-                            target="_blank" rel="noopener">
+                        <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link"
+                            aria-label="Facebook" target="_blank" rel="noopener">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="footer__social-link" aria-label="Instagram"
-                            target="_blank" rel="noopener">
+                        <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                            class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link" aria-label="YouTube"
-                            target="_blank" rel="noopener">
+                        <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link"
+                            aria-label="YouTube" target="_blank" rel="noopener">
                             <i class="fa-brands fa-linkedin"></i>
                         </a>
                     </div>
@@ -505,6 +511,7 @@
     <script src="assets/js/counter.js"></script>
     <script src="assets/js/popup-image.js"></script>
     <script src="assets/api/global.js"></script>
+    <script src="assets/js/newsletter.js"></script>
     <script src="assets/js/footer-loader.js"></script>
 
     <!-- ========== NEW JAVASCRIPT ARCHITECTURE (v2.0) ========== -->
