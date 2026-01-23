@@ -6,14 +6,29 @@ Blog page selon spécifications Tilda
 
 .blog-hero {
   position: relative;
-  background-image: url("../../images/banner/Artboard\ 11.jpg");
+  background-image: url("../../images/banner/Artboard 4.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: var(--color-white);
   padding: var(--spacing-2xl) 0; 
   text-align: center;
-  opacity: 90%;
+  overflow: hidden; /* important pour contenir l’overlay */
+}
+
+/* Overlay sombre */
+.blog-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.45); /* ajuste l’intensité ici */
+  z-index: 1;
+}
+
+/* Contenu au-dessus de l’overlay */
+.blog-hero > * {
+  position: relative;
+  z-index: 2;
 }
 
 .blog-hero__title {
