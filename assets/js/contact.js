@@ -1,59 +1,56 @@
+// =======================================================
+// CONTACT FORM - Stockage en DB
+// =======================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  const formEl = document.getElementById("contactForm");
 
+  if (!formEl) {
+    console.warn("⚠️ Formulaire contact introuvable");
+    return;
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
-  const form = document.getElementById('contactForm');
-  const contactInfo = document.getElementById('contactInfo');
+  formEl.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const formData = {
-        name: this.querySelector('[name="name"]')?.value || '',
-        email: this.querySelector('[name="email"]')?.value || '',
-        subject: this.querySelector('[name="subject"]')?.value || '',
-        message: this.querySelector('[name="message"]')?.value || ''
-      };
+    // 🔹 Récupération des valeurs du formulaire
+    const payload = {
+      name: document.getElementById("contactName").value.trim(),
+      email: document.getElementById("contactEmailInput").value.trim(),
+      subject: document.getElementById("contactSubject").value.trim(),
+      message: document.getElementById("contactMessage").value.trim(),
+    };
 
-      fetch(`${API_BASE}/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      })
-      .then(res => res.json())
-      .then(data => {
-        alert('Message envoyé avec succès!');
-        form.reset();
-      })
-      .catch(err => {
-        console.error('Error sending message:', err);
-        alert('Erreur lors de l\'envoi du message. Veuillez réessayer.');
+    // 🔹 Vérification des champs obligatoires
+    if (!payload.name || !payload.email || !payload.message) {
+      alert("Veuillez remplir tous les champs obligatoires.");
+      return;
+    }
+
+    console.log("📨 Contact payload :", payload);
+
+    try {
+      // 🔹 Envoi vers l'API
+      const response = await fetch(`${API_BASE}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
-    });
-  }
 
-  if (contactInfo) {
-    fetch(`${API_BASE}/contact-info`)
-      .then(res => {
-        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return null;
-        return res.json().catch(() => null);
-      })
-      .then(result => {
-        if (!result) return;
-        const info = result.success ? result.data : result;
-        
-        const phoneEl = document.getElementById('contactPhone');
-        const emailEl = document.getElementById('contactEmail');
-        const addressEl = document.getElementById('contactAddress');
-        
-        if (phoneEl && info.phone) phoneEl.textContent = info.phone;
-        if (emailEl && info.email) {
-          emailEl.href = `mailto:${info.email}`;
-          emailEl.textContent = info.email;
-        }
-        if (addressEl && info.address) addressEl.textContent = info.address;
-      })
-      .catch(err => console.error('Error loading contact info:', err));
-  }
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        console.error("❌ Erreur backend :", data);
+        alert(data.message || "Erreur lors de l’enregistrement du message.");
+        return;
+      }
+
+      console.log("✅ Message enregistré :", data.data);
+      alert("Merci 🙏 Votre message a bien été enregistré !");
+      formEl.reset();
+    } catch (err) {
+      console.error("❌ Contact fetch error :", err);
+      alert("Erreur réseau ou serveur. Veuillez réessayer.");
+    }
+  });
 });
