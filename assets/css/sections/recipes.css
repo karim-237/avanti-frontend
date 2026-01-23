@@ -13,7 +13,7 @@ Recipes page selon spécifications Tilda
   color: var(--color-white); 
   padding: var(--spacing-2xl) 0;
   text-align: center;
-  opacity: 90%;
+  opacity: 90%; 
 }
 
 .recipes-hero__title {
