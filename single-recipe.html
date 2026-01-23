@@ -23,7 +23,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-     <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
+    <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
     <!-- 1. CSS Reset (modern reset) -->
     <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
     <!-- 2. CSS Variables (design tokens) -->
@@ -55,12 +55,13 @@
     <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/aos.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/single-bloc.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     <!-- Back to top button -->
     <a id="button"></a>
-     <div class="sub_banner position-relative">
+    <div class="sub_banner position-relative">
         <header class="header">
             <div class="header__container">
                 <div class="header__left">
@@ -176,7 +177,7 @@
                         <p class="text text-size-16" id="recipe-paragraph-1" data-aos="fade-up" data-aos-duration="700">
                             Chargement
                         </p>
-                        <div class="content3" data-aos="fade-up"  data-aos-duration="700">
+                        <div class="content3" data-aos="fade-up" data-aos-duration="700">
                             <p class="text text-size-16" id="recipe-paragraph-2">
                                 Chargement
                             </p>
@@ -195,7 +196,8 @@
                                                         class="text-decoration-none"><i
                                                             class="fa-brands fa-linkedin-in social-networks"></i></a>
                                                 </li>
-                                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="text-decoration-none"><i
+                                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                                                        class="text-decoration-none"><i
                                                             class="fa-brands fa-instagram social-networks"></i></a></li>
                                                 <li><a href="https://www.facebook.com/share/1BKmEkWbke/"
                                                         class="text-decoration-none"><i
@@ -209,10 +211,10 @@
                         </div>
                         <div class="buttons aos-init aos-animate" data-aos="fade-up">
                             <a href="single-blog.html" class="prev">
-                                
+
                             </a>
                             <a href="single-blog.html" class="next">
-                                
+
                             </a>
                         </div>
                         <div class="content5 blog-author" data-aos="fade-up" data-aos-duration="700">
@@ -220,40 +222,34 @@
 
                         </div>
                         <div class="content6" data-aos="fade-up" data-aos-duration="700">
-                            <h4>0 Commentaire(s)</h4>
-                            <div class="comment blog-comments">
+                            <h4 id="comments-count">0 Commentaire(s)</h4>
+                            <div id="blog-comments" class="comment blog-comments">
 
                             </div>
                         </div>
                         <div class="content7" data-aos="fade-up" data-aos-duration="700">
                             <h4>Laisser un Commentaire</h4>
-                            <form id="blogpage" method="POST">
+                            <form id="recipe-comment-form" action="#" novalidate>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group mb-0">
-                                            <textarea class="form_style" placeholder="Votre avis sur la recette ici..."
-                                                rows="3" name="msg"></textarea>
+                                            <textarea class="form_style" id="comment-message"
+                                                placeholder="Votre avis sur l'article ici..." rows="3"
+                                                name="msg"></textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group mb-0">
-                                            <input type="text" class="form_style" placeholder="Votre nom" name="name">
+                                            <input type="text" id="comment-author" class="form_style"
+                                                placeholder="Votre nom" name="name">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group mb-0">
-                                            <input type="email" class="form_style" placeholder="Votre e-mail"
-                                                name="emailid">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group mb-0">
-                                            <input type="text" class="form_style text-mb" placeholder="Votre sujet"
-                                                name="topic">
+                                            <input type="email" id="comment-email" class="form_style"
+                                                placeholder="Votre e-mail" name="emailid">
                                         </div>
                                     </div>
                                 </div>
@@ -281,7 +277,7 @@
                         </form>
                     </div>
                     <div class="box1 box2" data-aos="fade-up" data-aos-duration="700">
-                        <h4>Recettes Popoulaires</h4>
+                        <h4>Recettes Populaires</h4>
                         <ul class="list-unstyled mb-0 featured-posts" id="recipe-related">
 
                         </ul>
@@ -293,7 +289,8 @@
                                 <li><a href="https://www.linkedin.com/login" class="text-decoration-none"><i
                                             class="fa-brands fa-linkedin-in social-networks"></i></a>
                                 </li>
-                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="text-decoration-none"><i
+                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                                        class="text-decoration-none"><i
                                             class="fa-brands fa-instagram social-networks"></i></a></li>
                                 <li><a href="https://www.facebook.com/share/1BKmEkWbke/" class="text-decoration-none"><i
                                             class="fa-brands fa-facebook-f social-networks"></i></a>
@@ -308,98 +305,109 @@
         </div>
     </section>
     <!-- Footer -->
-    <section class="footer-con position-relative">
-        <div class="container">
-            <div class="middle_portion">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
-                        <div class="logo-content">
-                            <a href="./index.html">
-                                <figure class="footer-logo">
-                                    <img src="" alt="">
-                                </figure>
-                            </a>
-                            <p class="text-size-14 text">
-                                Découvrez notre sélection de riz de qualité supérieure, soigneusement choisi pour votre
-                                table.
-                            </p>
-                            <ul class="list-unstyled mb-0 social-icons">
-                                <li><a href="https://www.facebook.com/share/1BKmEkWbke/" class="text-decoration-none"><i
-                                            class="fa-brands fa-facebook-f social-networks"></i></a></li>
-                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="text-decoration-none"><i
-                                            class="fa-brands fa-instagram social-networks"></i></a></li>
-                                <li><a href="https://www.linkedin.com/company/avanti-cameroun/" class="text-decoration-none"><i
-                                            class="fa-brands fa-linkedin social-networks"></i></a></li>
-                            </ul>
-                        </div>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__section">
+                    <img id="footer-logo" src="" alt="Logo" class="footer__logo">
+                    <p class="footer__text">Découvrez notre sélection de riz de qualité supérieure, soigneusement choisi
+                        pour votre table.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link"
+                            aria-label="Facebook" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                            class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link"
+                            aria-label="YouTube" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
                     </div>
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6">
-                        <div class="links">
-                            <h3 class="heading">Navigation</h3>
-                            <ul class="list-unstyled mb-0">
-                                <li><i class="fa-solid fa-angle-right"></i><a href="index.html">Accueil</a></li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="shop.html">Produits</a></li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="about.html">A propos</a></li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="blog.html">Blog</a></li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="contact.html">Contacts</a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="index.html" class="footer__link">Accueil</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="products.html" class="footer__link">Produits</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="about.html" class="footer__link">À propos</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="blog.html" class="footer__link">Blog</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="recette.html" class="footer__link">Recettes</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="contact.html" class="footer__link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Assistance</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="term-of-use.html" class="footer__link">Conditions d'utilisation</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="privacy-policy.html" class="footer__link">Politique de confidentialité</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="cookie-policy.html" class="footer__link">Politique de cookies</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="faq.html" class="footer__link">FAQ</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="contact.html" class="footer__link">Guide client</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Contactez-nous</h3>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+237123456789" class="footer__contact-link">+237 691 517 706</a>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-6">
-                        <div class="use-link links">
-                            <h3 class="heading">Assistance</h3>
-                            <ul class="list-unstyled mb-0">
-                                <li><i class="fa-solid fa-angle-right"></i><a href="term-of-use.html">Conditions
-                                        d'utilisation</a>
-                                </li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="privacy-policy.html">Termes et
-                                        Confidentialité
-                                    </a></li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="cookie-policy.html">Politique de
-                                        cookies
-                                    </a></li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="single-blog.html">Articles
-                                        récents</a>
-                                </li>
-                                <li><i class="fa-solid fa-angle-right"></i><a href="contact.html">Guide client</a></li>
-                            </ul>
-                        </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:avanticameroun@gmail.com"
+                            class="footer__contact-link">avanticameroun@gmail.com</a>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
-                        <div class="icon">
-                            <h3 class="heading">Contactez-nous</h3>
-                            <ul class="list-unstyled mb-0">
-                                <li class="text">
-                                    <i class="fa-solid fa-phone"></i>
-                                    <a href="tel:+12352115236" class="text-decoration-none">+237 691 517 706</a>
-                                </li>
-                                <li class="text">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <a href="mailto:hello@contrive.com"
-                                        class="text-decoration-none">avanticameroun@gmail.com</a>
-                                </li>
-                                <li class="text">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <a href="https://www.google.com/maps/place/21+King+St,+Melbourne+VIC+3000,+Australia/@-37.8199805,144.9529083,18z/data=!4m6!3m5!1s0x6ad65d52754eaecb:0x22f367daf52cbd47!8m2!3d-37.819936!4d144.9570765!16s%2Fg%2F11c2dj2n2c?entry=ttu"
-                                        class="text-decoration-none address mb-0">121 Yaoundé, 3000,
-                                        Cameroun
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BP 3010, Douala -Cameroun</span>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
-            <div class="container">
-                <div class="content">
-                    <p class="mb-0">Copyright © 2026 avanticameroun.cm Tout droits réservés.</p>
-                    <img src="./assets/images/footer-logos.png" alt="image" class="img-fluid">
+            <div class="footer__bottom">
+                <p class="footer__copyright">Copyright © 2026 avanticameroun.cm. Tous droits réservés.</p>
+                <div class="footer__legal-links">
+                    <a href="term-of-use.html" class="footer__legal-link">Termes et conditions</a>
+                    <a href="privacy-policy.html" class="footer__legal-link">Politique de confidentialité</a>
+                    <a href="cookie-policy.html" class="footer__legal-link">Cookie & Préférences</a>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
     <!-- PRE LOADER -->
     <div class="loader-mask">
         <div class="loader">
@@ -422,6 +430,10 @@
     <script src="assets/js/search.js"></script>
     <script src="assets/js/country_dropdown.js"></script>
     <script src="assets/api/global.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer-loader.js"></script>
+    <script src="assets/js/recipe-comments.js"></script>
+
 </body>
 
 </html>

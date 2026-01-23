@@ -1130,6 +1130,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  let CURRENT_RECIPE_ID = null;
 
   fetch(`${API_BASE}/recipes/${slug}`)
     .then(res => {
@@ -1148,6 +1149,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const { recipe, comments, related } = data.data;
+      CURRENT_RECIPE_ID = recipe.id; // ✅ stocké pour les commentaires
+      // Injecter dans blog-comments.js si disponible
+      if (window.setCurrentRecipeId) {
+        window.setCurrentRecipeId(CURRENT_RECIPE_ID);
+      }
 
       if (!recipe) {
         console.error("❌ Recette non trouvée dans la réponse");
