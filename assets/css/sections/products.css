@@ -18,15 +18,31 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
 
 .products-hero {
   position: relative;
-  background-image: url("../../images/banner/Artboard\ 11.jpg");
+  background-image: url("../../images/banner/Artboard 3.jpg");
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;
   color: var(--color-white);
   padding: var(--spacing-2xl) 0;
   text-align: center;
-  opacity: 90%;
+  overflow: hidden; /* pour contenir l’overlay */
 }
+
+/* Overlay sombre */
+.products-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* ajuste 0.3 → 0.6 selon le contraste voulu */
+  z-index: 1;
+}
+
+/* Contenu au-dessus de l’overlay */
+.products-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
 
 
 

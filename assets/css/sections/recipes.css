@@ -6,15 +6,31 @@ Recipes page selon spécifications Tilda
 
 .recipes-hero {
   position: relative;
-  background-image: url("../../images/banner/Artboard\ 11.jpg");
+  background-image: url("../../images/banner/Artboard 11.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: var(--color-white);
   padding: var(--spacing-2xl) 0;
   text-align: center;
-  opacity: 90%;
+  overflow: hidden; /* pour contenir l’overlay */
 }
+
+/* Overlay sombre */
+.recipes-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* ajuste entre 0.3 et 0.6 si besoin */
+  z-index: 1;
+}
+
+/* Contenu au-dessus de l’overlay */
+.recipes-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
 
 .recipes-hero__title {
   font-family: var(--font-heading);

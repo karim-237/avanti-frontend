@@ -16,9 +16,9 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
   }
 }
 
-.single-blog-hero {
+.single-recipe-hero {
   position: relative;
-  background-image: url("../../images/banner/Artboard 7.jpg");
+  background-image: url("../../images/banner/Artboard 9.jpg");
   background-size: cover;
   background-position: center; 
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
 }
 
 /* Overlay sombre */
-.single-blog-hero::before {
+.single-recipe-hero::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -38,7 +38,7 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
 }
 
 /* Contenu au-dessus de l’overlay */
-.single-blog-hero > * {
+.single-recipe-hero > * {
   position: relative;
   z-index: 2;
 }
@@ -46,7 +46,7 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
 
 
 
-.single-blog-hero__title {
+.single-recipe-hero__title {
   font-family: var(--font-heading);
   font-size: var(--font-size-h1); 
   color: var(--color-white);
@@ -477,7 +477,7 @@ Product Ranges page avec cercles colorés selon spécifications Tilda
     gap: var(--spacing-md);
   }
 
-  .single-blog-hero__title {
+  .single-recipe-hero__title {
     font-size: var(--font-size-h2);
   }
 
