@@ -11,14 +11,16 @@
 
     async init() {
       const isMaintenancePage = window.location.pathname.endsWith('coming-soon.html');
+
+      // --- STOP COMPLET SI PAGE MAINTENANCE ---
       if (isMaintenancePage) {
-        console.log('[App] Maintenance page loaded, stopping initialization.');
-        // Afficher message si nécessaire
+        console.log('[App] Maintenance page loaded, skipping initialization.');
+        // Afficher le message si settings déjà chargées
         const msg = document.getElementById('maintenance-message');
         if (msg && this.state.settings?.maintenance_message) {
           msg.textContent = this.state.settings.maintenance_message;
         }
-        return; // STOP
+        return; // STOP TOUTE INITIALISATION
       }
 
       console.log('[App] Initializing AVANTI Frontend v2.0...');
@@ -30,10 +32,10 @@
         // 2. Charger les paramètres du site
         await this.loadSiteSettings();
 
-        // Vérifier de nouveau si on doit passer en maintenance après le fetch settings
+        // --- REDIRECTION MAINTENANCE (après fetch) ---
         if (this.state.settings?.maintenance_mode && !isMaintenancePage) {
           console.warn('[App] Maintenance mode active, redirecting...');
-          window.location.href = 'coming-soon.html';
+          window.location.replace('coming-soon.html'); // remplace plutôt que href
           return;
         }
 
@@ -68,19 +70,17 @@
         const settings = await this.state.apiClient.get('/site-settings');
         this.state.settings = settings;
 
-        // Mettre à jour le titre, logo, favicon, etc.
+        // Mettre à jour titre, favicon, logo
         if (settings.site_name) {
           document.title = settings.site_name;
           if (typeof $ !== 'undefined' && $('#site-title').length) {
             $('#site-title').text(settings.site_name);
           }
         }
-
         if (settings.favicon_path) {
           const favicon = document.getElementById('favicon');
           if (favicon) favicon.href = settings.favicon_path;
         }
-
         if (settings.logo_path) {
           const headerLogo = document.getElementById('site-logo');
           if (headerLogo) {
@@ -95,9 +95,7 @@
         // Page maintenance
         if (window.location.pathname.endsWith('coming-soon.html')) {
           const msg = document.getElementById('maintenance-message');
-          if (msg) {
-            msg.textContent = settings.maintenance_message || 'Site en maintenance';
-          }
+          if (msg) msg.textContent = settings.maintenance_message || 'Site en maintenance';
         }
 
         console.log('[App] Site settings loaded:', settings);
@@ -126,43 +124,30 @@
     },
 
     async initCurrentPage() {
-      const isMaintenancePage = window.location.pathname.endsWith('coming-soon.html');
-      if (isMaintenancePage) return; // stop init des modules de page
-
+      if (window.location.pathname.endsWith('coming-soon.html')) return; // STOP INIT DES MODULES PAGE
       console.log(`[App] Initializing page: ${this.state.currentPage}`);
 
       switch (this.state.currentPage) {
-        case 'index':
-        case '':
-          if (typeof Homepage !== 'undefined') await Homepage.init();
-          break;
+        case 'index': case '':
+          if (typeof Homepage !== 'undefined') await Homepage.init(); break;
         case 'products':
-          if (typeof ProductsPage !== 'undefined') await ProductsPage.init();
-          break;
+          if (typeof ProductsPage !== 'undefined') await ProductsPage.init(); break;
         case 'product-detail':
-          if (typeof ProductDetail !== 'undefined') await ProductDetail.init();
-          break;
+          if (typeof ProductDetail !== 'undefined') await ProductDetail.init(); break;
         case 'blog':
-          if (typeof BlogPage !== 'undefined') await BlogPage.init();
-          break;
+          if (typeof BlogPage !== 'undefined') await BlogPage.init(); break;
         case 'single-blog':
-          if (typeof BlogDetail !== 'undefined') await BlogDetail.init();
-          break;
+          if (typeof BlogDetail !== 'undefined') await BlogDetail.init(); break;
         case 'recette':
-          if (typeof RecipePage !== 'undefined') await RecipePage.init();
-          break;
+          if (typeof RecipePage !== 'undefined') await RecipePage.init(); break;
         case 'single-recipe':
-          if (typeof RecipeDetail !== 'undefined') await RecipeDetail.init();
-          break;
+          if (typeof RecipeDetail !== 'undefined') await RecipeDetail.init(); break;
         case 'about':
-          if (typeof AboutPage !== 'undefined') await AboutPage.init();
-          break;
+          if (typeof AboutPage !== 'undefined') await AboutPage.init(); break;
         case 'contact':
-          if (typeof ContactPage !== 'undefined') await ContactPage.init();
-          break;
+          if (typeof ContactPage !== 'undefined') await ContactPage.init(); break;
         case 'faq':
-          if (typeof FAQPage !== 'undefined') await FAQPage.init();
-          break;
+          if (typeof FAQPage !== 'undefined') await FAQPage.init(); break;
         default:
           console.log('[App] No specific page module for:', this.state.currentPage);
       }
