@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
   // Helper function to set image with error handling
@@ -31,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn('Site settings empty or invalid');
         return;
       }
-      if (settings.maintenance_mode && !window.location.pathname.includes("coming_soon.html")) {
-        window.location.href = "coming_soon.html";
+      if (settings.maintenance_mode && !window.location.pathname.includes("coming-soon.html")) {
+        window.location.href = "coming-soon.html";
         return;
       }
 
@@ -46,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
 
       // Maintenance page
-      if (window.location.pathname.includes("coming_soon.html")) {
+      if (window.location.pathname.includes("coming-soon.html")) {
         const msg = document.getElementById("maintenance-message");
         if (msg) msg.textContent = settings.maintenance_message || "Site en maintenance";
       }
