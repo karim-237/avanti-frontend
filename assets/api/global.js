@@ -12,9 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-  // -------------------------------
-  // FETCH SITE SETTINGS
-  // -------------------------------
+// -------------------------------
+// FETCH SITE SETTINGS
+// -------------------------------
+const isMaintenancePage = window.location.pathname.endsWith("coming-soon.html");
+
+if (!isMaintenancePage) {
   fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
@@ -28,7 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn('Site settings empty or invalid');
         return;
       }
-      if (settings.maintenance_mode && !window.location.pathname.includes("coming-soon.html")) {
+
+      // Si mode maintenance actif, rediriger
+      if (settings.maintenance_mode) {
+        console.warn('Maintenance mode active, redirecting to coming-soon.html');
         window.location.href = "coming-soon.html";
         return;
       }
@@ -42,12 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const logo = document.getElementById("site-logo");
       if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
 
-      // Maintenance page
-      if (window.location.pathname.includes("coming-soon.html")) {
-        const msg = document.getElementById("maintenance-message");
-        if (msg) msg.textContent = settings.maintenance_message || "Site en maintenance";
-      }
-
       // -------------------------------
       // FOOTER LOGO DYNAMIQUE
       // -------------------------------
@@ -55,6 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (footerLogo && settings.logo_path) setImageWithErrorHandler(footerLogo, settings.logo_path);
     })
     .catch(err => console.error("Error loading site settings:", err));
+} else {
+  console.log("[global.js] Maintenance page loaded, skipping site-settings fetch.");
+  // Afficher message maintenance si élément existe
+  const msg = document.getElementById("maintenance-message");
+  if (msg) msg.textContent = "Site en maintenance"; 
+}
 
   // -------------------------------
   // FETCH HOME BANNERS
