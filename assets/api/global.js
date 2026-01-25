@@ -1,82 +1,91 @@
-document.addEventListener("DOMContentLoaded", () => {
+// ===============================
+// GLOBAL.JS – VERSION PRODUCTION
+// ===============================
 
-  // Helper function to set image with error handling
+document.addEventListener("DOMContentLoaded", () => {
+  const isMaintenancePage = window.location.pathname.endsWith("coming-soon.html");
+
+  // ===============================
+  // MODE MAINTENANCE
+  // ===============================
+  if (isMaintenancePage) {
+    console.log("[global.js] Maintenance page loaded, stopping all dynamic scripts.");
+
+    // Titre
+    const titleEl = document.getElementById("site-title");
+    if (titleEl) titleEl.textContent = "Site en maintenance";
+
+    // Favicon
+    const faviconEl = document.getElementById("favicon");
+    if (faviconEl) faviconEl.href = "/images/favicon.ico"; // mettre le chemin correct
+
+    // Logo
+    const logoEl = document.getElementById("site-logo");
+    if (logoEl) logoEl.src = "/images/logo.png"; // mettre le chemin correct
+
+    // Message
+    const msgEl = document.getElementById("maintenance-message");
+    if (msgEl) msgEl.textContent = "Site en maintenance, nous serons de retour bientôt.";
+
+    // ⚠️ Stop : aucun fetch ni script supplémentaire
+    return;
+  }
+
+  // ===============================
+  // HELPER : Set image avec fallback
+  // ===============================
   function setImageWithErrorHandler(imgElement, src) {
     if (!imgElement || !src) return;
     imgElement.src = src;
     imgElement.onerror = function () {
-      if (this.src.indexOf('placeholder') === -1) {
-        this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';
+      if (!this.src.includes("placeholder")) {
+        this.src =
+          "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23F5F5F5' width='200' height='200'/%3E%3Ctext fill='%236A6A6A' font-family='Arial' font-size='14' x='50%25' y='50%25' text-anchor='middle' dy='.3em'%3EImage%3C/text%3E%3C/svg%3E";
         this.onerror = null;
       }
     };
   }
 
-// -------------------------------
-// FETCH SITE SETTINGS
-// -------------------------------
-const isMaintenancePage = window.location.pathname.endsWith("coming-soon.html");
-
-if (!isMaintenancePage) {
-  try {
-    fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
-      .then(res => {
-        // Vérifier si la réponse est JSON valide
-        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-          console.warn('Site settings API returned HTML instead of JSON');
-          return {};
-        }
-        return res.json().catch(() => ({}));
-      })
-      .then(settings => {
-        if (!settings || Object.keys(settings).length === 0) {
-          console.warn('Site settings empty or invalid');
-          return;
-        }
-
-        // 🔒 Mode maintenance : rediriger seulement si on n'est pas déjà sur coming-soon.html
-        if (settings.maintenance_mode && !isMaintenancePage) {
-          console.warn('Maintenance mode active, redirecting to coming-soon.html');
-          window.location.href = "coming-soon.html";
-          return;
-        }
-
-        const title = document.getElementById("site-title");
-        if (title) title.textContent = settings.site_name;
-
-        const favicon = document.getElementById("favicon");
-        if (favicon) favicon.href = settings.favicon_path;
-
-        const logo = document.getElementById("site-logo");
-        if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
-
-        // -------------------------------
-        // FOOTER LOGO DYNAMIQUE
-        // -------------------------------
-        const footerLogo = document.querySelector(".footer-logo img");
-        if (footerLogo && settings.logo_path) setImageWithErrorHandler(footerLogo, settings.logo_path);
-      })
-      .catch(err => console.error("Error loading site settings:", err));
-  } catch (err) {
-    console.error("Unexpected error during site-settings fetch:", err);
-  }
-} else {
-  console.log("[global.js] Maintenance page loaded, skipping site-settings fetch.");
-  // Afficher message maintenance si élément existe
-  const msg = document.getElementById("maintenance-message");
-  if (msg) msg.textContent = "Site en maintenance"; 
-}
-
-
-  // -------------------------------
-  // FETCH HOME BANNERS
-  // -------------------------------
-  fetch("https://avanti-backend-67wk.onrender.com/api/home-banners") //https://avanti-backend-67wk.onrender.com/api
+  // ===============================
+  // FETCH SITE SETTINGS
+  // ===============================
+  fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
     .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Home banners API returned HTML instead of JSON');
-        return [];
+      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return {};
+      return res.json().catch(() => ({}));
+    })
+    .then(settings => {
+      if (!settings || Object.keys(settings).length === 0) return;
+
+      // Redirection maintenance côté production
+      if (settings.maintenance_mode) {
+        console.warn("Maintenance mode active, redirecting to coming-soon.html");
+        window.location.href = "coming-soon.html";
+        return;
       }
+
+      // Titre, favicon, logo
+      const title = document.getElementById("site-title");
+      if (title) title.textContent = settings.site_name;
+
+      const favicon = document.getElementById("favicon");
+      if (favicon) favicon.href = settings.favicon_path;
+
+      const logo = document.getElementById("site-logo");
+      if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
+
+      // Footer logo
+      const footerLogo = document.querySelector(".footer-logo img");
+      if (footerLogo && settings.logo_path) setImageWithErrorHandler(footerLogo, settings.logo_path);
+    })
+    .catch(err => console.error("Erreur chargement site settings:", err));
+
+  // ===============================
+  // FETCH HOME BANNERS
+  // ===============================
+  fetch("https://avanti-backend-67wk.onrender.com/api/home-banners")
+    .then(res => {
+      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return [];
       return res.json().catch(() => []);
     })
     .then(banners => {
@@ -105,22 +114,18 @@ if (!isMaintenancePage) {
         }
       });
     })
-    .catch(err => console.error("Error loading home banners:", err));
+    .catch(err => console.error("Erreur chargement home banners:", err));
 
-  // -------------------------------
-  // DISCOUNT SECTION
-  // -------------------------------
+  // ===============================
+  // FETCH DISCOUNT SECTION
+  // ===============================
   fetch("https://avanti-backend-67wk.onrender.com/api/discount-sections")
     .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Discount sections API returned HTML instead of JSON');
-        return [];
-      }
+      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return [];
       return res.json().catch(() => []);
     })
     .then(data => {
       if (!data || data.length < 3) return;
-
       const img1 = document.querySelector(".discount-image1 img");
       const img2 = document.querySelector(".discount-image2 img");
       const img3 = document.querySelector(".discount-image3 img");
@@ -138,27 +143,21 @@ if (!isMaintenancePage) {
 
       if (data[1].button_text) {
         const btn2 = document.querySelector(".content2 .primary_btn");
-        btn2.innerText = data[1].button_text;
-        btn2.href = data[1].button_url;
+        if (btn2) { btn2.innerText = data[1].button_text; btn2.href = data[1].button_url; }
       }
-
       if (data[2].button_text) {
         const btn3 = document.querySelector(".content3 .primary_btn");
-        btn3.innerText = data[2].button_text;
-        btn3.href = data[2].button_url;
+        if (btn3) { btn3.innerText = data[2].button_text; btn3.href = data[2].button_url; }
       }
     })
-    .catch(err => console.error("Error loading discount sections:", err));
+    .catch(err => console.error("Erreur chargement discount sections:", err));
 
-  // -------------------------------
-  // CHOOSE SECTION
-  // -------------------------------
+  // ===============================
+  // FETCH CHOOSE SECTION
+  // ===============================
   fetch("https://avanti-backend-67wk.onrender.com/api/choose-section")
     .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Choose section API returned HTML instead of JSON');
-        return {};
-      }
+      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return {};
       return res.json().catch(() => ({}));
     })
     .then(data => {
@@ -175,37 +174,26 @@ if (!isMaintenancePage) {
         benefitBoxes[index].querySelector("p").innerText = benefit.description;
       });
     })
-    .catch(err => console.error("Error loading choose section:", err));
+    .catch(err => console.error("Erreur chargement choose section:", err));
 
-  // -------------------------------
+  // ===============================
   // FETCH CATEGORIES + PRODUCTS
-  // -------------------------------
+  // ===============================
   Promise.all([
-    fetch("https://avanti-backend-67wk.onrender.com/api/product-categories").then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
-      return res.json().catch(() => []);
-    }),
-    fetch("https://avanti-backend-67wk.onrender.com/api/products").then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
-      return res.json().catch(() => []);
-    })
+    fetch("https://avanti-backend-67wk.onrender.com/api/product-categories")
+      .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? [] : res.json().catch(() => []))),
+    fetch("https://avanti-backend-67wk.onrender.com/api/products")
+      .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? [] : res.json().catch(() => [])))
   ])
     .then(([categories, products]) => {
+      if (!Array.isArray(categories) || !Array.isArray(products)) return;
+
       const tabLinks = document.querySelectorAll(".nav-tabs li a");
       tabLinks.forEach((tab, index) => {
         if (categories[index]) {
           tab.innerText = categories[index].name;
           tab.setAttribute("href", `#${categories[index].slug}`);
         }
-      });
-
-      document.querySelectorAll(".feature-box").forEach(box => {
-        const img = box.querySelector("img");
-        const title = box.querySelector("h4");
-        const desc = box.querySelector(".price1");
-        if (img) img.src = "";
-        if (title) title.innerText = "";
-        if (desc) desc.innerText = "";
       });
 
       categories.forEach(category => {
@@ -224,121 +212,16 @@ if (!isMaintenancePage) {
         });
       });
     })
-    .catch(err => console.error("Error loading products & categories:", err));
+    .catch(err => console.error("Erreur chargement categories & products:", err));
 
-  // -------------------------------
-  // FETCH ABOUT SECTION
-  // -------------------------------
-  fetch("https://avanti-backend-67wk.onrender.com/api/about/about-section")
-    .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('About section API returned HTML instead of JSON');
-        return { success: false, data: null };
-      }
-      return res.json().catch(() => ({ success: false, data: null }));
-    })
-    .then(result => {
-      if (!result.success || !result.data) return;
-      const data = result.data;
-
-      const leftImg = document.getElementById("about-left-image");
-      const rightImg = document.getElementById("about-right-image");
-      if (leftImg && data.left_image) setImageWithErrorHandler(leftImg, data.left_image);
-      if (rightImg && data.right_image) setImageWithErrorHandler(rightImg, data.right_image);
-
-      const mainImg = document.getElementById("about-main-image");
-      const secondaryImg = document.getElementById("about-secondary-image");
-      if (mainImg && data.main_image) setImageWithErrorHandler(mainImg, data.main_image);
-      if (secondaryImg && data.secondary_image) setImageWithErrorHandler(secondaryImg, data.secondary_image);
-
-      const videoLink = document.getElementById("about-video-link");
-      if (videoLink) videoLink.href = data.video_url;
-
-      const expYears = document.getElementById("experience-years");
-      const expText = document.getElementById("experience-text");
-      const satPercent = document.getElementById("satisfaction-percent");
-      const satText = document.getElementById("satisfaction-text");
-      const prodSold = document.getElementById("products-sold");
-      const prodSuffix = document.getElementById("products-suffix");
-      const prodText = document.getElementById("products-text");
-
-      if (expYears) expYears.textContent = data.experience_years;
-      if (expText) expText.textContent = data.experience_text;
-      if (satPercent) satPercent.textContent = data.satisfaction_percent;
-      if (satText) satText.textContent = data.satisfaction_text;
-      if (prodSold) prodSold.textContent = data.products_sold;
-      if (prodSuffix) prodSuffix.textContent = "k+";
-      if (prodText) prodText.textContent = data.products_text;
-
-      const smallTitle = document.getElementById("about-small-title");
-      const mainTitle = document.getElementById("about-main-title");
-      const description = document.getElementById("about-description");
-      if (smallTitle) smallTitle.textContent = data.small_title;
-      if (mainTitle) mainTitle.textContent = data.main_title;
-      if (description) description.textContent = data.description;
-    })
-    .catch(err => console.error("Error loading about section:", err));
-
-  // -------------------------------
-  // DYNAMISE LES BLOGS
-  // -------------------------------
-  fetch("https://avanti-backend-67wk.onrender.com/api/blogs")
-    .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Blogs API returned HTML instead of JSON');
-        return { success: false, data: [] };
-      }
-      return res.json().catch(() => ({ success: false, data: [] }));
-    })
-    .then(data => {
-      if (!data.success || !data.data || data.data.length === 0) return;
-      const blogs = data.data;
-      const blogSections = document.querySelectorAll(".mini-blog-section");
-
-      blogSections.forEach((section, index) => {
-        const blog = blogs[index];
-        if (!blog) return;
-
-        const img = section.querySelector("img");
-        if (img && blog.image_url) setImageWithErrorHandler(img, blog.image_url);
-
-        const dateEl = section.querySelector(".blog-date");
-        if (blog.publish_date && dateEl) {
-          const d = new Date(blog.publish_date + 'T00:00:00');
-          const options = { day: '2-digit', month: 'short', year: 'numeric' };
-          dateEl.textContent = d.toLocaleDateString('fr-FR', options);
-        }
-
-        const title = section.querySelector(".blog-title");
-        if (title) title.textContent = blog.title;
-
-        const desc = section.querySelector(".blog-short-description");
-        if (desc) desc.textContent = blog.short_description;
-
-        const link = section.querySelector(".read-more");
-        if (link) link.href = `single-blog.html?slug=${blog.slug}`;
-
-      });
-    })
-    .catch(err => console.error("Error loading blogs:", err));
-
- 
-
-  // -------------------------------
+  // ===============================
   // FOOTER DYNAMIQUE
-  // -------------------------------
+  // ===============================
   const footerSection = document.querySelector(".footer-con");
   if (footerSection) {
-
     // Contacts
     fetch("https://avanti-backend-67wk.onrender.com/api/footer/contacts")
-      .then(res => {
-        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-          console.warn('Footer contacts API returned HTML instead of JSON');
-          return { success: false, data: null };
-        }
-        return res.json().catch(() => ({ success: false, data: null }));
-      })
+      .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? { success: false, data: null } : res.json().catch(() => ({ success: false, data: null }))))
       .then(result => {
         if (!result.success || !result.data) return;
         const data = result.data;
@@ -351,35 +234,29 @@ if (!isMaintenancePage) {
         if (emailEl) { emailEl.textContent = data.email; emailEl.href = `mailto:${data.email}`; }
         if (addressEl) { addressEl.textContent = data.address; }
       })
-      .catch(err => console.error("Erreur chargement contacts footer:", err));
+      .catch(err => console.error("Erreur contacts footer:", err));
 
     // Social Links
     fetch("https://avanti-backend-67wk.onrender.com/api/footer/social-links")
-      .then(res => {
-        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-          console.warn('Footer social links API returned HTML instead of JSON');
-          return { success: false, data: [] };
-        }
-        return res.json().catch(() => ({ success: false, data: [] }));
-      })
+      .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? { success: false, data: [] } : res.json().catch(() => ({ success: false, data: [] }))))
       .then(result => {
         if (!result.success || !result.data) return;
         const socialContainer = footerSection.querySelector(".social-icons");
         if (!socialContainer) return;
 
-        socialContainer.innerHTML = ""; // vider les icônes statiques
+        socialContainer.innerHTML = "";
         result.data.forEach(link => {
           const li = document.createElement("li");
           const a = document.createElement("a");
           a.href = link.url;
-          a.classList.add("text-decoration-none");
           a.target = "_blank";
+          a.classList.add("text-decoration-none");
           a.innerHTML = `<i class="fa-brands ${link.icon} social-networks"></i>`;
           li.appendChild(a);
           socialContainer.appendChild(li);
         });
       })
-      .catch(err => console.error("Erreur chargement social links footer:", err));
+      .catch(err => console.error("Erreur social links footer:", err));
   }
 
 });
