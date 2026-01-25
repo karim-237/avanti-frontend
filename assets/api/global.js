@@ -116,65 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(err => console.error("Erreur chargement home banners:", err));
 
-  // ===============================
-  // FETCH DISCOUNT SECTION
-  // ===============================
-  fetch("https://avanti-backend-67wk.onrender.com/api/discount-sections")
-    .then(res => {
-      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return [];
-      return res.json().catch(() => []);
-    })
-    .then(data => {
-      if (!data || data.length < 3) return;
-      const img1 = document.querySelector(".discount-image1 img");
-      const img2 = document.querySelector(".discount-image2 img");
-      const img3 = document.querySelector(".discount-image3 img");
-      if (img1) setImageWithErrorHandler(img1, data[0].image_path);
-      if (img2) setImageWithErrorHandler(img2, data[1].image_path);
-      if (img3) setImageWithErrorHandler(img3, data[2].image_path);
 
-      document.querySelector(".content1 h6").innerText = data[0].title;
-      document.querySelector(".content2 h6").innerText = data[1].title;
-      document.querySelector(".content3 h6").innerText = data[2].title;
-
-      document.querySelector(".content1 .text span").innerHTML = data[0].description;
-      document.querySelector(".content2 .text span").innerHTML = data[1].description;
-      document.querySelector(".content3 .text span").innerHTML = data[2].description;
-
-      if (data[1].button_text) {
-        const btn2 = document.querySelector(".content2 .primary_btn");
-        if (btn2) { btn2.innerText = data[1].button_text; btn2.href = data[1].button_url; }
-      }
-      if (data[2].button_text) {
-        const btn3 = document.querySelector(".content3 .primary_btn");
-        if (btn3) { btn3.innerText = data[2].button_text; btn3.href = data[2].button_url; }
-      }
-    })
-    .catch(err => console.error("Erreur chargement discount sections:", err));
-
-  // ===============================
-  // FETCH CHOOSE SECTION
-  // ===============================
-  fetch("https://avanti-backend-67wk.onrender.com/api/choose-section")
-    .then(res => {
-      if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return {};
-      return res.json().catch(() => ({}));
-    })
-    .then(data => {
-      if (!data || !data.section || !data.benefits) return;
-
-      document.querySelector(".choose_content h6").innerText = data.section.subtitle;
-      document.querySelector(".choose_content h2").innerText = data.section.title;
-      document.querySelector(".choose_content p").innerText = data.section.description;
-
-      const benefitBoxes = document.querySelectorAll(".beneft-box");
-      data.benefits.forEach((benefit, index) => {
-        if (!benefitBoxes[index]) return;
-        benefitBoxes[index].querySelector("h5").innerHTML = benefit.title;
-        benefitBoxes[index].querySelector("p").innerText = benefit.description;
-      });
-    })
-    .catch(err => console.error("Erreur chargement choose section:", err));
 
   // ===============================
   // FETCH CATEGORIES + PRODUCTS
