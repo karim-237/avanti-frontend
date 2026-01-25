@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // STOP SI MODE MAINTENANCE
   // ===============================
   const isMaintenancePage = window.location.pathname.endsWith("coming-soon.html");
-  if (isMaintenancePage) {
-    console.log("🛑 newsletter.js bloqué en mode maintenance");
+  if (document.body.dataset.maintenance === "true") {
+    console.log("🛑 newsletter.js bloqué : mode maintenance actif");
     return;
   }
 
