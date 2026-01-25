@@ -18,49 +18,55 @@ document.addEventListener("DOMContentLoaded", () => {
 const isMaintenancePage = window.location.pathname.endsWith("coming-soon.html");
 
 if (!isMaintenancePage) {
-  fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
-    .then(res => {
-      if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
-        console.warn('Site settings API returned HTML instead of JSON');
-        return {};
-      }
-      return res.json().catch(() => ({}));
-    })
-    .then(settings => {
-      if (!settings || Object.keys(settings).length === 0) {
-        console.warn('Site settings empty or invalid');
-        return;
-      }
+  try {
+    fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
+      .then(res => {
+        // Vérifier si la réponse est JSON valide
+        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
+          console.warn('Site settings API returned HTML instead of JSON');
+          return {};
+        }
+        return res.json().catch(() => ({}));
+      })
+      .then(settings => {
+        if (!settings || Object.keys(settings).length === 0) {
+          console.warn('Site settings empty or invalid');
+          return;
+        }
 
-      // Si mode maintenance actif, rediriger
-      if (settings.maintenance_mode) {
-        console.warn('Maintenance mode active, redirecting to coming-soon.html');
-        window.location.href = "coming-soon.html";
-        return;
-      }
+        // 🔒 Mode maintenance : rediriger seulement si on n'est pas déjà sur coming-soon.html
+        if (settings.maintenance_mode && !isMaintenancePage) {
+          console.warn('Maintenance mode active, redirecting to coming-soon.html');
+          window.location.href = "coming-soon.html";
+          return;
+        }
 
-      const title = document.getElementById("site-title");
-      if (title) title.textContent = settings.site_name;
+        const title = document.getElementById("site-title");
+        if (title) title.textContent = settings.site_name;
 
-      const favicon = document.getElementById("favicon");
-      if (favicon) favicon.href = settings.favicon_path;
+        const favicon = document.getElementById("favicon");
+        if (favicon) favicon.href = settings.favicon_path;
 
-      const logo = document.getElementById("site-logo");
-      if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
+        const logo = document.getElementById("site-logo");
+        if (logo && settings.logo_path) setImageWithErrorHandler(logo, settings.logo_path);
 
-      // -------------------------------
-      // FOOTER LOGO DYNAMIQUE
-      // -------------------------------
-      const footerLogo = document.querySelector(".footer-logo img");
-      if (footerLogo && settings.logo_path) setImageWithErrorHandler(footerLogo, settings.logo_path);
-    })
-    .catch(err => console.error("Error loading site settings:", err));
+        // -------------------------------
+        // FOOTER LOGO DYNAMIQUE
+        // -------------------------------
+        const footerLogo = document.querySelector(".footer-logo img");
+        if (footerLogo && settings.logo_path) setImageWithErrorHandler(footerLogo, settings.logo_path);
+      })
+      .catch(err => console.error("Error loading site settings:", err));
+  } catch (err) {
+    console.error("Unexpected error during site-settings fetch:", err);
+  }
 } else {
   console.log("[global.js] Maintenance page loaded, skipping site-settings fetch.");
   // Afficher message maintenance si élément existe
   const msg = document.getElementById("maintenance-message");
   if (msg) msg.textContent = "Site en maintenance"; 
 }
+
 
   // -------------------------------
   // FETCH HOME BANNERS
