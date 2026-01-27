@@ -1,17 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
   const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
-  const categoriesContainer = document.getElementById('recipeCategories'); // div pour les catégories
+  const categoriesContainer = document.getElementById('recipeCategories'); 
   const recipesGrid = document.getElementById('recipesGrid');
 
   let allRecipes = [];
   let currentCategory = null;
+  let currentTag = null;
 
-  initCategories();
-  initSearch();
-  loadRecipes();
+  init();
+
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      category: params.get('category'),
+      tag: params.get('tag')
+    };
+  }
+
+  function init() {
+    const { category, tag } = getQueryParams();
+    currentCategory = category;
+    currentTag = tag;
+
+    initCategories();
+    initSearch();
+    loadRecipes(currentCategory, currentTag);
+  }
 
   // =============================
-  // 1️⃣ Charger les catégories de recettes dynamiquement
+  // 1️⃣ Charger catégories
   // =============================
   function initCategories() {
     if (!categoriesContainer) return;
@@ -20,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
       .then(res => res.json())
       .then(result => {
         if (!result.success || !Array.isArray(result.data)) return;
-
         renderCategories(result.data);
       })
       .catch(err => console.error('Erreur chargement catégories:', err));
@@ -29,16 +45,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function renderCategories(categories) {
     if (!categoriesContainer) return;
 
-    // Bouton "Toutes les recettes"
-    let html = `
-      <button class="blog-category-tab active" data-category="">
-        Toutes les recettes
-      </button>
-    `;
+    let html = `<button class="blog-category-tab ${!currentCategory ? 'active' : ''}" data-category="">
+      Toutes les recettes
+    </button>`;
 
-    // Boutons dynamiques
     html += categories.map(cat => `
-      <button class="blog-category-tab" data-category="${cat.slug}">
+      <button class="blog-category-tab ${currentCategory === cat.slug ? 'active' : ''}" data-category="${cat.slug}">
         ${cat.name}
       </button>
     `).join('');
@@ -49,21 +61,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function bindCategoryEvents() {
     const tabs = document.querySelectorAll('.blog-category-tab');
-
     tabs.forEach(tab => {
       tab.addEventListener('click', function () {
         tabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
 
-        const selected = this.dataset.category;
-        currentCategory = selected || null;
-        loadRecipes(currentCategory);
+        currentCategory = this.dataset.category || null;
+        updateURL();
+        loadRecipes(currentCategory, currentTag);
       });
     });
   }
 
   // =============================
-  // 2️⃣ Recherche de recettes
+  // 2️⃣ Recherche texte
   // =============================
   function initSearch() {
     const searchInput = document.getElementById('recipeSearchInput');
@@ -100,25 +111,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // =============================
-  // 3️⃣ Charger recettes (par catégorie ou toutes)
+  // 3️⃣ Charger recettes
   // =============================
-  function loadRecipes(category = null) {
-    let apiUrl = `${API_BASE}/recipes`;
-    if (category) {
-      apiUrl = `${API_BASE}/recipes/category/${category}`;
-    }
+  function loadRecipes(category = null, tag = null) {
+    let url = `${API_BASE}/recipes`;
+    const params = [];
 
-    fetch(apiUrl)
-      .then(res => {
-        if (!res.ok || res.headers.get('content-type')?.includes('text/html')) return [];
-        return res.json().catch(() => []);
-      })
+    if (category) params.push(`category=${encodeURIComponent(category)}`);
+    if (tag) params.push(`tag=${encodeURIComponent(tag)}`);
+    if (params.length) url += `?${params.join('&')}`;
+
+    fetch(url)
+      .then(res => res.json())
       .then(result => {
         let recipes = [];
-        if (category && result.success && result.data?.recipes) {
-          recipes = result.data.recipes; // cas filtré par catégorie
-        } else if (result.success && Array.isArray(result.data)) {
-          recipes = result.data; // toutes les recettes
+        if (result.success && Array.isArray(result.data)) {
+          recipes = result.data;
+        } else if (result.success && result.data?.recipes) {
+          recipes = result.data.recipes;
         }
 
         allRecipes = recipes;
@@ -126,14 +136,12 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .catch(err => {
         console.error('Erreur chargement recettes:', err);
-        if (recipesGrid) {
-          recipesGrid.innerHTML = '<p class="text-center">Aucune recette disponible pour le moment.</p>';
-        }
+        if (recipesGrid) recipesGrid.innerHTML = '<p class="text-center">Aucune recette disponible pour le moment.</p>';
       });
   }
 
   // =============================
-  // 4️⃣ Affichage des recettes
+  // 4️⃣ Affichage
   // =============================
   function displayRecipes(recipes) {
     if (!recipesGrid) return;
@@ -145,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     recipesGrid.innerHTML = recipes.map(recipe => {
       const imageUrl = recipe.image_url || recipe.image || 'assets/images/placeholder-recipe.jpg';
-
       return `
         <div class="recipe-card">
           <div class="recipe-card__image-wrapper">
@@ -163,5 +170,17 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
     }).join('');
+  }
+
+  // =============================
+  // 🔗 Mise à jour URL
+  // =============================
+  function updateURL() {
+    const params = new URLSearchParams();
+    if (currentCategory) params.set('category', currentCategory);
+    if (currentTag) params.set('tag', currentTag);
+
+    const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+    window.history.pushState({}, '', newUrl);
   }
 });
