@@ -175,20 +175,24 @@ function displayFeaturedPosts(posts) {
       'assets/images/placeholder-blog.jpg';
 
     return `
-      <article class="blog-featured-card">
-        <a href="single-blog.html?slug=${post.slug}" class="blog-featured-card__link">
-          <div class="blog-featured-card__image-wrapper">
-            <img src="${imageUrl}" alt="${post.title || 'Blog post'}" loading="lazy">
+      <article class="blog-card">
+          <div class="blog-card__image-wrapper">
+            <img src="${imageUrl}" alt="${post.title || 'Blog post'}" class="blog-card__image" loading="lazy">
+            ${post.category_name ? `<div class="blog-card__category">${post.category_name}</div>` : ''}
           </div>
-          <div class="blog-featured-card__body">
-            ${post.category_name ? `<div class="blog-featured-card__category">${post.category_name}</div>` : ''}
-            <h3 class="blog-featured-card__title">${post.title || 'Article'}</h3>
-            <div class="blog-featured-card__date">
+          <div class="blog-card__body">
+            <div class="blog-card__date">
               ${new Date(post.publish_date).toLocaleDateString('fr-FR')}
             </div>
+            <h3 class="blog-card__title">${post.title || 'Article'}</h3>
+            <p class="blog-card__description">
+              ${post.short_description || ''}
+            </p>
+            <a href="single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">
+              Lire l'article →
+            </a>
           </div>
-        </a>
-      </article>
+        </article>
     `;
   }).join('');
 }
