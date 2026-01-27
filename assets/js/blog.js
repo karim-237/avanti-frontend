@@ -8,45 +8,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
   init();
 
+  // =========================
+  // 🔎 Lire params URL
+  // =========================
+  function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      category: params.get('category'),
+      tag: params.get('tag')
+    };
+  }
+
   function init() {
-    loadCategories();   // 🔹 injecte les boutons
-    loadBlogPosts();   // 🔹 charge tous les blogs
+    const { category, tag } = getQueryParams();
+
+    loadCategories(category);          // injecte les boutons + active la bonne catégorie
+    loadBlogPosts(category, tag);      // charge les blogs filtrés dès le départ
   }
 
   // =========================
   // 1️⃣ Charger catégories → innerHTML
   // =========================
-  function loadCategories() {
+  function loadCategories(activeCategory = null) {
     fetch(`${API_BASE}/categories`)
       .then(res => res.json())
       .then(result => {
         if (!result.success || !Array.isArray(result.data)) return;
 
-        renderCategories(result.data);
+        renderCategories(result.data, activeCategory);
       })
       .catch(err => {
         console.error('Erreur chargement catégories:', err);
       });
   }
 
-  function renderCategories(categories) {
+  function renderCategories(categories, activeCategory = null) {
     if (!categoriesContainer) return;
 
-    // Bouton "Tout" en dur
     let html = `
-      <button class="blog-category-tab active" data-category="all">
+      <button class="blog-category-tab ${!activeCategory ? 'active' : ''}" data-category="all">
         Tout
       </button>
     `;
 
-    // Boutons venant de la DB
     html += categories.map(cat => `
-      <button class="blog-category-tab" data-category="${cat.slug}">
+      <button class="blog-category-tab ${activeCategory === cat.slug ? 'active' : ''}" data-category="${cat.slug}">
         ${cat.name}
       </button>
     `).join('');
 
-    // 🔥 Injection directe dans ton <div id="blogCategories">
     categoriesContainer.innerHTML = html;
 
     bindCategoryEvents();
@@ -65,23 +75,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
         currentCategory = this.dataset.category;
 
-        if (currentCategory === 'all') {
-          loadBlogPosts();
-        } else {
-          loadBlogPosts(currentCategory);
-        }
+        const { tag } = getQueryParams();
+
+        updateURL(currentCategory, tag);
+
+        loadBlogPosts(
+          currentCategory === 'all' ? null : currentCategory,
+          tag
+        );
       });
     });
   }
 
   // =========================
-  // 3️⃣ Charger blogs filtrés
+  // 3️⃣ Charger blogs filtrés (catégorie + tag)
   // =========================
-  function loadBlogPosts(categorySlug = null) {
+  function loadBlogPosts(categorySlug = null, tagSlug = null) {
     let url = `${API_BASE}/blogs`;
+    const params = [];
 
-    if (categorySlug) {
-      url += `?category=${encodeURIComponent(categorySlug)}`;
+    if (categorySlug && categorySlug !== 'all') {
+      params.push(`category=${encodeURIComponent(categorySlug)}`);
+    }
+
+    if (tagSlug) {
+      params.push(`tag=${encodeURIComponent(tagSlug)}`);
+    }
+
+    if (params.length) {
+      url += `?${params.join('&')}`;
     }
 
     fetch(url)
@@ -99,6 +121,24 @@ document.addEventListener('DOMContentLoaded', function () {
           blogGrid.innerHTML = '<p class="text-center">Aucun article trouvé.</p>';
         }
       });
+  }
+
+  // =========================
+  // 🔗 Mettre à jour l’URL
+  // =========================
+  function updateURL(category, tag) {
+    const params = new URLSearchParams();
+
+    if (category && category !== 'all') {
+      params.set('category', category);
+    }
+
+    if (tag) {
+      params.set('tag', tag);
+    }
+
+    const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+    window.history.pushState({}, '', newUrl);
   }
 
   // =========================
