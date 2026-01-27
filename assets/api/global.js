@@ -533,16 +533,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-
-
-
-
-// === SECTION TAGS ===
+// === SECTION TAGS SIDEBAR ===
 const sidebarTagsEl = document.querySelector(".box4 ul.tag");
 
 if (sidebarTagsEl) {
+  const isSingleBlog = window.location.pathname.includes("single-blog.html");
+  const isSingleRecipe = window.location.pathname.includes("single-recipe.html");
+
+  const baseLink = isSingleRecipe
+    ? "recette.html"
+    : "blog.html"; // fallback par défaut blog
+
   fetch("https://avanti-backend-67wk.onrender.com/api/tags")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
@@ -555,11 +556,11 @@ if (sidebarTagsEl) {
       if (!data.success || !data.data) return;
 
       sidebarTagsEl.innerHTML = "";
+
       data.data.forEach(tag => {
-        // On crée un lien vers blog.html filtré par tag
         sidebarTagsEl.innerHTML += `
           <li>
-            <a href="blog.html?tag=${tag.slug}" class="button text-decoration-none">
+            <a href="${baseLink}?tag=${tag.slug}" class="button text-decoration-none">
               ${tag.name}
             </a>
           </li>
@@ -568,6 +569,7 @@ if (sidebarTagsEl) {
     })
     .catch(err => console.error("Erreur récupération tags:", err));
 }
+
 
 
 
@@ -986,7 +988,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const { recipe, comments, related } = data.data;
+      const { recipe, tags, comments, related } = data.data;
       CURRENT_RECIPE_ID = recipe.id; // ✅ stocké pour les commentaires
       // Injecter dans blog-comments.js si disponible
       if (window.setCurrentRecipeId) {
@@ -997,6 +999,29 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("❌ Recette non trouvée dans la réponse");
         return;
       }
+
+
+      // ===================== TAGS DE LA RECETTE =====================
+      const recipeTagsEl = document.querySelector(".single-recipe-tags");
+
+      if (recipeTagsEl) {
+        recipeTagsEl.innerHTML = "";
+
+        if (tags?.length) {
+          tags.forEach(tag => {
+            recipeTagsEl.innerHTML += `
+        <li>
+          <a href="recette.html?tag=${tag.slug}" class="button text-decoration-none">
+            ${tag.name}
+          </a>
+        </li>
+      `;
+          });
+        } else {
+          recipeTagsEl.innerHTML = "<li>Aucun tag associé</li>";
+        }
+      }
+
 
       // ===================== IMAGE PRINCIPALE =====================
       const mainImage = document.getElementById("recipe-main-image");
