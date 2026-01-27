@@ -159,3 +159,66 @@ $(document).ready(function () {
     }
   });
 });
+
+
+// =============================
+// 🔹 Charger les dernières recettes
+// =============================
+const latestRecipesContainer = $("#latest-blogs"); // <ul id="latest-blogs">
+const latestTitle = latestRecipesContainer.prev("h4");
+
+if (latestTitle.length) {
+  latestTitle.text("Recettes récentes"); // changement du titre
+}
+
+async function loadLatestRecipes(limit = 5) {
+  if (!latestRecipesContainer.length) return;
+
+  try {
+    const response = await fetch(`${API_BASE}/recipes/latest?limit=${limit}`);
+    if (!response.ok) return;
+
+    const data = await response.json();
+    const recipes = data.success ? data.data : [];
+
+    if (!recipes.length) {
+      latestRecipesContainer.html('<li>Aucune recette récente</li>');
+      return;
+    }
+
+    const html = recipes
+      .map(r => {
+        const image = r.image_url || r.image || "";
+        return `
+                       <li class="d-flex mb-3">
+                <img 
+                  src="${image}" 
+                  alt="${r.title}" 
+                  style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
+                >
+                <div style="text-align: left; flex: 1;">
+                  <a href="single-recipe.html?slug=${r.slug}" class="fw-bold d-block">
+                    ${r.title}
+                  </a>
+                  <small class="text-muted">
+                    ${new Date(r.created_at).toLocaleDateString("fr-FR", {
+              day: "2-digit",
+              month: "short",
+              year: "numeric",
+            })}
+                  </small>
+                </div>
+              </li>
+        `;
+      })
+      .join("");
+
+    latestRecipesContainer.html(html);
+  } catch (err) {
+    console.error("Erreur chargement dernières recettes :", err);
+    latestRecipesContainer.html('<li>Impossible de charger les recettes</li>');
+  }
+}
+
+// Charger au démarrage
+loadLatestRecipes();
