@@ -49,8 +49,10 @@
     <link href="assets/css/aos.css" rel="stylesheet">
     <link href="assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="assets/css/sections/about.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/blog.css" rel="stylesheet" type="text/css">
     <link href="assets/css/sections/footer.css" rel="stylesheet" type="text/css">
     <link href="assets/css/sections/header.css" rel="stylesheet" type="text/css">
+    
 </head>
 
 <body>
@@ -94,33 +96,28 @@
                         </button>
                     </form>
                 </div>
-                <nav class="header__nav" id="headerNav">
+                 <nav class="header__nav" id="headerNav">
                     <ul class="nav-menu">
                         <li class="nav-menu__item">
-                            <a href="products.html" class="nav-menu__link">Shop</a>
+                            <a href="index.html" class="nav-menu__link">Accueil</a>
                         </li>
                         <li class="nav-menu__item">
-                            <a href="contact.html" class="nav-menu__link">Contact</a>
+                            <a href="products.html" class="nav-menu__link">Nos produits</a>
                         </li>
                         <li class="nav-menu__item">
-                            <a href="recette.html" class="nav-menu__link">Recipes</a>
+                            <a href="contact.html" class="nav-menu__link">Contacts</a>
                         </li>
                         <li class="nav-menu__item">
-                            <a href="blog.html" class="nav-menu__link">Discover</a>
+                            <a href="recette.html" class="nav-menu__link">Nos recettes</a>
                         </li>
                         <li class="nav-menu__item">
-                            <a href="sustainability.html" class="nav-menu__link">Rice Sustainability</a>
+                            <a href="blog.html" class="nav-menu__link">Blogs</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="header__actions">
-                    <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                    <a href="./cart.html" class="header__action header__action--cart" aria-label="Panier">
-                        <i class="fa-solid fa-basket-shopping"></i>
-                        <span class="cart-count">0</span>
-                    </a>
+
+
                     <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -130,35 +127,26 @@
             </div>
         </header>
         <main>
-            <section class="about-hero" id="aboutHero" style="background-image: url('');">
+            <section class="about-hero" id="aboutHero">
                 <div class="container">
                     <nav class="breadcrumb">
-                        <a href="index.html" class="breadcrumb__link">HOME</a>
+                        <a href="index.html" class="breadcrumb__link">Accueil</a>
                         <span class="breadcrumb__separator">></span>
-                        <span class="breadcrumb__current">ABOUT US</span>
+                        <span class="breadcrumb__current">À propos de nous</span>
                     </nav>
                     <div class="about-hero__content">
-                        <h1 class="about-hero__title">About AVANTI</h1>
-                        <p class="about-hero__subtitle">We're on a mission to embrace life...</p>
+                        <h1 class="about-hero__title">À propos d'AVANTI</h1>
+                        <p class="about-hero__subtitle">Notre mission est de célébrer la vie et le riz de qualité...</p>
                     </div>
                 </div>
             </section>
 
-            <section class="about-content">
-                <div class="container">
-                    <div class="about-content__text" id="aboutDescription">
-                        <!-- Description will be populated by JavaScript -->
-                    </div>
-                </div>
-            </section>
 
             <section class="about-cta">
                 <div class="container">
-                    <h2 class="about-cta__title">Where to Buy</h2>
-                    <a href="products.html" class="btn btn--primary about-cta__link">Find Our Products</a>
-                    <div id="newsletterCTA" style="margin-top: var(--spacing-lg);">
-                        <!-- Newsletter CTA will be added here -->
-                    </div>
+                    <h2 class="about-cta__title">Apprennez en plus à propos de nous</h2>
+                   
+                   
                 </div>
             </section>
         </main>
@@ -169,29 +157,6 @@
                         <figure class="about-image1">
                             <img src="" alt="image" class="img-fluid" id="about-left-image">
                         </figure>
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <div class="value">
-                                    <span class="number counter" id="experience-years">Chargement</span>
-                                    <span class="expression">+</span>
-                                </div>
-                                <span class="text" id="experience-text">Chargement</span>
-                            </li>
-                            <li>
-                                <div class="value">
-                                    <span class="number counter" id="satisfaction-percent">Chargement</span>
-                                    <span class="expression">%</span>
-                                </div>
-                                <span class="text" id="satisfaction-text">Chargement</span>
-                            </li>
-                            <li>
-                                <div class="value">
-                                    <span class="number counter" id="products-sold">Chargement</span>
-                                    <span class="expression" id="products-suffix">k+</span>
-                                </div>
-                                <span class="text" id="products-text">Chargement</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
 
@@ -201,18 +166,10 @@
                             <h6 id="about-small-title">Chargement</h6>
                             <h2 id="about-main-title">Chargement</h2>
                             <p class="text text-size-18" id="about-description">Chargement</p>
-                            <p class="text-size-18 mb-0" id="about-description-2">Chargement</p>
                         </div>
                         <div class="image_wrapper position-relative">
                             <figure class="about-image2 mb-0">
                                 <img src="" alt="image" class="img-fluid" id="about-main-image">
-                            </figure>
-
-                            <figure class="about-image4 mb-0">
-                                <img src="./assets/images/aboutpage-image4.jpg" alt="image" class="img-fluid">
-                            </figure>
-                            <figure class="about-image5 mb-0">
-                                <img src="./assets/images/aboutpage-image5.jpg" alt="image" class="img-fluid">
                             </figure>
                         </div>
                     </div>
@@ -237,25 +194,18 @@
                     </div>
                     <div class="col-lg-7 col-md-12 col-sm-12 col-12">
                         <div class="choose_wrapper position-relative" data-aos="fade-up">
-                            <ul class="list-unstyled mb-0">
+                            <ul class="list-unstyled">
                                 <li class="beneft-box">
-                                    <figure class="icon">
-                                        <img src="./assets/images/choose-icon1.png" alt="image" class="img-fluid">
-                                    </figure>
+                                   
                                     <h5>Chargement</h5>
                                     <p class="text-size-16 mb-0">Chargement</p>
                                 </li>
                                 <li class="beneft-box">
-                                    <figure class="icon">
-                                        <img src="./assets/images/choose-icon2.png" alt="image" class="img-fluid">
-                                    </figure>
+                                   
                                     <h5>Chargement</h5>
                                     <p class="text-size-16 mb-0">Chargement</p>
                                 </li>
                                 <li class="beneft-box">
-                                    <figure class="icon">
-                                        <img src="./assets/images/choose-icon3.png" alt="image" class="img-fluid">
-                                    </figure>
                                     <h5>Chargement</h5>
                                     <p class="text-size-16 mb-0">Chargement</p>
                                 </li>
@@ -266,75 +216,7 @@
             </div>
         </section>
 
-        <!-- Article -->
-        <section class="article-con">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="article_content text-center" data-aos="fade-up">
-                            <h6>Conseils et Actualités</h6>
-                            <h2>Blogs et actualités sur le riz</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" data-aos="fade-up">
-                    <!-- Blog 1 -->
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mx-auto mini-blog-section">
-                        <div class="article-box">
-                            <div class="image position-relative">
-                                <figure class="article-image">
-                                    <img src="" alt="image" class="img-fluid">
-                                </figure>
-                                <span class="date blog-date">Chargement</span>
-                            </div>
-                            <div class="box-content">
-                                <a href="single-blog.html" class="text-decoration-none read-more">
-                                    <h3 class="blog-title">Chargement</h3>
-                                </a>
-                                <p class="text-size-16 mb-0 blog-short-description">Chargement</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Blog 2 -->
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mx-auto mini-blog-section">
-                        <div class="article-box mb-0">
-                            <div class="image position-relative">
-                                <figure class="article-image">
-                                    <img src="" alt="image" class="img-fluid">
-                                </figure>
-                                <span class="date blog-date">Chargement</span>
-                            </div>
-                            <div class="box-content">
-                                <a href="single-blog.html" class="text-decoration-none read-more">
-                                    <h3 class="blog-title">Chargement</h3>
-                                </a>
-                                <p class="text-size-16 mb-0 blog-short-description">Chargement</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Blog 3 -->
-                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mx-auto mini-blog-section">
-                        <div class="article-box">
-                            <div class="image position-relative">
-                                <figure class="article-image">
-                                    <img src="" alt="image" class="img-fluid">
-                                </figure>
-                                <span class="date blog-date">Chargement</span>
-                            </div>
-                            <div class="box-content">
-                                <a href="single-blog.html" class="text-decoration-none read-more">
-                                    <h3 class="blog-title">Chargement</h3>
-                                </a>
-                                <p class="text-size-16 mb-0 blog-short-description">Chargement</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+      
 
         <footer class="footer">
             <div class="footer__container">
@@ -369,7 +251,10 @@
                                 <i class="fa-solid fa-angle-right"></i>
                                 <a href="products.html" class="footer__link">Produits</a>
                             </li>
-                           
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="about.html" class="footer__link">À propos</a>
+                            </li>
                             <li class="footer__link-item">
                                 <i class="fa-solid fa-angle-right"></i>
                                 <a href="blog.html" class="footer__link">Blog</a>
@@ -457,6 +342,7 @@
         <script src="assets/js/search.js"></script>
         <script src="assets/js/country_dropdown.js"></script>
         <script src="assets/api/global.js"></script>
+        <script src="assets/js/about.js"></script>
         <script src="assets/js/header.js"></script>
         <script src="assets/js/footer-loader.js"></script>
 </body>

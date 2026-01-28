@@ -5,25 +5,30 @@ About page selon spécifications Tilda
 -------------------------------------------------------------------*/
 
 .about-hero {
-  position: relative;
-  width: 100%;
-  min-height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+   position: relative;
+  background-image: url("../../images/banner/Artboard\ 5.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   color: var(--color-white);
+  padding: var(--spacing-2xl) 0; 
+  text-align: center;
+  overflow: hidden; /* important pour contenir l’overlay */
 }
 
+/* Contenu au-dessus de l’overlay */
+.about-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Overlay sombre */
 .about-hero::before {
-  content: '';
+ content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.45); /* ajuste l’intensité ici */
+  z-index: 1;
 }
 
 .about-hero__content {
@@ -74,9 +79,61 @@ About page selon spécifications Tilda
   margin-bottom: var(--spacing-lg);
 }
 
+.about2-con .about_wrapper{
+    display: none;
+}
+
+.about3-con .about_wrapper .about-image1 {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.aboutpage-con .about_wrapper .about-image1 {
+    margin-bottom: 56px;
+}
+.aboutpage-con .about_wrapper ul {
+    display: flex;
+    justify-content: space-between;
+}
+.aboutpage-con .about_wrapper ul li {
+    padding-right: 30px;
+    display: inline-block;
+    border-right: 1px solid rgb(0 0 0 / 8%);
+}
+.aboutpage-con .about_wrapper ul li:last-child {
+    padding-right: 0;
+    border-right: none;
+}
+.aboutpage-con .about_wrapper span {
+    color: var(--e-global-color-secondary);
+}
+.aboutpage-con .about_wrapper .value {
+    margin-bottom: 8px;
+}
+.aboutpage-con .about_wrapper .value span {
+    font-size: 46px;
+    line-height: 46px;
+    font-weight: 700;
+    font-family: "Jost", serif;
+}
+.aboutpage-con .about_wrapper .expression {
+    color: var(--e-global-color-accent);
+}
+.aboutpage-con .about_wrapper .text {
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--e-global-color-text);
+}
+
 .about-cta__link {
-  display: inline-block;
+  display: inline-block; 
   margin-right: var(--spacing-lg);
+}
+
+
+.choose_wrapper ul {
+    margin-top: 39px; /* ajuste : 20px / 30px / 50px */
 }
 
 @media (max-width: 768px) {
@@ -92,3 +149,5 @@ About page selon spécifications Tilda
     font-size: var(--font-size-body);
   }
 }
+
+

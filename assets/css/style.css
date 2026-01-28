@@ -3125,7 +3125,7 @@ html{
 .aboutpage-con .about_wrapper .value span {
     font-size: 46px;
     line-height: 46px;
-    font-weight: 700;
+    font-weight: 700; 
     font-family: "Jost", serif;
 }
 .aboutpage-con .about_wrapper .expression {
