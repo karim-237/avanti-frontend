@@ -66,7 +66,7 @@ docs/                    ✅ Créé
 ##### **main.js** (285 lignes)
 - ✅ Point d'entrée unique de l'application
 - ✅ Initialise `window.api` globalement
-- ✅ Charge settings site (logo, titre, maintenance mode)
+- ✅ Charge settings site (logo, titre, maintfrance mode)
 - ✅ Router automatique vers modules de page
 - ✅ `ErrorHandler` global pour notifications
 - ✅ Gestion erreurs non capturées

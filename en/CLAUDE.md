@@ -60,7 +60,7 @@ All dynamic content is loaded via `/fr/assets/api/global.js`, which:
 - Uses page-specific conditional logic (`window.location.pathname.includes()`)
 
 **Key API Endpoints:**
-- `/api/site-settings` - Site title, logo, favicon, maintenance mode
+- `/api/site-settings` - Site title, logo, favicon, maintfrance mode
 - `/api/home-banners` - Homepage carousel content
 - `/api/categories` - Product categories
 - `/api/products` - Product listings (supports `?category={slug}` filtering)
@@ -120,7 +120,7 @@ All /fr/assets are served as-is. No webpack, bundling, or transpilation. Changes
 - `/en/contact.html` - Contact form with validation
 
 ### Utility Pages
-- `coming-soon.html` - Maintenance mode redirect target
+- `coming-soon.html` - Maintfrance mode redirect target
 - `404.html` - Error page
 - `/en/faq.html` - Frequently asked questions
 - Policy pages: `/en/privacy-policy.html`, `/en/cookie-policy.html`, `/en/term-of-use.html`
@@ -191,8 +191,8 @@ Contact forms use jQuery validation plugin. Main logic in `/fr/assets/js/contact
 
 ## Important Conventions
 
-### Maintenance Mode
-Site settings API endpoint includes `maintenance_mode` boolean. When true, all pages redirect to `coming-soon.html`.
+### Maintfrance Mode
+Site settings API endpoint includes `maintfrance_mode` boolean. When true, all pages redirect to `coming-soon.html`.
 
 ### Cart Management
 Shopping cart is client-side only (no backend persistence visible). Tax rate: 5%, Shipping: $15 (hardcoded).
