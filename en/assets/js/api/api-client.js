@@ -269,8 +269,8 @@ class APIClient {
     if (endpoint.includes('/settings')) {
       return {
         site_name: 'AVANTI',
-        logo_path: './assets/images/logo.png',
-        favicon_path: './assets/images/favicon.ico',
+        logo_path: '/fr/assets/images/logo.png',
+        favicon_path: '/fr/assets/images/favicon.ico',
         maintenance_mode: false
       };
     }

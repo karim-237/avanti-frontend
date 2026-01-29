@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
           mainImage.src = product.image_path;
           mainImage.alt = product.name || 'Product image';
           mainImage.onerror = function() {
-            this.src = 'assets/images/placeholder-product.jpg';
+            this.src = '/fr/assets/images/placeholder-product.jpg';
             this.alt = 'Image not available';
           };
         }
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         list.innerHTML = products.map(product => `
           <li class="splide__slide">
             <div class="card">
-              <img src="${product.image_path || 'assets/images/placeholder-product.jpg'}" alt="${product.name || 'Product'}" class="card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
+              <img src="${product.image_path || '/fr/assets/images/placeholder-product.jpg'}" alt="${product.name || 'Product'}" class="card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
               <div class="card__body">
                 <h4 class="card__title">${product.name || 'Product'}</h4>
                 <div class="price">

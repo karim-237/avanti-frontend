@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li class="splide__slide">
             <div class="card">
               <div style="position: relative;">
-                <img src="${product.image_path || 'assets/images/placeholder-product.jpg'}" alt="${product.name || 'Product'}" class="card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
+                <img src="${product.image_path || '/fr/assets/images/placeholder-product.jpg'}" alt="${product.name || 'Product'}" class="card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
                 ${discount ? `<span style="position: absolute; top: 12px; right: 12px; background-color: var(--color-accent, #FFC107); color: var(--color-black, #000); padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">-${discount}%</span>` : ''}
               </div>
               <div class="card__body">
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         grid.innerHTML = recipes.map(recipe => {
-          const imageUrl = recipe.image_url || recipe.image || recipe.image_path || 'assets/images/placeholder-recipe.jpg';
+          const imageUrl = recipe.image_url || recipe.image || recipe.image_path || '/fr/assets/images/placeholder-recipe.jpg';
           return `
           <div class="recipe-card">
             <img src="${imageUrl}" alt="${recipe.title || 'Recipe'}" class="recipe-card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         grid.innerHTML = posts.map(post => {
-          const imageUrl = post.image_url || post.image_path || post.single_image || 'assets/images/placeholder-blog.jpg';
+          const imageUrl = post.image_url || post.image_path || post.single_image || '/fr/assets/images/placeholder-blog.jpg';
           return `
           <div class="blog-card">
             <img src="${imageUrl}" alt="${post.title || 'Blog post'}" class="blog-card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         grid.innerHTML = images.slice(0, 16).map(img => `
           <a href="${img.link || 'https://instagram.com'}" target="_blank" rel="noopener" class="instagram-item">
-            <img src="${img.image_url || 'assets/images/placeholder-instagram.jpg'}" alt="Instagram" class="instagram-item__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
+            <img src="${img.image_url || '/fr/assets/images/placeholder-instagram.jpg'}" alt="Instagram" class="instagram-item__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
             <div class="instagram-item__overlay">
               <i class="fa-brands fa-instagram" style="font-size: 2rem; color: white;"></i>
             </div>

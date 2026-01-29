@@ -213,7 +213,7 @@ tilda-website/
     recipes/ (images recettes)
     blog/ (images articles)
     social/ (icons reseaux)
-  assets/
+  /fr/assets/
     fonts/ (polices custom)
     icons/ (SVG icons)
   README.md
@@ -363,7 +363,7 @@ JavaScript:
 General:
 - Gzip compression (server)
 - Cache busting (versioning)
-- CDN pour assets statiques
+- CDN pour /fr/assets statiques
 - Monitor Core Web Vitals
 
 23. FICHIERS DE DOCUMENTATION ADDITIONNELS

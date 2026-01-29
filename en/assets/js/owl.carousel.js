@@ -2966,8 +2966,8 @@
 			'<span aria-label="' + 'Previous' + '"<i class="fa-solid fa-arrow-left"></i></span>',
 			'<span aria-label="' + 'Next' + '"<i class="fa-solid fa-arrow-right"></i></span>'
 
-			// '<span aria-label="' + 'Previous' + '"<span class="previous"></span><i class="fa-solid fa-arrow-left"></i><img src="./assets/images/banner-leftarrow.png" alt="image" class="prev-arrow img-fluid"></span>',
-			// '<span aria-label="' + 'Next' + '"<span class="next"></span><i class="fa-solid fa-arrow-right"></i><img src="./assets/images/banner-rightarrow.png" alt="image" class="next-arrow img-fluid"></span>'
+			// '<span aria-label="' + 'Previous' + '"<span class="previous"></span><i class="fa-solid fa-arrow-left"></i><img src="/fr/assets/images/banner-leftarrow.png" alt="image" class="prev-arrow img-fluid"></span>',
+			// '<span aria-label="' + 'Next' + '"<span class="next"></span><i class="fa-solid fa-arrow-right"></i><img src="/fr/assets/images/banner-rightarrow.png" alt="image" class="next-arrow img-fluid"></span>'
 			
 		],
 		

@@ -10,7 +10,7 @@
 
 #### 1. Structure de Dossiers Créée
 ```
-public/assets/
+public//fr/assets/
 ├── css/
 │   ├── components/      ✅ Créé (buttons, cards, forms, navigation, footer, carousel)
 │   ├── sections/        ✅ Créé (hero, products, blog, recipes)
@@ -93,29 +93,29 @@ docs/                    ✅ Créé
 ##### CSS (dans `<head>`)
 ```html
 <!-- Nouveaux CSS chargés EN PREMIER (override legacy) -->
-<link href="assets/css/reset.css" rel="stylesheet">
-<link href="assets/css/variables.css" rel="stylesheet">
-<link href="assets/vendor/splide/splide.min.css" rel="stylesheet">
+<link href="/fr/assets/css/reset.css" rel="stylesheet">
+<link href="/fr/assets/css/variables.css" rel="stylesheet">
+<link href="/fr/assets/vendor/splide/splide.min.css" rel="stylesheet">
 
 <!-- Legacy CSS (sera supprimé progressivement) -->
-<link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
-<link href="assets/css/style.css" rel="stylesheet">
+<link href="/fr/assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="/fr/assets/css/style.css" rel="stylesheet">
 ...
 ```
 
 ##### JavaScript (avant `</body>`)
 ```html
 <!-- Legacy scripts (gardés pour compatibilité) -->
-<script src="assets/js/jquery-3.7.1.min.js"></script>
-<script src="assets/api/global.js"></script>
+<script src="/fr/assets/js/jquery-3.7.1.min.js"></script>
+<script src="/fr/assets/api/global.js"></script>
 ...
 
 <!-- Nouvelle architecture (chargée EN DERNIER) -->
-<script src="assets/vendor/gsap/gsap.min.js"></script>
-<script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
-<script src="assets/vendor/splide/splide.min.js"></script>
-<script src="assets/js/api/api-client.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="/fr/assets/vendor/gsap/gsap.min.js"></script>
+<script src="/fr/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="/fr/assets/vendor/splide/splide.min.js"></script>
+<script src="/fr/assets/js/api/api-client.js"></script>
+<script src="/fr/assets/js/main.js"></script>
 ```
 
 **Stratégie**: Coexistence temporaire (nouveau + ancien) pour migration sans breakage
@@ -140,14 +140,14 @@ docs/                    ✅ Créé
 
 ### Fichiers Créés
 
-1. `public/assets/css/variables.css`
-2. `public/assets/css/reset.css`
-3. `public/assets/js/api/api-client.js`
-4. `public/assets/js/main.js`
-5. `public/assets/vendor/splide/splide.min.js`
-6. `public/assets/vendor/splide/splide.min.css`
-7. `public/assets/vendor/gsap/gsap.min.js`
-8. `public/assets/vendor/gsap/ScrollTrigger.min.js`
+1. `public//fr/assets/css/variables.css`
+2. `public//fr/assets/css/reset.css`
+3. `public//fr/assets/js/api/api-client.js`
+4. `public//fr/assets/js/main.js`
+5. `public//fr/assets/vendor/splide/splide.min.js`
+6. `public//fr/assets/vendor/splide/splide.min.css`
+7. `public//fr/assets/vendor/gsap/gsap.min.js`
+8. `public//fr/assets/vendor/gsap/ScrollTrigger.min.js`
 9. `docs/IMPLEMENTATION_LOG.md` (ce fichier)
 
 ### Fichiers Modifiés
