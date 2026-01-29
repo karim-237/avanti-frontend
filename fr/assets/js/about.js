@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const el = document.getElementById(id);
     if (!el) return;
 
-    el.src = src || 'assets/images/placeholder-about.jpg';
+    el.src = src || '/fr/assets/images/placeholder-about.jpg';
     el.loading = 'lazy';
   }
 });

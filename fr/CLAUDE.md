@@ -30,7 +30,7 @@ API must be running before testing the site, otherwise dynamic content will fail
 Frontend v2.0/
 ├── public/                          # All static files served directly
 │   ├── *.html                       # 15 page templates (index, products, blog, etc.)
-│   ├── assets/
+│   ├── /fr/assets/
 │   │   ├── api/
 │   │   │   └── global.js            # MAIN API integration file (~1,244 lines)
 │   │   ├── css/
@@ -53,7 +53,7 @@ Frontend v2.0/
 ## Architecture Patterns
 
 ### 1. Centralized API Communication
-All dynamic content is loaded via `assets/api/global.js`, which:
+All dynamic content is loaded via `/fr/assets/api/global.js`, which:
 - Executes on `DOMContentLoaded`
 - Fetches data from backend API endpoints
 - Updates DOM elements using querySelector/querySelectorAll
@@ -95,7 +95,7 @@ if (window.location.pathname.includes("single-blog.html")) {
 ```
 
 ### 5. No Build Process
-All assets are served as-is. No webpack, bundling, or transpilation. Changes to JS/CSS are immediately reflected.
+All /fr/assets are served as-is. No webpack, bundling, or transpilation. Changes to JS/CSS are immediately reflected.
 
 ## Key Technologies
 
@@ -131,23 +131,23 @@ All assets are served as-is. No webpack, bundling, or transpilation. Changes to 
 1. Create new HTML file in `public/` directory
 2. Copy header/footer structure from existing page
 3. Add page-specific content in main section
-4. If dynamic content needed, add fetch logic to `assets/api/global.js`
+4. If dynamic content needed, add fetch logic to `/fr/assets/api/global.js`
 5. Use conditional check: `if (window.location.pathname.includes("your-page.html"))`
 
 ### Modifying API Integration
-All API calls are in `assets/api/global.js`. Find the relevant section comment (e.g., "FETCH PRODUCTS") and modify the fetch logic.
+All API calls are in `/fr/assets/api/global.js`. Find the relevant section comment (e.g., "FETCH PRODUCTS") and modify the fetch logic.
 
 ### Updating Styles
-- **Global changes**: Edit `assets/css/style.css`
-- **Responsive breakpoints**: Edit `assets/css/responsive.css`
-- **Shop-specific**: Edit `assets/css/shop.css`
-- **Blog-specific**: Edit `assets/css/blog.css`
+- **Global changes**: Edit `/fr/assets/css/style.css`
+- **Responsive breakpoints**: Edit `/fr/assets/css/responsive.css`
+- **Shop-specific**: Edit `/fr/assets/css/shop.css`
+- **Blog-specific**: Edit `/fr/assets/css/blog.css`
 
 ### Working with Carousels
-Owl Carousel instances are configured in `assets/js/carousel.js`. Each section (testimonials, products) has separate configuration with responsive breakpoints.
+Owl Carousel instances are configured in `/fr/assets/js/carousel.js`. Each section (testimonials, products) has separate configuration with responsive breakpoints.
 
 ### Form Handling
-Contact forms use jQuery validation plugin. Main logic in `assets/js/contact-form.js`. Backend submission to PHP endpoint or API depending on form type.
+Contact forms use jQuery validation plugin. Main logic in `/fr/assets/js/contact-form.js`. Backend submission to PHP endpoint or API depending on form type.
 
 ## Design System (from .cursor/rules/systeme.mdc)
 

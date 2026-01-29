@@ -121,7 +121,7 @@
         console.error('[App] Failed to load site settings:', error);
         this.state.settings = {
           site_name: 'AVANTI',
-          logo_path: './assets/images/logo.png',
+          logo_path: '/fr/assets/images/logo.png',
           maintenance_mode: false
         };
       }

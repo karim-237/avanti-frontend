@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
       fetch('https://avanti-backend-67wk.onrender.com/api/site-settings')
         .then(res => res.ok ? res.json() : {})
         .then(settings => {
-          footerLogo.src = settings.logo_path || 'assets/images/placeholder-logo.png';
+          footerLogo.src = settings.logo_path || '/fr/assets/images/placeholder-logo.png';
         })
         .catch(() => {
-          footerLogo.src = 'assets/images/placeholder-logo.png';
+          footerLogo.src = '/fr/assets/images/placeholder-logo.png';
         });
     }
 
     // Fallback si l'image ne charge pas
     footerLogo.onerror = function() {
-      this.src = 'assets/images/placeholder-logo.png';
+      this.src = '/fr/assets/images/placeholder-logo.png';
       this.onerror = null;
     };
   }

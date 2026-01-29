@@ -172,7 +172,7 @@ function displayFeaturedPosts(posts) {
       post.image_url ||
       post.single_image ||
       post.single_image_xl ||
-      'assets/images/placeholder-blog.jpg';
+      '/fr/assets/images/placeholder-blog.jpg';
 
     return `
       <article class="blog-card">
@@ -232,7 +232,7 @@ function displayFeaturedPosts(posts) {
         post.image_url ||
         post.single_image ||
         post.single_image_xl ||
-        'assets/images/placeholder-blog.jpg';
+        '/fr/assets/images/placeholder-blog.jpg';
 
       return `
         <article class="blog-card">

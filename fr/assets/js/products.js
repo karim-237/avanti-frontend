@@ -112,11 +112,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="card">
           <div style="position: relative;">
             <img 
-              src="${product.image_path || 'assets/images/placeholder-product.jpg'}"
+              src="${product.image_path || '/fr/assets/images/placeholder-product.jpg'}"
               alt="${product.name || 'Produit'}"
               class="card__image"
               loading="lazy"
-              onerror="this.src='assets/images/placeholder-product.jpg'"
+              onerror="this.src='/fr/assets/images/placeholder-product.jpg'"
             >
             ${discount ? `
               <span style="

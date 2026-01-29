@@ -152,11 +152,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     recipesGrid.innerHTML = recipes.map(recipe => {
-      const imageUrl = recipe.image_url || recipe.image || 'assets/images/placeholder-recipe.jpg';
+      const imageUrl = recipe.image_url || recipe.image || '/fr/assets/images/placeholder-recipe.jpg';
       return `
         <div class="recipe-card">
           <div class="recipe-card__image-wrapper">
-            <img src="${imageUrl}" alt="${recipe.title || 'Recipe'}" class="recipe-card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='assets/images/placeholder-recipe.jpg';}">
+            <img src="${imageUrl}" alt="${recipe.title || 'Recipe'}" class="recipe-card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='/fr/assets/images/placeholder-recipe.jpg';}">
             ${recipe.category ? `<div class="recipe-card__badge">${recipe.category}</div>` : ''}
           </div>
           <div class="recipe-card__body">

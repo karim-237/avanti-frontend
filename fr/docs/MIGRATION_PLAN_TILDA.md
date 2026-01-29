@@ -36,7 +36,7 @@
 ### **PHASE 1 - FONDATIONS & DESIGN SYSTEM**
 
 #### 1.1 Variables CSS Tilda Complètes
-**Fichier:** `assets/css/variables.css`
+**Fichier:** `/fr/assets/css/variables.css`
 
 **Actions:**
 - ✅ Vérifier toutes les couleurs Tilda exactes:
@@ -50,7 +50,7 @@
 - ✅ Vérifier espacements (8px base: xs=4px, sm=8px, md=16px, lg=24px, xl=32px, 2xl=48px)
 
 #### 1.2 Typographie Tilda
-**Fichiers:** `assets/css/typography.css`, `assets/css/variables.css`
+**Fichiers:** `/fr/assets/css/typography.css`, `/fr/assets/css/variables.css`
 
 **Actions:**
 - ✅ Implémenter Roboto Display pour headings (serif)
@@ -62,7 +62,7 @@
 - ✅ Line heights: tight=1.2, normal=1.5, relaxed=1.6
 
 #### 1.3 Composants Réutilisables
-**Fichier:** `assets/css/components.css` (nouveau)
+**Fichier:** `/fr/assets/css/components.css` (nouveau)
 
 **Actions:**
 - ✅ Bouton PRIMARY: Jaune `#FFC107`, padding 12-16px, border-radius 8px, hover opacity 0.8
@@ -80,7 +80,7 @@
 **Actions:**
 - ✅ Ajouter dropdown sélecteur pays/région dans header (gauche du logo ou droite)
 - ✅ Style Tilda (dropdown moderne avec flags/icons)
-- ✅ JavaScript: `assets/js/country_dropdown.js` (existe déjà, adapter)
+- ✅ JavaScript: `/fr/assets/js/country_dropdown.js` (existe déjà, adapter)
 
 #### 2.2 Navigation Principale
 **Fichier:** Tous les fichiers HTML (header commun)
@@ -100,7 +100,7 @@
 **Actions:**
 - ✅ Repositionner recherche au centre du header (entre logo et navigation)
 - ✅ Style Tilda (input moderne avec icon search)
-- ✅ JavaScript: `assets/js/search.js` (existe déjà, adapter)
+- ✅ JavaScript: `/fr/assets/js/search.js` (existe déjà, adapter)
 
 #### 2.4 Icônes Utilisateur
 **Fichier:** Tous les fichiers HTML (header commun)
@@ -111,7 +111,7 @@
 - ✅ Position droite du header
 
 #### 2.5 Header Sticky Mobile
-**Fichier:** `assets/css/responsive.css`
+**Fichier:** `/fr/assets/css/responsive.css`
 
 **Actions:**
 - ✅ Header sticky au top sur mobile
@@ -123,7 +123,7 @@
 ### **PHASE 3 - HOMEPAGE (index.html)**
 
 #### 3.1 Hero Carousel
-**Fichier:** `index.html`, `assets/js/carousel.js`
+**Fichier:** `index.html`, `/fr/assets/js/carousel.js`
 
 **Actions:**
 - ✅ Remplacer carousel Bootstrap par Splide ou Owl Carousel
@@ -135,7 +135,7 @@
 - ✅ Auto-play optionnel (désactivé par défaut)
 
 #### 3.2 Section Tilda Products
-**Fichier:** `index.html`, `assets/api/global.js`
+**Fichier:** `index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Titre section: "Tilda Products"
@@ -146,7 +146,7 @@
 - ✅ Infinite scroll (wrap around)
 
 #### 3.3 Section New Flavour Recipes
-**Fichier:** `index.html`, `assets/api/global.js`
+**Fichier:** `index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Titre section: "New Flavour Recipes"
@@ -159,7 +159,7 @@
 - ✅ Hover effects: scale(1.05), opacity transition
 
 #### 3.4 Section From the Blog
-**Fichier:** `index.html`, `assets/api/global.js`
+**Fichier:** `index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Titre section: "From the Blog"
@@ -172,7 +172,7 @@
   - Lien vers single-blog.html
 
 #### 3.5 Section About Us
-**Fichier:** `index.html`, `assets/api/global.js`
+**Fichier:** `index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Image + texte descriptif
@@ -193,7 +193,7 @@
 - ✅ Lien vers Instagram sur chaque image (ouverture nouvelle fenêtre)
 
 #### 3.7 Section Newsletter
-**Fichier:** `index.html`, `assets/js/contact-form.js`
+**Fichier:** `index.html`, `/fr/assets/js/contact-form.js`
 
 **Actions:**
 - ✅ Formulaire d'inscription email
@@ -215,7 +215,7 @@
 - ✅ Tab "Shop" (lien vers products.html?view=shop)
 
 #### 4.2 Circular Category Cards
-**Fichier:** `products.html`, `assets/css/shop.css`
+**Fichier:** `products.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ Créer cercles colorés avec images de fond:
@@ -250,7 +250,7 @@
 - ✅ JavaScript: toggle entre vues
 
 #### 5.3 LEFT SIDEBAR - Category Cards
-**Fichier:** `products.html`, `assets/css/shop.css`
+**Fichier:** `products.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ Section filtres gauche (sidebar sticky)
@@ -285,14 +285,14 @@
 - ✅ Checkboxes: Caribbean, Chinese, Indian, Japanese, Mediterranean, Mexican, South African, Thai
 
 #### 5.8 LEFT SIDEBAR - Clear All Filters
-**Fichier:** `products.html`, `assets/js/filter-button.js`
+**Fichier:** `products.html`, `/fr/assets/js/filter-button.js`
 
 **Actions:**
 - ✅ Bouton "Clear All Filters"
 - ✅ JavaScript: reset tous les filtres
 
 #### 5.9 Product Grid
-**Fichier:** `products.html`, `assets/css/shop.css`
+**Fichier:** `products.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ Grid produits: 4-5 par ligne desktop, 2-3 tablet, 1 mobile
@@ -318,7 +318,7 @@
 - ✅ Dynamique selon produit chargé
 
 #### 6.2 Layout 2-Column
-**Fichier:** `product-detail.html`, `assets/css/shop.css`
+**Fichier:** `product-detail.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ **LEFT:** Product image avec background couleur (selon catégorie)
@@ -335,7 +335,7 @@
   - Product badges (No Added Sugar, etc.)
 
 #### 6.3 Related Products Carousel
-**Fichier:** `product-detail.html`, `assets/js/carousel.js`
+**Fichier:** `product-detail.html`, `/fr/assets/js/carousel.js`
 
 **Actions:**
 - ✅ Carrousel produits similaires sous le produit principal
@@ -343,7 +343,7 @@
 - ✅ Navigation arrows + pagination dots
 
 #### 6.4 Usage Suggestions & Recipes
-**Fichier:** `product-detail.html`, `assets/api/global.js`
+**Fichier:** `product-detail.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Section "Usage Suggestions"
@@ -354,7 +354,7 @@
 ### **PHASE 7 - RECIPES PAGE**
 
 #### 7.1 Hero
-**Fichier:** `recette.html`, `assets/css/blog.css`
+**Fichier:** `recette.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Hero: "Our Recipes" titre blanc
@@ -376,7 +376,7 @@
 - ✅ JavaScript: filtrage recettes en temps réel
 
 #### 7.4 Recipe Cards
-**Fichier:** `recette.html`, `assets/css/blog.css`
+**Fichier:** `recette.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Grid recipe cards avec:
@@ -399,7 +399,7 @@
 - ✅ Breadcrumb: `HOME > RECIPES > RECIPE NAME`
 
 #### 8.2 Layout 2-Column
-**Fichier:** `single-recipe.html`, `assets/css/blog.css`
+**Fichier:** `single-recipe.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ **LEFT:** Image du plat (colourful background)
@@ -422,7 +422,7 @@
 - ✅ Instructions step-by-step (numérotées)
 
 #### 8.4 Related Content
-**Fichier:** `single-recipe.html`, `assets/api/global.js`
+**Fichier:** `single-recipe.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Section "Related recipes" (carrousel)
@@ -433,7 +433,7 @@
 ### **PHASE 9 - BLOG PAGE**
 
 #### 9.1 Hero
-**Fichier:** `blog.html`, `assets/css/blog.css`
+**Fichier:** `blog.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Hero: "Tilda Blog" titre blanc
@@ -447,14 +447,14 @@
 - ✅ JavaScript: filtrage articles par catégorie
 
 #### 9.3 Featured & Popular Sections
-**Fichier:** `blog.html`, `assets/api/global.js`
+**Fichier:** `blog.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Featured section (top) - 1-2 articles mis en avant
 - ✅ Popular section - articles populaires
 
 #### 9.4 Grid Articles
-**Fichier:** `blog.html`, `assets/css/blog.css`
+**Fichier:** `blog.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Grid de cards avec:
@@ -470,7 +470,7 @@
 ### **PHASE 10 - BLOG ARTICLE PAGE**
 
 #### 10.1 Structure Complète
-**Fichier:** `single-blog.html`, `assets/css/blog.css`
+**Fichier:** `single-blog.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Breadcrumb navigation
@@ -486,7 +486,7 @@
 ### **PHASE 11 - ABOUT US PAGE**
 
 #### 11.1 Hero Image Overlay
-**Fichier:** `about.html`, `assets/css/sections/about.css` (nouveau)
+**Fichier:** `about.html`, `/fr/assets/css/sections/about.css` (nouveau)
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > ABOUT US`
@@ -507,7 +507,7 @@
 ### **PHASE 12 - FAQS PAGE**
 
 #### 12.1 Hero & Tabs
-**Fichier:** `faq.html`, `assets/css/sections/faq.css` (nouveau)
+**Fichier:** `faq.html`, `/fr/assets/css/sections/faq.css` (nouveau)
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > FAQS`
@@ -516,7 +516,7 @@
 - ✅ Tab navigation (Jump to): Company, Nutritional & Dietary, Products, Tilda Online Shop
 
 #### 12.2 Accordion FAQ Items
-**Fichier:** `faq.html`, `assets/js/faq.js` (nouveau)
+**Fichier:** `faq.html`, `/fr/assets/js/faq.js` (nouveau)
 
 **Actions:**
 - ✅ Accordion/Expandable format
@@ -529,7 +529,7 @@
 ### **PHASE 13 - CONTACT US PAGE**
 
 #### 13.1 Hero & Transition
-**Fichier:** `contact.html`, `assets/css/sections/contact.css` (nouveau)
+**Fichier:** `contact.html`, `/fr/assets/css/sections/contact.css` (nouveau)
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > ABOUT US > CONTACT US`
@@ -538,7 +538,7 @@
 - ✅ Wavy transition vers section rouge/corail `#E84C3D`
 
 #### 13.2 Form & Contact Info
-**Fichier:** `contact.html`, `assets/js/contact-form.js`
+**Fichier:** `contact.html`, `/fr/assets/js/contact-form.js`
 
 **Actions:**
 - ✅ Form fields pour message
@@ -568,7 +568,7 @@
 ### **PHASE 15 - RESPONSIVE DESIGN**
 
 #### 15.1 Mobile-First Approach
-**Fichier:** `assets/css/responsive.css`
+**Fichier:** `/fr/assets/css/responsive.css`
 
 **Actions:**
 - ✅ Base styles: Mobile (320px - 480px)
@@ -577,7 +577,7 @@
 - ✅ Font size 16px+ (iOS safe zoom)
 
 #### 15.2 Tablet Breakpoints
-**Fichier:** `assets/css/responsive.css`
+**Fichier:** `/fr/assets/css/responsive.css`
 
 **Actions:**
 - ✅ Breakpoint 768px: 2 colonnes pour cartes
@@ -585,7 +585,7 @@
 - ✅ Carousels: 2-3 items par vue
 
 #### 15.3 Desktop Breakpoints
-**Fichier:** `assets/css/responsive.css`
+**Fichier:** `/fr/assets/css/responsive.css`
 
 **Actions:**
 - ✅ Breakpoint 1024px: 3-4 colonnes
@@ -598,7 +598,7 @@
 ### **PHASE 16 - CAROUSELS & INTERACTIONS**
 
 #### 16.1 Hero Carousel
-**Fichier:** `assets/js/carousel.js` ou utiliser Splide
+**Fichier:** `/fr/assets/js/carousel.js` ou utiliser Splide
 
 **Actions:**
 - ✅ 1 slide visible à la fois
@@ -609,7 +609,7 @@
 - ✅ Auto-play optionnel
 
 #### 16.2 Product Carousel
-**Fichier:** `assets/js/carousel.js`
+**Fichier:** `/fr/assets/js/carousel.js`
 
 **Actions:**
 - ✅ 4-5 produits desktop, 2-3 tablet, 1 mobile
@@ -622,7 +622,7 @@
 ### **PHASE 17 - JAVASCRIPT & API**
 
 #### 17.1 API Homepage
-**Fichier:** `assets/api/global.js`
+**Fichier:** `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Mettre à jour pour nouvelles sections:
@@ -640,7 +640,7 @@
   - `/api/instagram-feed` (ou intégration API Instagram)
 
 #### 17.2 Filtres Produits
-**Fichier:** `assets/js/filter-button.js`, `assets/api/global.js`
+**Fichier:** `/fr/assets/js/filter-button.js`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Logique de filtrage côté client (ou API)
@@ -649,7 +649,7 @@
 - ✅ Compteur résultats affiché
 
 #### 17.3 Tabs Functionality
-**Fichier:** `assets/js/main.js` ou nouveau `assets/js/tabs.js`
+**Fichier:** `/fr/assets/js/main.js` ou nouveau `/fr/assets/js/tabs.js`
 
 **Actions:**
 - ✅ Tabs "Shop" vs "All Products" (products.html)
@@ -681,7 +681,7 @@
 - ✅ `aria-expanded` pour dropdowns/accordions
 
 #### 18.3 Color Contrast & Keyboard
-**Fichier:** `assets/css/style.css`, `assets/css/components.css`
+**Fichier:** `/fr/assets/css/style.css`, `/fr/assets/css/components.css`
 
 **Actions:**
 - ✅ Color contrast 4.5:1 pour body text
