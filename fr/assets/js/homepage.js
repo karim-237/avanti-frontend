@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return res.json();
       })
       .then(banners => {
-        console.log('Bannières récupérées FR :', banners); // <-- LOG ajouté
+        
         const list = document.getElementById('heroCarouselList');
         if (!list) return;
         
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
       .catch(err => console.error('Error loading hero banners:', err));
   }
 
-  function initTildaProducts() {
+    function initTildaProducts() {
     Promise.all([
       fetch(`${API_BASE}/product-categories`).then(r => {
         if (!r.ok || r.headers.get('content-type')?.includes('text/html')) return { data: [] };
@@ -74,82 +74,75 @@ document.addEventListener('DOMContentLoaded', function() {
     ]).then(([categoriesRes, productsRes]) => {
       const categories = Array.isArray(categoriesRes) ? categoriesRes : (categoriesRes?.data || []);
       const products = Array.isArray(productsRes) ? productsRes : (productsRes?.data || []);
+      
+      // 1. Remplissage des catégories
       const categoryGrid = document.getElementById('categoryGrid');
-      if (categoryGrid) {
-        const mainCategories = categories.slice(0, 4);
-        if (mainCategories.length === 0) {
-          categoryGrid.innerHTML = '';
-        } else {
-          categoryGrid.innerHTML = mainCategories.map(cat => {
-            const imageUrl = cat.image_path || cat.image_url || cat.category_image || cat.icon_url || cat.image || '';
-            const fallbackSvg = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3ERiz%3C/text%3E%3C/svg%3E';
+      if (categoryGrid && categories.length > 0) {
+          categoryGrid.innerHTML = categories.slice(0, 4).map(cat => {
+            const imageUrl = cat.image_path || cat.image_url || cat.category_image || '';
+            const fallbackSvg = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3ERiz%3C/text%3E%3C/svg%3E';
             return `
             <a href="/fr/products.html?category=${cat.slug || ''}" class="category-card">
               <div class="category-card__image-wrapper">
-                <img src="${imageUrl || fallbackSvg}" alt="${cat.name || 'Category'}" class="category-card__image" loading="lazy" onerror="if(this.src.indexOf('data:image/svg')===-1){this.src='${fallbackSvg}';this.onerror=null;}">
+                <img src="${imageUrl || fallbackSvg}" alt="${cat.name || 'Category'}" class="category-card__image" loading="lazy">
               </div>
               <h3 class="category-card__title">${cat.name || 'Category'}</h3>
-            </a>
-          `;
+            </a>`;
           }).join('');
-        }
       }
 
+      // 2. Remplissage des produits
       const productsList = document.getElementById('productsCarouselList');
       if (productsList) {
-        if (!Array.isArray(products) || products.length === 0) {
-          productsList.innerHTML = '<li class="splide__slide"><p class="text-center">Aucun produit disponible pour le moment.</p></li>';
+        if (products.length === 0) {
+          productsList.innerHTML = '<li class="splide__slide"><p class="text-center">Aucun produit disponible.</p></li>';
           return;
         }
 
         productsList.innerHTML = products.map(product => {
           const discount = product.original_price && product.price < product.original_price 
-            ? Math.round(((product.original_price - product.price) / product.original_price) * 100)
-            : null;
+            ? Math.round(((product.original_price - product.price) / product.original_price) * 100) : null;
           
           return `
           <li class="splide__slide">
             <div class="card">
-              <div style="position: relative;">
-                <img src="${product.image_path || '/fr/assets/images/placeholder-product.jpg'}" alt="${product.name || 'Product'}" class="card__image" loading="lazy" onerror="if(this.src.indexOf('placeholder')===-1){this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3EImage%3C/text%3E%3C/svg%3E';this.onerror=null;}">
-                ${discount ? `<span style="position: absolute; top: 12px; right: 12px; background-color: var(--color-accent, #FFC107); color: var(--color-black, #000); padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">-${discount}%</span>` : ''}
-              </div>
+              <img src="${product.image_path || '/fr/assets/images/placeholder-product.jpg'}" alt="${product.name}" class="card__image">
               <div class="card__body">
-                <span style="display: inline-block; font-size: 12px; color: var(--color-text-light, #666); margin-bottom: 8px;">${product.category || 'Produit'}</span>
-                <h4 class="card__title">${product.name || 'Product'}</h4>
-                <p class="card__text">${product.short_description || (product.description ? product.description.substring(0, 100) + '...' : '')}</p>
-                <div class="price">
-                  ${product.original_price && product.price < product.original_price ? 
-                    `<span class="price-old"></span>` : ''}
-                  <span class="price-new"></span>
-                </div>
-                <a href="/fr/product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm" style="margin-top: auto;">Voir le produit</a> 
+                <h4 class="card__title">${product.name}</h4>
+                <div class="price"><span class="price-new">${product.price} FCFA</span></div>
+                <a href="/fr/product-detail.html?slug=${product.slug}" class="btn btn--primary btn--sm">Voir le produit</a> 
               </div>
             </div>
-          </li>
-        `;
+          </li>`;
         }).join('');
 
-        if (typeof Splide !== 'undefined') {
-          new Splide('#productsCarousel', {
-            type: 'loop',
-            perPage: 4,
-            perMove: 1,
-            gap: '1.5rem',
-            pagination: false,
-            arrows: true,
-            speed: 600,
-            easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
-            breakpoints: {
-              1024: { perPage: 3, gap: '1rem' },
-              768: { perPage: 2, gap: '1rem' },
-              640: { perPage: 1, gap: '0.5rem' }
-            }
-          }).mount();
-        }
+        // --- CORRECTION SPLIDE ICI ---
+        // On utilise un setTimeout pour laisser au navigateur le temps d'injecter le HTML
+        setTimeout(() => {
+          const carouselContainer = document.querySelector('#productsCarousel');
+          // On vérifie que Splide existe ET que la structure HTML (track) est présente
+          if (typeof Splide !== 'undefined' && carouselContainer && carouselContainer.querySelector('.splide__track')) {
+            new Splide('#productsCarousel', {
+              type: 'loop',
+              perPage: 4,
+              perMove: 1,
+              gap: '1.5rem',
+              pagination: false,
+              arrows: true,
+              breakpoints: {
+                1024: { perPage: 3 },
+                768: { perPage: 2 },
+                640: { perPage: 1 }
+              }
+            }).mount();
+          } else {
+            console.warn("[Splide] Structure non trouvée pour #productsCarousel");
+          }
+        }, 50); 
       }
     }).catch(err => console.error('Error loading products:', err));
   }
+
 
   function initRecipes() {
     fetch(`${API_BASE}/recipes?featured=true&limit=3`)
