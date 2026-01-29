@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return res.json();
       })
       .then(banners => {
+        console.log('Bannières récupérées FR :', banners); // <-- LOG ajouté
         const list = document.getElementById('heroCarouselList');
         if (!list) return;
         
