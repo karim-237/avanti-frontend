@@ -91,7 +91,7 @@ $(document).ready(function () {
         const image = item.image || "";
 
         return `
-          <a href="/single-recipe.html?slug=${slug}" class="search-result-item" style="
+          <a href="//en/single-recipe.html?slug=${slug}" class="search-result-item" style="
             display:flex;
             align-items:center;
             padding:6px 12px;
@@ -197,7 +197,7 @@ async function loadLatestRecipes(limit = 5) {
                   style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
                 >
                 <div style="text-align: left; flex: 1;">
-                  <a href="single-recipe.html?slug=${r.slug}" class="fw-bold d-block">
+                  <a href="/en/single-recipe.html?slug=${r.slug}" class="fw-bold d-block">
                     ${r.title}
                   </a>
                   <small class="text-muted">

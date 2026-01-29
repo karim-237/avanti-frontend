@@ -1,5 +1,5 @@
 // =======================================================
-// RECIPE COMMENTS (single-blog.html)
+// RECIPE COMMENTS (/en/single-blog.html)
 // =======================================================
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ recipe-comments.js chargé");

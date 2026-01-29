@@ -1,5 +1,5 @@
 // =======================================================
-// BLOG COMMENTS (single-blog.html)
+// BLOG COMMENTS (/en/single-blog.html)
 // =======================================================
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ blog-comments.js chargé");

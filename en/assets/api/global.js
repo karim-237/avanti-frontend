@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </ul>
 
                 <h4>
-                  <a href="single-blog.html?slug=${blog.slug}">
+                  <a href="/en/single-blog.html?slug=${blog.slug}">
                     ${blog.title}
                   </a>
                 </h4>
@@ -465,7 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p>${blog.short_description || ""}</p>
 
                 <div class="generic-btn2">
-                  <a href="single-blog.html?slug=${blog.slug}">
+                  <a href="/en/single-blog.html?slug=${blog.slug}">
                     Read more
                   </a>
                 </div>
@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
         tab.classList.add("active");
 
         // Reset l'URL (on enlève ?tag)
-        history.pushState(null, "", "blog.html");
+        history.pushState(null, "", "/en/blog.html");
 
         // Charger les blogs par catégorie
         loadBlogs(slug, null);
@@ -537,12 +537,12 @@ document.addEventListener("DOMContentLoaded", () => {
 const sidebarTagsEl = document.querySelector(".box4 ul.tag");
 
 if (sidebarTagsEl) {
-  const isSingleBlog = window.location.pathname.includes("single-blog.html");
-  const isSingleRecipe = window.location.pathname.includes("single-recipe.html");
+  const isSingleBlog = window.location.pathname.includes("/en/single-blog.html");
+  const isSingleRecipe = window.location.pathname.includes("/en/single-recipe.html");
 
   const baseLink = isSingleRecipe
-    ? "recette.html"
-    : "blog.html"; // fallback par défaut blog
+    ? "/en/recette.html"
+    : "/en/blog.html"; // fallback par défaut blog
 
   fetch("https://avanti-backend-67wk.onrender.com/api/tags/en")
     .then(res => {
@@ -603,7 +603,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       tab.textContent = category.name;
 
       // Mettre à jour le lien pour filtrer les blogs
-      tab.href = `blog.html?category=${category.slug}`;
+      tab.href = `/en/blog.html?category=${category.slug}`;
     });
   } catch (err) {
     console.error("Erreur récupération catégories de blog :", err);
@@ -613,7 +613,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 // =======================================================
-// HOME PAGE – PRODUITS (index.html)
+// HOME PAGE – PRODUITS (/en/index.html)
 // =======================================================
 document.addEventListener("DOMContentLoaded", async () => {
   const productTabs = document.querySelectorAll("#productTabs .nav-link");
@@ -641,7 +641,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       tab.dataset.slug = category.slug;
 
       // Mettre le href pour que l'URL soit correcte
-      tab.href = `index.html?category=${category.slug}`;
+      tab.href = `/en/index.html?category=${category.slug}`;
 
       // Activer le premier tab par défaut
       if (index === 0) tab.classList.add("active");
@@ -686,7 +686,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (title) title.textContent = product.name;
 
           const link = box.querySelector(".lower_content a");
-          if (link) link.href = `product-detail.html?slug=${product.slug}`;
+          if (link) link.href = `/en/product-detail.html?slug=${product.slug}`;
 
           const priceBox = box.querySelector(".price");
           if (priceBox) {
@@ -711,7 +711,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       loadProductsByCategory(tab.dataset.slug);
 
       // Mettre l'URL à jour sans recharger la page
-      history.replaceState(null, "", `index.html?category=${tab.dataset.slug}`);
+      history.replaceState(null, "", `/en/index.html?category=${tab.dataset.slug}`);
     });
   });
 
@@ -731,7 +731,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 // =======================================================
-// PAGE DETAILS – PRODUITS (product-detail.html)
+// PAGE DETAILS – PRODUITS (/en/product-detail.html)
 // =======================================================
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -813,8 +813,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
 
       // Lien vers la page produit
-      const linkEl = box.querySelector(".image .icon a[href*='contact.html'], .image .icon a[href*='index.html']");
-      if (linkEl) linkEl.href = `product-detail.html?slug=${product.slug}`;
+      const linkEl = box.querySelector(".image .icon a[href*='/en/contact.html'], .image .icon a[href*='/en/index.html']");
+      if (linkEl) linkEl.href = `/en/product-detail.html?slug=${product.slug}`;
     });
   } catch (err) {
     console.error("Erreur Loading Autres Produits :", err);
@@ -851,7 +851,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       tab.textContent = category.name;
       tab.dataset.slug = category.slug; // stocker le slug pour filtrage
-      tab.href = `recette.html?category=${category.slug}`; // lien (optionnel)
+      tab.href = `/en/recette.html?category=${category.slug}`; // lien (optionnel)
     });
 
     // 3️⃣ Ajouter le click handler pour filtrer les recettes
@@ -870,7 +870,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         await loadRecipesByCategory(category.slug);
 
         // Mettre à jour l'URL
-        history.replaceState(null, "", `recette.html?category=${category.slug}`);
+        history.replaceState(null, "", `/en/recette.html?category=${category.slug}`);
       });
     });
 
@@ -926,7 +926,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               </ul>
 
               <h4>
-                <a href="single-recipe.html?slug=${recipe.slug}" class="button text-decoration-none">
+                <a href="/en/single-recipe.html?slug=${recipe.slug}" class="button text-decoration-none">
                   ${recipe.title}
                 </a>
               </h4>
@@ -934,7 +934,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               <p>${recipe.short_description || ""}</p>
 
               <div class="generic-btn2">
-                <a href="single-recipe.html?slug=${recipe.slug}">
+                <a href="/en/single-recipe.html?slug=${recipe.slug}">
                   See the recipe
                 </a>
               </div>
@@ -952,7 +952,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 // =======================================================
-// SINGLE RECIPE PAGE (single-recipe.html)
+// SINGLE RECIPE PAGE (/en/single-recipe.html)
 // =======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1011,7 +1011,7 @@ document.addEventListener("DOMContentLoaded", () => {
           tags.forEach(tag => {
             recipeTagsEl.innerHTML += `
         <li>
-          <a href="recette.html?tag=${tag.slug}" class="button text-decoration-none">
+          <a href="/en/recette.html?tag=${tag.slug}" class="button text-decoration-none">
             ${tag.name}
           </a>
         </li>
@@ -1091,7 +1091,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <li class="mb-3">
                 <div class="feed">
                   <img src="${r.image}" class="img-fluid" alt="${r.title}">
-                  <a href="single-recipe.html?slug=${r.slug}">${r.title}</a>
+                  <a href="/en/single-recipe.html?slug=${r.slug}">${r.title}</a>
                 </div>
               </li>
             `;

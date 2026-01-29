@@ -4,7 +4,7 @@ $(document).ready(function () {
   // =============================
   // 1️⃣ Variables principales
   // =============================
-  const searchInput = $('#searchblog'); // input spécifique à single-blog.html
+  const searchInput = $('#searchblog'); // input spécifique à /en/single-blog.html
   let resultsDropdown = null;
 
   // =============================
@@ -78,7 +78,7 @@ $(document).ready(function () {
         const slug = item.slug || '';
         const image = item.image || '';
         return `
-          <a href="/single-blog.html?slug=${slug}" class="search-result-item" style="
+          <a href="//en/single-blog.html?slug=${slug}" class="search-result-item" style="
             display:flex; align-items:center; padding:6px 12px; text-decoration:none; color:#333; border-bottom:1px solid #eee;
             transition: background 0.2s;
           ">

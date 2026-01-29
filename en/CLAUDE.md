@@ -89,7 +89,7 @@ if (logo) logo.src = settings.logo_path;
 ### 4. Page-Specific Logic in global.js
 Code is organized by page type with conditional execution:
 ```javascript
-if (window.location.pathname.includes("single-blog.html")) {
+if (window.location.pathname.includes("/en/single-blog.html")) {
   // Blog-specific logic here
 }
 ```
@@ -109,21 +109,21 @@ All /fr/assets are served as-is. No webpack, bundling, or transpilation. Changes
 ## Page Types
 
 ### Core Pages
-- `index.html` - Homepage with hero carousel, featured products, testimonials
-- `products.html` - Product catalog with category filtering
-- `product-detail.html` - Individual product (uses `?slug=` parameter)
-- `blog.html` - Blog listing with category tabs
-- `single-blog.html` - Blog post detail (uses `?slug=` parameter)
-- `recette.html` - Recipe listings by category
-- `single-recipe.html` - Recipe detail (uses `?slug=` parameter)
-- `about.html` - Company information with statistics
-- `contact.html` - Contact form with validation
+- `/en/index.html` - Homepage with hero carousel, featured products, testimonials
+- `/en/products.html` - Product catalog with category filtering
+- `/en/product-detail.html` - Individual product (uses `?slug=` parameter)
+- `/en/blog.html` - Blog listing with category tabs
+- `/en/single-blog.html` - Blog post detail (uses `?slug=` parameter)
+- `/en/recette.html` - Recipe listings by category
+- `/en/single-recipe.html` - Recipe detail (uses `?slug=` parameter)
+- `/en/about.html` - Company information with statistics
+- `/en/contact.html` - Contact form with validation
 
 ### Utility Pages
 - `coming-soon.html` - Maintenance mode redirect target
 - `404.html` - Error page
-- `faq.html` - Frequently asked questions
-- Policy pages: `privacy-policy.html`, `cookie-policy.html`, `term-of-use.html`
+- `/en/faq.html` - Frequently asked questions
+- Policy pages: `/en/privacy-policy.html`, `/en/cookie-policy.html`, `/en/term-of-use.html`
 
 ## Common Development Tasks
 

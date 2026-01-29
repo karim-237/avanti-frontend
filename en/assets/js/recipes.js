@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3 class="recipe-card__title">${recipe.title || 'Recipe'}</h3>
             <p class="recipe-card__description">${recipe.short_description || recipe.description || ''}</p>
             <div class="recipe-card__actions">
-              <a href="single-recipe.html?slug=${recipe.slug}" class="btn btn--secondary btn--sm">See the recipe</a>
+              <a href="/en/single-recipe.html?slug=${recipe.slug}" class="btn btn--secondary btn--sm">See the recipe</a>
             </div>
           </div>
         </div>

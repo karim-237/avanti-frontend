@@ -191,7 +191,7 @@ FOOTER:
 15. ARBORESCENCE DU PROJET
 
 tilda-website/
-  index.html
+  /en/index.html
   css/
     reset.css (normalize styles)
     variables.css (CSS custom properties)

@@ -88,7 +88,7 @@ docs/                    ✅ Créé
 - ✅ Performance GPU optimisée
 - ✅ Compatible tous navigateurs
 
-#### 4. Intégration dans index.html
+#### 4. Intégration dans /en/index.html
 
 ##### CSS (dans `<head>`)
 ```html
@@ -126,7 +126,7 @@ docs/                    ✅ Créé
 - ✅ Fichiers CSS valides (pas de syntax errors)
 - ✅ Fichiers JS valides
 - ✅ Vendors téléchargés complètement
-- ✅ index.html modifié sans casser structure
+- ✅ /en/index.html modifié sans casser structure
 - ✅ Backup créé (index-backup.html)
 
 ### Métriques
@@ -152,7 +152,7 @@ docs/                    ✅ Créé
 
 ### Fichiers Modifiés
 
-1. `public/index.html` - Intégration nouveaux CSS/JS (backup: index-backup.html)
+1. `public//en/index.html` - Intégration nouveaux CSS/JS (backup: index-backup.html)
 
 ### Prochaine Phase
 

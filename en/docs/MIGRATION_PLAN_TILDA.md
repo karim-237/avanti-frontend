@@ -87,9 +87,9 @@
 
 **Actions:**
 - ✅ Remplacer menu actuel par:
-  - **Shop** (lien vers products.html)
-  - **Product Ranges** (lien vers products.html#ranges)
-  - **Recipes** (lien vers recette.html)
+  - **Shop** (lien vers /en/products.html)
+  - **Product Ranges** (lien vers /en/products.html#ranges)
+  - **Recipes** (lien vers /en/recette.html)
   - **Discover** (nouveau - page découverte/blog)
   - **Rice Sustainability** (nouveau - page sustainability)
 - ✅ Style navigation Tilda (hover effects, active states)
@@ -120,10 +120,10 @@
 
 ---
 
-### **PHASE 3 - HOMEPAGE (index.html)**
+### **PHASE 3 - HOMEPAGE (/en/index.html)**
 
 #### 3.1 Hero Carousel
-**Fichier:** `index.html`, `/fr/assets/js/carousel.js`
+**Fichier:** `/en/index.html`, `/fr/assets/js/carousel.js`
 
 **Actions:**
 - ✅ Remplacer carousel Bootstrap par Splide ou Owl Carousel
@@ -135,7 +135,7 @@
 - ✅ Auto-play optionnel (désactivé par défaut)
 
 #### 3.2 Section Tilda Products
-**Fichier:** `index.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Titre section: "Tilda Products"
@@ -146,7 +146,7 @@
 - ✅ Infinite scroll (wrap around)
 
 #### 3.3 Section New Flavour Recipes
-**Fichier:** `index.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Titre section: "New Flavour Recipes"
@@ -159,7 +159,7 @@
 - ✅ Hover effects: scale(1.05), opacity transition
 
 #### 3.4 Section From the Blog
-**Fichier:** `index.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Titre section: "From the Blog"
@@ -169,18 +169,18 @@
   - Titre article
   - Date publication (format French)
   - Description courte
-  - Lien vers single-blog.html
+  - Lien vers /en/single-blog.html
 
 #### 3.5 Section About Us
-**Fichier:** `index.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/index.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Image + texte descriptif
 - ✅ Statistiques (années d'expérience, satisfaction, produits vendus)
-- ✅ Lien "Lire Plus" vers about.html
+- ✅ Lien "Lire Plus" vers /en/about.html
 
 #### 3.6 Section Instagram
-**Fichier:** `index.html`
+**Fichier:** `/en/index.html`
 
 **Actions:**
 - ✅ Grid 4x4 images (16 images total)
@@ -193,7 +193,7 @@
 - ✅ Lien vers Instagram sur chaque image (ouverture nouvelle fenêtre)
 
 #### 3.7 Section Newsletter
-**Fichier:** `index.html`, `/fr/assets/js/contact-form.js`
+**Fichier:** `/en/index.html`, `/fr/assets/js/contact-form.js`
 
 **Actions:**
 - ✅ Formulaire d'inscription email
@@ -207,15 +207,15 @@
 ### **PHASE 4 - PRODUCT RANGES PAGE**
 
 #### 4.1 Hero & Tab Selector
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Hero titre: "Tilda Products"
 - ✅ Tab selector: "All Products" actif (par défaut)
-- ✅ Tab "Shop" (lien vers products.html?view=shop)
+- ✅ Tab "Shop" (lien vers /en/products.html?view=shop)
 
 #### 4.2 Circular Category Cards
-**Fichier:** `products.html`, `/fr/assets/css/shop.css`
+**Fichier:** `/en/products.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ Créer cercles colorés avec images de fond:
@@ -232,17 +232,17 @@
 
 ---
 
-### **PHASE 5 - SHOP PAGE (products.html avec filtres)**
+### **PHASE 5 - SHOP PAGE (/en/products.html avec filtres)**
 
 #### 5.1 Breadcrumb Navigation
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > PRODUCTS > SHOP ALL`
 - ✅ Style Tilda (liens cliquables, séparateur >)
 
 #### 5.2 Hero & Tab Selector
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Hero titre: "Tilda Products"
@@ -250,7 +250,7 @@
 - ✅ JavaScript: toggle entre vues
 
 #### 5.3 LEFT SIDEBAR - Category Cards
-**Fichier:** `products.html`, `/fr/assets/css/shop.css`
+**Fichier:** `/en/products.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ Section filtres gauche (sidebar sticky)
@@ -258,7 +258,7 @@
 - ✅ Style cards Tilda (hover effects)
 
 #### 5.4 LEFT SIDEBAR - Type Filter
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Checkboxes: Basmati, Easy-cook, Jasmine, Long grain, Medium grain, Pilau, Wholegrain, Wild
@@ -266,33 +266,33 @@
 - ✅ JavaScript: filtrage produits
 
 #### 5.5 LEFT SIDEBAR - Dietary Filter
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Checkboxes: Plant Based, Dairy-free, Gluten Free, High Fibre, Lactose-free, Vegan, Vegetarian
 - ✅ Icons pour chaque option si disponible
 
 #### 5.6 LEFT SIDEBAR - Flavour Filter
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Checkboxes: Coconut, Curry, Egg, Herb, Lime, Mexican, Mushroom, Plain, Spicy, Sweet, Tomato, Vegetable
 
 #### 5.7 LEFT SIDEBAR - Suitable Cuisine
-**Fichier:** `products.html`
+**Fichier:** `/en/products.html`
 
 **Actions:**
 - ✅ Checkboxes: Caribbean, Chinese, Indian, Japanese, Mediterranean, Mexican, South African, Thai
 
 #### 5.8 LEFT SIDEBAR - Clear All Filters
-**Fichier:** `products.html`, `/fr/assets/js/filter-button.js`
+**Fichier:** `/en/products.html`, `/fr/assets/js/filter-button.js`
 
 **Actions:**
 - ✅ Bouton "Clear All Filters"
 - ✅ JavaScript: reset tous les filtres
 
 #### 5.9 Product Grid
-**Fichier:** `products.html`, `/fr/assets/css/shop.css`
+**Fichier:** `/en/products.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ Grid produits: 4-5 par ligne desktop, 2-3 tablet, 1 mobile
@@ -311,14 +311,14 @@
 ### **PHASE 6 - PRODUCT DETAIL PAGE**
 
 #### 6.1 Breadcrumb
-**Fichier:** `product-detail.html`
+**Fichier:** `/en/product-detail.html`
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > PRODUCTS > PRODUCT NAME`
 - ✅ Dynamique selon produit chargé
 
 #### 6.2 Layout 2-Column
-**Fichier:** `product-detail.html`, `/fr/assets/css/shop.css`
+**Fichier:** `/en/product-detail.html`, `/fr/assets/css/shop.css`
 
 **Actions:**
 - ✅ **LEFT:** Product image avec background couleur (selon catégorie)
@@ -335,7 +335,7 @@
   - Product badges (No Added Sugar, etc.)
 
 #### 6.3 Related Products Carousel
-**Fichier:** `product-detail.html`, `/fr/assets/js/carousel.js`
+**Fichier:** `/en/product-detail.html`, `/fr/assets/js/carousel.js`
 
 **Actions:**
 - ✅ Carrousel produits similaires sous le produit principal
@@ -343,7 +343,7 @@
 - ✅ Navigation arrows + pagination dots
 
 #### 6.4 Usage Suggestions & Recipes
-**Fichier:** `product-detail.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/product-detail.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Section "Usage Suggestions"
@@ -354,7 +354,7 @@
 ### **PHASE 7 - RECIPES PAGE**
 
 #### 7.1 Hero
-**Fichier:** `recette.html`, `/fr/assets/css/blog.css`
+**Fichier:** `/en/recette.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Hero: "Our Recipes" titre blanc
@@ -362,21 +362,21 @@
 - ✅ Description: "Recipe ideas and inspiration for a world full of flavour"
 
 #### 7.2 Tab Selector
-**Fichier:** `recette.html`
+**Fichier:** `/en/recette.html`
 
 **Actions:**
 - ✅ Tabs: "Recipes" (actif) vs "Meal Planner"
 - ✅ JavaScript: toggle entre vues
 
 #### 7.3 Search Bar
-**Fichier:** `recette.html`
+**Fichier:** `/en/recette.html`
 
 **Actions:**
 - ✅ Search bar: "Search for ingredients, flavours, cuisines and more"
 - ✅ JavaScript: filtrage recettes en temps réel
 
 #### 7.4 Recipe Cards
-**Fichier:** `recette.html`, `/fr/assets/css/blog.css`
+**Fichier:** `/en/recette.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Grid recipe cards avec:
@@ -393,13 +393,13 @@
 ### **PHASE 8 - RECIPE SINGLE PAGE**
 
 #### 8.1 Breadcrumb
-**Fichier:** `single-recipe.html`
+**Fichier:** `/en/single-recipe.html`
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > RECIPES > RECIPE NAME`
 
 #### 8.2 Layout 2-Column
-**Fichier:** `single-recipe.html`, `/fr/assets/css/blog.css`
+**Fichier:** `/en/single-recipe.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ **LEFT:** Image du plat (colourful background)
@@ -415,14 +415,14 @@
   - Section "This recipe uses:" avec produits Tilda (liens vers produits)
 
 #### 8.3 Ingredients & Instructions
-**Fichier:** `single-recipe.html`
+**Fichier:** `/en/single-recipe.html`
 
 **Actions:**
 - ✅ Liste ingrédients (format liste)
 - ✅ Instructions step-by-step (numérotées)
 
 #### 8.4 Related Content
-**Fichier:** `single-recipe.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/single-recipe.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Section "Related recipes" (carrousel)
@@ -433,28 +433,28 @@
 ### **PHASE 9 - BLOG PAGE**
 
 #### 9.1 Hero
-**Fichier:** `blog.html`, `/fr/assets/css/blog.css`
+**Fichier:** `/en/blog.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Hero: "Tilda Blog" titre blanc
 - ✅ Background orange/rouge `#E84C3D`
 
 #### 9.2 Tab Navigation Categories
-**Fichier:** `blog.html`
+**Fichier:** `/en/blog.html`
 
 **Actions:**
 - ✅ Tabs: All, Campaigns, Cooking Inspiration, Cuisine Guide, Culture Guide, Equipment Guide, Health Dietary, Ingredient Guide, Kids
 - ✅ JavaScript: filtrage articles par catégorie
 
 #### 9.3 Featured & Popular Sections
-**Fichier:** `blog.html`, `/fr/assets/api/global.js`
+**Fichier:** `/en/blog.html`, `/fr/assets/api/global.js`
 
 **Actions:**
 - ✅ Featured section (top) - 1-2 articles mis en avant
 - ✅ Popular section - articles populaires
 
 #### 9.4 Grid Articles
-**Fichier:** `blog.html`, `/fr/assets/css/blog.css`
+**Fichier:** `/en/blog.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Grid de cards avec:
@@ -470,7 +470,7 @@
 ### **PHASE 10 - BLOG ARTICLE PAGE**
 
 #### 10.1 Structure Complète
-**Fichier:** `single-blog.html`, `/fr/assets/css/blog.css`
+**Fichier:** `/en/single-blog.html`, `/fr/assets/css/blog.css`
 
 **Actions:**
 - ✅ Breadcrumb navigation
@@ -486,7 +486,7 @@
 ### **PHASE 11 - ABOUT US PAGE**
 
 #### 11.1 Hero Image Overlay
-**Fichier:** `about.html`, `/fr/assets/css/sections/about.css` (nouveau)
+**Fichier:** `/en/about.html`, `/fr/assets/css/sections/about.css` (nouveau)
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > ABOUT US`
@@ -495,7 +495,7 @@
   - "We're on a mission to embrace life..."
 
 #### 11.2 Content Sections
-**Fichier:** `about.html`
+**Fichier:** `/en/about.html`
 
 **Actions:**
 - ✅ Texte description full width
@@ -507,7 +507,7 @@
 ### **PHASE 12 - FAQS PAGE**
 
 #### 12.1 Hero & Tabs
-**Fichier:** `faq.html`, `/fr/assets/css/sections/faq.css` (nouveau)
+**Fichier:** `/en/faq.html`, `/fr/assets/css/sections/faq.css` (nouveau)
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > FAQS`
@@ -516,7 +516,7 @@
 - ✅ Tab navigation (Jump to): Company, Nutritional & Dietary, Products, Tilda Online Shop
 
 #### 12.2 Accordion FAQ Items
-**Fichier:** `faq.html`, `/fr/assets/js/faq.js` (nouveau)
+**Fichier:** `/en/faq.html`, `/fr/assets/js/faq.js` (nouveau)
 
 **Actions:**
 - ✅ Accordion/Expandable format
@@ -529,7 +529,7 @@
 ### **PHASE 13 - CONTACT US PAGE**
 
 #### 13.1 Hero & Transition
-**Fichier:** `contact.html`, `/fr/assets/css/sections/contact.css` (nouveau)
+**Fichier:** `/en/contact.html`, `/fr/assets/css/sections/contact.css` (nouveau)
 
 **Actions:**
 - ✅ Breadcrumb: `HOME > ABOUT US > CONTACT US`
@@ -538,7 +538,7 @@
 - ✅ Wavy transition vers section rouge/corail `#E84C3D`
 
 #### 13.2 Form & Contact Info
-**Fichier:** `contact.html`, `/fr/assets/js/contact-form.js`
+**Fichier:** `/en/contact.html`, `/fr/assets/js/contact-form.js`
 
 **Actions:**
 - ✅ Form fields pour message
@@ -652,8 +652,8 @@
 **Fichier:** `/fr/assets/js/main.js` ou nouveau `/fr/assets/js/tabs.js`
 
 **Actions:**
-- ✅ Tabs "Shop" vs "All Products" (products.html)
-- ✅ Tabs "Recipes" vs "Meal Planner" (recette.html)
+- ✅ Tabs "Shop" vs "All Products" (/en/products.html)
+- ✅ Tabs "Recipes" vs "Meal Planner" (/en/recette.html)
 - ✅ Tabs Blog categories (blog.html)
 - ✅ Smooth transition entre tabs
 

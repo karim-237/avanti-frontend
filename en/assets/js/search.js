@@ -134,11 +134,11 @@ $(document).ready(function () {
   function getDetailUrl(type, slug) {
     switch (type) {
       case 'product':
-        return `/product-detail.html?slug=${slug}`;
+        return `//en/product-detail.html?slug=${slug}`;
       case 'blog':
-        return `/single-blog.html?slug=${slug}`;
+        return `//en/single-blog.html?slug=${slug}`;
       case 'recipe':
-        return `/single-recipe.html?slug=${slug}`;
+        return `//en/single-recipe.html?slug=${slug}`;
       default:
         return '#';
     }
