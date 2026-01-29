@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title id="site-title">Durabilité du Riz - AVANTI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-icon-180x180.png">
+    <link id="favicon" rel="icon" type="image/png" sizes="192x192">
+    <link id="favicon" rel="icon" type="image/png">
+    <link id="favicon" rel="icon" type="image/png" sizes="96x96">
+    <link id="favicon" rel="icon" type="image/png" sizes="16x16">
+    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/variables.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/typography.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css">
+
+    <!-- ========== EXISTING CSS ========== -->
+    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/aos.css" rel="stylesheet">
+    <link href="assets/css/sections/assistance.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/footer.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/header.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <a id="button"></a>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__left">
+                <a href="index.html" class="header__logo">
+                    <img id="site-logo" alt="Logo" class="img-fluid">
+                </a>
+                <div class="header__country-selector">
+                    <button class="country-dropdown lang-dropdown" aria-label="Sélectionner pays/région"
+                        aria-expanded="false">
+                        <img src="assets/images/header-flag1.png" alt="France" class="country-dropdown__flag"
+                            onerror="this.style.display='none'">
+                        <span>FR</span>
+                        <i class="fa-solid fa-chevron-down country-dropdown__arrow"></i>
+                    </button>
+                    <div id="lang-dropdown" role="menu">
+                        <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
+                            <img src="assets/images/header-flag1.png" alt="France" class="lang-dropdown-item__flag"
+                                onerror="this.style.display='none'">
+                            <span>France</span>
+                        </div>
+                        <div class="lang-dropdown-item" role="menuitem" data-lang="en">
+                            <img src="assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag"
+                                onerror="this.style.display='none'">
+                            <span>English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header__search">
+                <form role="search" id="searchform" method="get">
+                    <input type="search" id="search-input" name="q" class="search-input" placeholder="Rechercher..."
+                        aria-label="Rechercher">
+                    <button type="submit" class="search-button" aria-label="Rechercher">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </div>
+            <nav class="header__nav" id="headerNav">
+                <ul class="nav-menu">
+                    <li class="nav-menu__item">
+                        <a href="products.html" class="nav-menu__link">Nos produits</a>
+                    </li>
+                    <li class="nav-menu__item">
+                        <a href="contact.html" class="nav-menu__link">Contacts</a>
+                    </li>
+                    <li class="nav-menu__item">
+                        <a href="recette.html" class="nav-menu__link">Nos recettes</a>
+                    </li>
+                    <li class="nav-menu__item">
+                        <a href="blog.html" class="nav-menu__link">Blogs</a>
+                    </li>
+                    <li class="nav-menu__item">
+                        <a href="sustainability.html" class="nav-menu__link active">Durabilité du riz</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__actions">
+                <a href="./login.html" class="header__action header__action--account" aria-label="Mon compte">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+               
+                <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sustainability Hero -->
+        <section class="assistance-hero">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="index.html" class="breadcrumb__link">HOME</a>
+                    <span class="breadcrumb__separator">></span>
+                    <span class="breadcrumb__current">DURABILITÉ DU RIZ</span>
+                </nav>
+                <h1 class="section__title">Durabilité du Riz</h1>
+                <p class="section__subtitle">Notre engagement pour une production de riz durable et responsable</p>
+            </div>
+        </section>
+
+        <!-- Sustainability Content -->
+        <section class="assistance-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div class="content-section" data-aos="fade-up">
+                            <h2 class="section__title">Notre Vision de la Durabilité</h2>
+                            <p class="section__text">Chez AVANTI, nous croyons fermement en une production de riz qui
+                                respecte l'environnement, les communautés agricoles et les générations futures. Notre
+                                approche de la durabilité s'appuie sur trois piliers fondamentaux :</p>
+                        </div>
+
+                        <div class="content-section" data-aos="fade-up">
+                            <h3 class="section__subtitle">1. Pratiques Agricoles Durables</h3>
+                            <p class="section__text">Nous travaillons en étroite collaboration avec nos partenaires
+                                agricoles pour promouvoir des méthodes de culture du riz qui préservent les ressources
+                                naturelles. Cela inclut :</p>
+                            <ul class="section__text">
+                                <li>La gestion efficace de l'eau avec des systèmes d'irrigation optimisés</li>
+                                <li>La rotation des cultures pour maintenir la fertilité des sols</li>
+                                <li>L'utilisation réduite de produits chimiques grâce à des méthodes biologiques</li>
+                                <li>La préservation de la biodiversité dans les rizières</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-section" data-aos="fade-up">
+                            <h3 class="section__subtitle">2. Impact Social et Communautaire</h3>
+                            <p class="section__text">Nous nous engageons à soutenir les communautés agricoles locales :
+                            </p>
+                            <ul class="section__text">
+                                <li>Des conditions de travail équitables pour les producteurs de riz</li>
+                                <li>Des prix justes qui récompensent le travail des agriculteurs</li>
+                                <li>Des programmes de formation pour améliorer les techniques agricoles</li>
+                                <li>Le soutien aux coopératives de producteurs locaux</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-section" data-aos="fade-up">
+                            <h3 class="section__subtitle">3. Impact Environnemental</h3>
+                            <p class="section__text">Notre engagement pour réduire notre empreinte environnementale :
+                            </p>
+                            <ul class="section__text">
+                                <li>La réduction des émissions de gaz à effet de serre dans la production</li>
+                                <li>L'utilisation d'emballages recyclables et durables</li>
+                                <li>La minimisation du gaspillage alimentaire tout au long de la chaîne
+                                    d'approvisionnement</li>
+                                <li>Le soutien à la recherche sur les variétés de riz résistantes au changement
+                                    climatique</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-section" data-aos="fade-up">
+                            <h3 class="section__subtitle">Certifications et Standards</h3>
+                            <p class="section__text">Nos produits répondent aux standards internationaux de qualité et
+                                de durabilité :</p>
+                            <ul class="section__text">
+                                <li>Certification biologique pour certaines de nos gammes</li>
+                                <li>Respect des normes de commerce équitable</li>
+                                <li>Conformité aux réglementations environnementales locales et internationales</li>
+                                <li>Tracibilité complète de la ferme à l'assiette</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-section" data-aos="fade-up">
+                            <h3 class="section__subtitle">Notre Engagement Continu</h3>
+                            <p class="section__text">La durabilité est un voyage continu, pas une destination. Nous nous
+                                engageons à :</p>
+                            <ul class="section__text">
+                                <li>Améliorer constamment nos pratiques de production</li>
+                                <li>Investir dans des technologies agricoles durables</li>
+                                <li>Partager nos connaissances avec la communauté agricole</li>
+                                <li>Être transparents sur nos pratiques et nos progrès</li>
+                            </ul>
+                        </div>
+
+                        <div class="content-section text-center" data-aos="fade-up"
+                            style="margin-top: var(--spacing-2xl);">
+                            <h3 class="section__subtitle">Rejoignez-nous dans notre mission</h3>
+                            <p class="section__text">En choisissant AVANTI, vous soutenez une production de riz durable
+                                qui bénéficie à la planète et aux communautés agricoles. Chaque grain compte dans notre
+                                quête pour un avenir plus durable.</p>
+                            <a href="products.html" class="btn btn--primary"
+                                style="margin-top: var(--spacing-lg);">Découvrir nos produits</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__section">
+                    <img id="footer-logo" src="" alt="Logo" class="footer__logo">
+                    <p class="footer__text">Découvrez notre sélection de riz de qualité supérieure, soigneusement choisi
+                        pour votre table.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link" aria-label="Facebook"
+                            target="_blank" rel="noopener">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="footer__social-link" aria-label="Instagram"
+                            target="_blank" rel="noopener">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link" aria-label="YouTube"
+                            target="_blank" rel="noopener">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="index.html" class="footer__link">Accueil</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="products.html" class="footer__link">Produits</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="about.html" class="footer__link">À propos</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="blog.html" class="footer__link">Blog</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="recette.html" class="footer__link">Recettes</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="contact.html" class="footer__link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Assistance</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="term-of-use.html" class="footer__link">Conditions d'utilisation</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="privacy-policy.html" class="footer__link">Politique de confidentialité</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="cookie-policy.html" class="footer__link">Politique de cookies</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="faq.html" class="footer__link">FAQ</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="contact.html" class="footer__link">Guide client</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Contactez-nous</h3>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+237123456789" class="footer__contact-link">+237 691 517 706</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:avanticameroun@gmail.com"
+                            class="footer__contact-link">avanticameroun@gmail.com</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BP 3010, Douala -Cameroun</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copyright">Copyright © 2026 avanticameroun.cm. Tous droits réservés.</p>
+                <div class="footer__legal-links">
+                    <a href="term-of-use.html" class="footer__legal-link">Termes et conditions</a>
+                    <a href="privacy-policy.html" class="footer__legal-link">Politique de confidentialité</a>
+                    <a href="cookie-policy.html" class="footer__legal-link">Cookie Préférences</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/back-to-top-button.js"></script>
+    <script src="assets/js/preloader.js"></script>
+    <script src="assets/js/country_dropdown.js"></script>
+    <script src="assets/api/global.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer-loader.js"></script>
+</body>
+
+</html>

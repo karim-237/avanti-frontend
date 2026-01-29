@@ -1,0 +1,1180 @@
+---
+alwaysApply: true
+---
+
+TABLE DES MATIERES - GUIDE COMPLET
+
+0. Vue d'ensemble et pages du site
+1. Structure de page & layout
+2. Systeme de design
+3. Composants reusables
+4. Carrousels & interactions
+5. Responsive design & breakpoints
+6. Structure de fichiers
+7. CSS variables & best practices
+8. JavaScript & interactivite
+9. Accessibilite & SEO
+10. Performance & optimisations
+11. Workflow & etapes
+12. Exemples de code
+13. PAGES DETAILLEES (NEW!)
+
+
+
+
+
+
+=== PARTIE 1: STRUCTURE DE PAGE & LAYOUT ===
+
+1. ARCHITECTURE GLOBALE DE LA PAGE
+
+1.1 Structure HTML de base:
+- <header> (sticky au top sur mobile)
+  - Logo/Branding
+  - Sélecteur de pays/région (dropdown)
+  - Barre de recherche
+  - Icônes utilisateur (Account, Basket)
+  - Navigation principale (Shop, Product Ranges, Recipes, Discover, Rice Sustainability)
+
+- <main> (contenu principal)
+  - Section Hero/Banner (carrousel avec images promotionnelles)
+  - Section Tilda Products (description + catégories + carrousel produits)
+  - Section New Flavour Recipes (2-3 cartes de recettes)
+  - Section From the Blog (2-3 articles/posts)
+  - Section About Us (image + texte descriptif)
+  - Section Instagram (grid d'images + follow button)
+  - Section Newsletter (formulaire d'inscription)
+
+- <footer>
+  - Réseaux sociaux
+  - Section Food Service
+  - Liens de navigation secondaire
+  - Liens légaux (Terms, Privacy, Cookie preferences)
+  - Copyright
+
+
+
+=== PARTIE 2: SYSTEME DE DESIGN ===
+
+2. PALETTE DE COULEURS
+
+2.1 Couleurs principales:
+- Bleu fonce (Primary): #2C3E50 
+- Bleu moyen: #3C5189
+- Bleu clair: #5B8FD8
+- Rose/Magenta: #E91E63
+- Orange/Rouge: #E84C3D
+- Vert/Cyan: #00BFA5
+- Jaune: #FFC107 (boutons CTA)
+- Blanc: #FFFFFF
+- Gris clair: #F5F5F5
+
+3. TYPOGRAPHIE
+
+3.1 Polices:
+- Heading: Serif (Roboto Display)
+- Body: Sans-serif (Roboto, Arial)
+
+3.2 Tailles de texte:
+- H1: 32-48px
+- H2: 24-32px  
+- Body: 14-16px
+
+4. ESPACEMENT (Spacing System)
+
+4.1 Base unit: 8px
+- xs: 4px
+- sm: 8px
+- md: 16px
+- lg: 24px
+- xl: 32px
+- 2xl: 48px
+
+5. INTERACTIONS
+
+5.1 Transitions:
+- Boutons: opacity 0.8 on hover, 300ms
+- Cartes: scale(1.05) on hover
+
+5.2 Carrousels:
+- Smooth animation
+- Navigation arrows (prev/next)
+- Pagination dots
+
+
+
+=== PARTIE 3: COMPOSANTS REUSABLES ===
+
+6. BOUTONS
+- PRIMARY: Jaune (#FFC107), padding 12-16px, border-radius 8px
+- SECONDARY: Bleu transparent, border 2px
+- TEXT: Pas de fond, underline au hover
+- États: Default, Hover (opacity 0.8), Active, Disabled (0.5)
+
+7. CARTES (CARDS)
+- Image responsif
+- Titre avec font serif
+- Description 2-3 lignes
+- Border-radius: 12-16px
+- Ombre: 0 4px 12px rgba(0,0,0,0.1)
+
+8. HEADER & NAVIGATION
+- Logo left, Search center, Icons right
+- Sticky au top
+- Mobile: Hamburger menu
+- Dropdown region selector
+
+
+
+=== PARTIE 4: CARROUSELS & INTERACTIONS ===
+
+9. HERO CAROUSEL
+- Images: 1 visible a la fois
+- Arrows: prev/next buttons (left/right du carousel)
+- Pagination dots: 5 dots pour 5 slides
+- Auto-play: optional (non visible sur le site actuel)
+- Touch: swipe support sur mobile
+- Transition: 300-500ms ease-in-out
+
+10. PRODUCT CAROUSEL
+- Affiche 4-5 produits par vue (desktop)
+- 2-3 sur tablet, 1 sur mobile
+- Infinite scroll: wraps around
+- Navigation: prev/next arrows
+- Pagination dots correspondant au nombre de slides
+
+11. INSTAGRAM GRID
+- 4 images par row (desktop)
+- 2 par row (tablet)
+- 1 par row (mobile)
+- Images carrées (aspect-ratio 1:1)
+- Lien vers Instagram sur chaque image
+- Grid avec gap 16px
+
+
+
+=== PARTIE 5: RESPONSIVE DESIGN & BREAKPOINTS ===
+
+12. MOBILE FIRST APPROACH
+- Base styles: Mobile (320px - 480px)
+- Tablet: 768px - 1024px
+- Desktop: 1025px+
+- Use CSS Media Queries
+
+13. BREAKPOINTS
+@media (min-width: 480px) { /* Tablet petit */ }
+@media (min-width: 768px) { /* Tablet */ }
+@media (min-width: 1024px) { /* Desktop */ }
+@media (min-width: 1440px) { /* Large Desktop */ }
+
+14. RESPONSIVE LAYOUTS
+
+HEADER:
+- Mobile: Hamburger menu, stack layout
+- Tablet: Nav items visibles, inline
+- Desktop: Full horizontal layout
+
+SECTIONS:
+- Mobile: 1 colonne, 100% width
+- Tablet: 2 colonnes pour cartes
+- Desktop: 3-4 colonnes ou layout adapte
+
+FOOTER:
+- Mobile: Stack vertical
+- Tablet: 2 colonnes
+- Desktop: Multi-colonnes avec sections
+
+
+
+=== PARTIE 6: STRUCTURE DE FICHIERS & ORGANISATION ===
+
+15. ARBORESCENCE DU PROJET
+
+tilda-website/
+  index.html
+  css/
+    reset.css (normalize styles)
+    variables.css (CSS custom properties)
+    typography.css
+    layout.css (grid, flexbox)
+    components.css (buttons, cards, etc)
+    sections.css (header, footer, hero)
+    responsive.css (media queries)
+    animations.css
+  js/
+    main.js
+    carousel.js
+    navigation.js
+    search.js
+    form.js
+  images/
+    hero/ (images du carousel)
+    products/ (images produits)
+    recipes/ (images recettes)
+    blog/ (images articles)
+    social/ (icons reseaux)
+  assets/
+    fonts/ (polices custom)
+    icons/ (SVG icons)
+  README.md
+  DESIGN_SYSTEM.md
+  COMPONENT_GUIDE.md
+
+
+
+=== PARTIE 7: CSS VARIABLES & BEST PRACTICES ===
+
+16. CSS CUSTOM PROPERTIES (Variables)
+
+:root {
+  /* Couleurs */
+  --color-primary: #2C3E50;
+  --color-secondary: #3C5189;
+  --color-accent: #FFC107;
+  --color-warning: #E84C3D;
+  --color-success: #00BFA5;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* Typography */
+  --font-serif: 'Roboto Display', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-h1: 2.5rem;
+  --font-size-body: 1rem;
+  
+  /* Transitions */
+  --transition-fast: 200ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+}
+
+17. BONNES PRATIQUES CSS
+
+- Utiliser Flexbox et CSS Grid pour layouts
+- Mobile-first: commencer par styles mobiles
+- Eviter inline styles
+- Utiliser classes semantiques (BEM recommande)
+- Minimifier specificity
+- Separate concerns: layout, components, responsive
+
+
+
+=== PARTIE 8: JAVASCRIPT & INTERACTIVITE ===
+
+18. MODULES JAVASCRIPT
+
+carousel.js:
+- Classe Carousel pour gerer les slides
+- Methods: next(), prev(), goToSlide()
+- Event listeners: click sur arrows/dots
+- Touch support: touchstart, touchend events
+
+navigation.js:
+- Hamburger menu toggle
+- Mobile menu close on link click
+- Dropdown region selector
+- Search bar toggle
+
+form.js:
+- Newsletter email validation
+- Submit handler
+- Error/success messages
+- Form reset
+
+19. BEST PRACTICES JAVASCRIPT
+
+- Vanilla JS ou framework leger (Alpine, htmx)
+- Event delegation pour performance
+- No inline event handlers
+- Use data attributes: data-carousel, data-menu
+- Debounce resize events
+- Progressive enhancement
+- Lazy load images
+- Minimize JavaScript bundle
+
+
+
+=== PARTIE 9: ACCESSIBILITE & SEO ===
+
+20. ACCESSIBILITE (WCAG 2.1)
+
+HTML Semantique:
+- header, nav, main, section, article, footer
+- Proper h1, h2, h3 hierarchy
+- Alt text descriptif pour images
+- Form labels lies aux inputs
+
+ARIA:
+- aria-label pour icones
+- aria-hidden pour elements decoratifs
+- role=button sur elements clickable
+- aria-live=polite pour notifications
+
+Color Contrast:
+- 4.5:1 pour body text
+- 3:1 pour large text (18pt+)
+
+Keyboard Navigation:
+- Tab accessible
+- :focus-visible visible
+- Tab order logique
+- Escape pour fermer modals
+
+21. SEO BASICS
+
+- Meta tags (description, viewport)
+- h1 unique
+- URLs semantiques
+- Structured data (schema.org)
+- Sitemap.xml et robots.txt
+- Mobile friendly
+- Core Web Vitals optimization
+
+
+
+=== PARTIE 10: PERFORMANCE & OPTIMISATIONS ===
+
+22. OPTIMISATIONS DE PERFORMANCE
+
+Images:
+- Utiliser WebP avec fallback PNG/JPG
+- Lazy loading (loading=lazy)
+- Responsive images (srcset, sizes)
+- Compression: TinyPNG, ImageOptim
+- SVG pour icons et graphics
+
+CSS:
+- Minify avant production
+- Critical CSS inline en head
+- Defer non-critical CSS
+- Remove unused CSS (PurgeCSS)
+
+JavaScript:
+- Code splitting
+- Defer scripts: <script defer>
+- Tree shaking pour dependencies
+- Use CDN pour libraries populaires
+
+General:
+- Gzip compression (server)
+- Cache busting (versioning)
+- CDN pour assets statiques
+- Monitor Core Web Vitals
+
+23. FICHIERS DE DOCUMENTATION ADDITIONNELS
+
+COMPONENT_LIBRARY.md:
+- Exemples HTML/CSS/JS pour chaque composant
+- Code snippets prets a copier
+- Variations et states
+
+README.md:
+- Setup instructions
+- Build commands
+- Deployment guide
+- Architecture overview
+
+
+
+=== PARTIE 11: WORKFLOW & PROCHAINES ETAPES ===
+
+24. WORKFLOW DE DEVELOPPEMENT
+
+Phase 1: Setup (Jour 1-2)
+- Creer structure de fichiers
+- Mettre en place CSS variables et reset
+- Configurer build tools (si utilise)
+
+Phase 2: Layout Structure (Jour 3-4)
+- Coder HTML semantique base
+- Mobile styles avec Flexbox/Grid
+- Media queries pour responsive
+
+Phase 3: Components (Jour 5-7)
+- Boutons, cards, formulaires
+- Header, footer, navigation
+- Icons et images responsives
+
+Phase 4: JavaScript & Interactivite (Jour 8-10)
+- Carousels et navigation
+- Form handling
+- Animations et transitions
+
+Phase 5: Polish & Testing (Jour 11-12)
+- Cross-browser testing
+- Accessibility audit
+- Performance optimization
+- Final adjustments
+
+25. RESSOURCES ESSENTIELLES
+
+- MDN Web Docs (HTML, CSS, JS)
+- Caniuse.com (browser compatibility)
+- Google Lighthouse (performance)
+- WAVE tool (accessibility)
+- Figma ou Adobe XD (design collaboration)
+
+26. RESUME FINAL
+
+Cette documentation fournit tous les details pour reconstruire TILDA.COM avec:
+✓ Mobile-First Responsive Design
+✓ Clean HTML5 Semantique
+✓ CSS3 avec Variables & Flexbox/Grid
+✓ Vanilla JavaScript Modulaire
+✓ Accessibilite WCAG 2.1 AA
+✓ Performance Optimisee
+✓ Best Practices Modernes
+
+
+
+=== PARTIE 12: EXEMPLES DE CODE ===
+
+27. EXEMPLE: BOUTON PRIMARY
+
+HTML:
+<button class="btn btn--primary" type="submit">
+  Shop Now
+</button>
+
+CSS:
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-sans);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity var(--transition-normal);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn--primary {
+  background-color: var(--color-accent);
+  color: #000;
+  font-weight: bold;
+}
+
+.btn--primary:hover {
+  opacity: 0.8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+28. EXEMPLE: CAROUSEL VANILLE JS
+
+class Carousel {
+  constructor(el) {
+    this.el = el;
+    this.slides = el.querySelectorAll('[data-slide]');
+    this.current = 0;
+    this.init();
+  }
+  
+  init() {
+    this.el.querySelector('[data-prev]')
+      .addEventListener('click', () => this.prev());
+    this.el.querySelector('[data-next]')
+      .addEventListener('click', () => this.next());
+  }
+  
+  next() {
+    this.current = (this.current + 1) % this.slides.length;
+    this.show();
+  }
+  
+  prev() {
+    this.current = (this.current - 1 + this.slides.length) % this.slides.length;
+    this.show();
+  }
+  
+  show() {
+    this.slides.forEach((s, i) => {
+      s.style.display = i === this.current ? 'block' : 'none';
+    });
+  }
+}
+
+
+
+29. EXEMPLE: RESPONSIVE GRID
+
+CSS:
+.products {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+30. CHECKLIST FINALE
+
+HTML CHECKS:
+- Semantic HTML5 utilise
+- Meta viewport configure
+- Alt text sur images
+- Form labels associes
+- Heading hierarchy correct
+
+CSS CHECKS:
+- Mobile-first approach OK
+- CSS variables utilises
+- Media queries completes
+- No inline styles
+- Minified en production
+
+JAVASCRIPT CHECKS:
+- Event delegation utilise
+- No global variables
+- Error handling present
+- Vanilla JS clean
+- Scripts defers
+
+PERFORMANCE CHECKS:
+- Lighthouse score 90+
+- Images optimisees
+- Gzip compression OK
+- Core Web Vitals pass
+
+ACCESSIBILITE CHECKS:
+- WAVE test pass
+- Keyboard navigation complete
+- Color contrast 4.5:1
+- ARIA labels corrects
+- Focus visible styles
+
+
+
+
+
+=== PARTIE 13: PAGES DETAILLEES DU SITE ===
+
+EXPLORATION COMPLETE DE TOUTES LES PAGES
+
+31. HOMEPAGE (/)
+
+Structure:
+- Hero carousel (5 images rotatives)
+- Tilda Products section (4 categories)
+- New Flavour Recipes (2 cartes recettes)
+- From the Blog (2 articles featured)
+- About Us section (image + texte)
+- Instagram feed (4x4 grid)
+- Newsletter signup
+
+Interactions:
+- Carousel arrows (prev/next)
+- Category filters
+- Social links
+
+32. SHOP PAGE (/products/shop/all/)
+
+Structure COMPLETE:
+- Breadcrumb navigation: HOME > PRODUCTS > SHOP ALL
+- Hero titre: "Tilda Products"
+- Tab selector: "Shop" vs "All Products"
+- Filtres LEFT SIDEBAR:
+  * Category cards (Bundles, Kids, Pick n Mix, Shop All)
+  * Type filter: Basmati, Easy-cook, Jasmine, Long grain, Medium grain, Pilau, Wholegrain, Wild
+  * Dietary filter: Plant Based, Dairy-free, Gluten Free, High Fibre, Lactose-free, Vegan, Vegetarian
+  * Flavour filter: Coconut, Curry, Egg, Herb, Lime, Mexican, Mushroom, Plain, Spicy, Sweet, Tomato, Vegetable
+  * Suitable Cuisine: Caribbean, Chinese, Indian, Japanese, Mediterranean, Mexican, South African, Thai
+  * Clear All Filters button
+
+Produits Grid:
+- Product card layout (4-5 par ligne desktop)
+- Image du produit
+- Prix réduit affiche (£5 off, £3 off, Save 20%)
+- Titre du produit
+- Categorie (Dry Rice, Microwave Rice, Ready Meals)
+- Prix (ancien & nouveau)
+- "Add to basket" button
+- "View" link
+
+33. PRODUCT RANGES PAGE (/products/)
+
+Structure:
+- Hero: "Tilda Products" title
+- Tab selector: "All Products" actif
+- Circular category cards avec images de fond:
+  * Microwave Rice (rose background)
+  * Dry Rice (cyan background)
+  * Jasmine Rice (jaune background)
+  * Boil-in-Bag Rice (orange background)
+  * Bundles (orange background)
+  * Kids Rice (vert background)
+  * Plus 7+ other ranges
+
+Design:
+- Cercles colorés avec images produits
+- Hover effect: scale, opacity
+- Text overlay avec titre categorie
+
+34. RECIPES PAGE (/recipes/)
+
+Structure:
+- Hero: "Our Recipes" title sur fond rose magenta
+- Description: "Recipe ideas and inspiration for a world full of flavour"
+- Tab selector: "Recipes" vs "Meal Planner"
+- Search bar: "Search for ingredients, flavours, cuisines and more"
+
+Recipe Cards:
+- Image du plat
+- Titre recette
+- Categorie badge
+- Description courte
+- "View Recipe" link
+- "Read Article" link
+
+35. RECIPE SINGLE PAGE (/recipes/chinese-bbq-spare-ribs/)
+
+Structure:
+- Breadcrumb: HOME > RECIPES > RECIPE NAME
+- Left side: Image du plat (colourful background)
+- Right side:
+  * Titre: "Chinese BBQ Spare Ribs"
+  * Description courte
+  * Icons de metadata:
+    - Temps: "120+ Minutes"
+    - Difficulte: "Easy"
+    - Portions: "Serves 2"
+  * Rating system (5 stars)
+  * "Save or print recipe" button (yellow CTA)
+  * "This recipe uses:" section avec produits Tilda
+
+Contenu:
+- Ingredients list
+- Step-by-step instructions
+- Related recipes
+- Product recommendations
+
+36. ABOUT US PAGE (/about-us/)
+
+Structure:
+- Breadcrumb: HOME > ABOUT US
+- Hero image avec texte overlay blanc:
+  "About Tilda"
+  "We're on a mission to embrace life..."
+- Texte description full width
+- Section "Where to Buy" link
+- Newsletter CTA
+
+37. FAQs PAGE (/faqs/)
+
+Structure:
+- Breadcrumb: HOME > FAQS
+- Hero: "FAQs" title sur fond bleu
+- Subtitle: "See below our answers..."
+- Tab navigation (Jump to):
+  * Company
+  * Nutritional & Dietary
+  * Products
+  * Tilda Online Shop
+
+FAQ Items:
+- Accordion/Expandable format
+- Question text
+- Clickable pour expand
+- Answer text reveal
+
+38. RICE SUSTAINABILITY PAGE (/sustainability/)
+
+Structure:
+- Hero: "Rice Sustainability" titre blanc sur fond bleu
+- Wavy transition
+- Section jaune avec texte rose magenta:
+  "Our ambition is to be the world's most..."
+- Content sections avec info sustainability
+
+39. CONTACT US PAGE (/about-us/contact-us/)
+
+Structure:
+- Breadcrumb: HOME > ABOUT US > CONTACT US
+- Hero: "Contact Us" titre blanc
+- Description: "Our consumer care team are here to help..."
+- Wavy transition vers section rouge/corail
+
+Form/Contact Info:
+- Form fields pour message
+- Phone number
+- Email address
+- Office hours: Monday-Friday 9am-5pm
+
+40. BLOG PAGE (/blog/)
+
+Structure:
+- Hero: "Tilda Blog" titre blanc sur fond orange/rouge
+- Tab navigation categories:
+  * All
+  * Campaigns
+  * Cooking Inspiration
+  * Cuisine Guide
+  * Culture Guide
+  * Equipment Guide
+  * Health Dietary
+  * Ingredient Guide
+  * Kids
+
+Articles Layout:
+- Featured section (top)
+- Popular section
+- Grid de cards:
+  * Thumbnail image
+  * Category tag
+  * Titre article
+  * Date de publication
+  * Description courte
+
+41. BLOG ARTICLE PAGE
+
+Structure:
+- Breadcrumb navigation
+- Featured image
+- Titre article
+- Date & author info
+- Content body
+- Related articles
+- CTA sections
+
+42. PRODUCT SINGLE PAGE (/products/soy-ginger-sticky-rice/)
+
+Structure:
+- Breadcrumb: HOME > PRODUCTS > PRODUCT NAME
+- Layout 2-column:
+  LEFT: Product image avec background couleur
+  RIGHT: 
+    * Category badge: "Microwave Rice"
+    * Titre produit: "Soy & Ginger Sticky Medium Grain Rice 250g"
+    * Icons pour allergenes:
+      - Gluten Free (icon)
+      - Vegan (icon)
+      - Vegetarian (icon)
+    * Rating system (5 stars)
+    * Price & "Add to basket" button
+    * Nutritional info
+    * Description detaillee
+    * "Save or print recipe" button
+    * Product badges (No Added Sugar, etc)
+
+- Related products carousel
+- Usage suggestions
+- Recipes using this product
+
+43. ACCOUNT PAGE (si accessible)
+
+Acces: https://store.tilda.com/my-account/
+- Login form (si non-connecte)
+- Dashboard (si connecte):
+  * Order history
+  * Account details
+  * Address book
+  * Wishlist
+  * Settings
+
+44. BASKET/CART PAGE
+
+Structure (inferred from button):
+- Cart items list
+- Quantity adjusters
+- Remove buttons
+- Subtotal & taxes
+- Shipping options
+- Promo code field
+- Checkout CTA
+- Continue shopping link
+
+
+=== PARTIE 14: USER FLOWS & INTERACTIONS DETAILLEES ===
+
+45. SHOPPING FLOW
+
+Funnel:
+Homepage
+  ↓
+Product Ranges (Categories)
+  ↓
+Shop Page (Filtres)
+  ↓
+Product Detail Page
+  ↓
+Add to Cart
+  ↓
+Cart Review
+  ↓
+Checkout
+  ↓
+Order Confirmation
+
+46. DISCOVERY FLOW
+
+Funnel:
+Homepage
+  ↓
+Recipes Page (Search/Filter)
+  ↓
+Recipe Detail
+  ↓
+View Products Used (CTA)
+  ↓
+Shop Page (Filtered)
+
+47. MAIN INTERACTIONS PAR PAGE
+
+Homepage:
+- Carousel navigation (arrows, dots)
+- Product category click
+- Recipe card hover -> link
+- Blog article card click
+- Newsletter form submit
+- Region selector dropdown
+- Search bar expansion
+- Hamburger menu toggle (mobile)
+
+Shop Page:
+- Filter toggles (checkbox changes)
+- Tab switching (Shop vs All Products)
+- Pagination
+- Sort options
+- Add to cart (toast notification)
+- Product hover (expand info)
+- Quick view modal (si existe)
+
+Recipes:
+- Tab switching
+- Search input + submit
+- Recipe card click
+- Filter by cuisine
+- Filter by ingredient
+- Meal planner tab interaction
+
+Product Detail:
+- Quantity selector (+ / -)
+- Size/variant selector
+- Add to basket button
+- Save/Print button (modal)
+- Related products carousel
+- Share buttons (social)
+
+48. PATTERNS D'INTERACTION RECURRENTS
+
+Tabs/Toggles:
+- Used on: Product Ranges, Recipes, Blog, FAQs, Product Detail
+- Interaction: Click to switch content
+- Animation: Smooth transition
+
+Carousels:
+- Used on: Homepage hero, Products, Related items
+- Controls: Arrows, dots, keyboard
+- Touch: Swipe support mobile
+
+Dropdowns:
+- Region selector
+- Sort/Filter options
+- Navigation menus (mobile)
+
+Buttons:
+- CTAs: "Shop now", "Add to basket", "View Recipe", "Sign Up"
+- States: Default, Hover, Active, Disabled
+- Colors: Yellow primary, Blue secondary
+
+Forms:
+- Newsletter (email input + submit)
+- Contact (text fields, submit)
+- Search (input + search icon)
+- Product filters (checkboxes)
+
+Modals/Overlays:
+- Region selector modal
+- Search results overlay
+- "Save/Print recipe" modal
+- Quick product view (inferred)
+
+=== PARTIE 15: FLUX DE DONNEES & STRUCTURES ===
+
+49. PRODUCT DATA STRUCTURE
+
+Product Object:
+{
+  id: "soy-ginger-sticky-rice",
+  name: "Soy & Ginger Sticky Medium Grain Rice 250g",
+  category: "Microwave Rice",
+  image: "/images/soy-ginger.jpg",
+  price: 1.00,
+  originalPrice: 1.25,
+  discount: "Save 20%",
+  rating: 4.5,
+  reviews: 23,
+  badges: ["Gluten Free", "Vegan", "Vegetarian"],
+  dietary: ["Vegan", "Vegetarian", "Gluten Free"],
+  cuisine: ["Asian", "Thai"],
+  description: "Soy sauce and fragrant ginger bring a moreish twist...",
+  ingredients: [...],
+  nutritional: {...},
+  relatedProducts: [...],
+  recipes: [...]
+}
+
+50. RECIPE DATA STRUCTURE
+
+Recipe Object:
+{
+  id: "chinese-bbq-spare-ribs",
+  title: "Chinese BBQ Spare Ribs",
+  image: "/images/chinese-bbq.jpg",
+  prepTime: "120+ Minutes",
+  difficulty: "Easy",
+  servings: 2,
+  rating: 4.8,
+  reviews: 145,
+  description: "Enjoy tender Chinese BBQ spare ribs...",
+  ingredients: [...],
+  instructions: [...],
+  productsUsed: [
+    {id: "chinese-special-fried-rice", name: "Chinese Special Fried Rice 250g"}
+  ],
+  relatedRecipes: [...],
+  tags: ["Chinese", "Dinner", "Spicy"]
+}
+
+51. CATEGORY STRUCTURE
+
+Category Object:
+{
+  id: "microwave-rice",
+  name: "Microwave Rice",
+  slug: "microwave-rice",
+  description: "Quick & convenient...",
+  image: "/images/microwave-rice.jpg",
+  backgroundColor: "#E91E63",
+  products: [...products array],
+  recipes: [...recipes array]
+}
+
+52. CART ITEM STRUCTURE
+
+CartItem Object:
+{
+  productId: "soy-ginger-sticky-rice",
+  quantity: 2,
+  price: 1.00,
+  subtotal: 2.00,
+  image: "/images/soy-ginger.jpg",
+  name: "Soy & Ginger Sticky Medium Grain Rice 250g"
+}
+
+
+=== PARTIE 16: NOTES D'IMPLEMENTATION & RECOMMANDATIONS ===
+
+53. STACK TECHNOLOGIQUE RECOMMANDE
+
+Frontend:
+- HTML5 semantique
+- CSS3 (Flexbox, Grid, Custom Properties)
+- Vanilla JavaScript (ES6+) ou light framework (Alpine.js, HTMX)
+- Responsive design mobile-first
+
+Backend (si refonte complete):
+- Node.js + Express ou similar
+- ou Django/Python
+- ou Laravel/PHP
+- Database: PostgreSQL ou MySQL
+
+E-commerce:
+- Shopify (most efficient)
+- WooCommerce (WordPress)
+- Custom API avec product management
+
+Hosting:
+- Vercel (frontend)
+- AWS/DigitalOcean (backend)
+- CDN: Cloudflare
+
+54. FEATURES PRIORITAIRES
+
+Phase 1 (MVP):
+- Homepage avec hero carousel
+- Shop page avec filtres
+- Product detail pages
+- Newsletter signup
+- Responsive mobile
+
+Phase 2:
+- Recipes section
+- Blog with categories
+- Advanced search
+- User accounts
+- Wishlist
+
+Phase 3:
+- Shopping cart & checkout
+- Order tracking
+- Reviews & ratings
+- Personalization
+- Analytics
+
+55. POINTS D'ATTENTION CRITIQUES
+
+Performance:
+- Lazy load images (priority!)
+- Minimize JS bundle
+- CSS-only animations where possible
+- Server-side rendering benefits
+- Cache strategy
+
+SEO:
+- Semantic HTML consistent
+- Meta tags unique par page
+- Schema markup (Product, Recipe)
+- XML sitemap
+- Fast page load times
+
+Accessibilite:
+- WCAG 2.1 AA minimum
+- Focus states visible
+- Color contrast checked
+- ARIA labels present
+- Keyboard navigation complete
+
+Mobile:
+- Touch targets 44px+ (iOS)
+- Font size 16px+ (iOS safe zoom)
+- Viewport meta tag
+- Safe area insets (notches)
+- Hamburger menu accessible
+
+56. PATTERNS TECHNIQUES A EVITER
+
+- Do NOT: Inline styles
+- Do NOT: Global JS variables
+- Do NOT: Multiple carousels without library
+- Do NOT: Unoptimized images
+- Do NOT: Auto-playing videos without user intent
+- Do NOT: Cookie consent without transparency
+- Do NOT: Tracking without opt-in
+
+57. OUTILS RECOMMANDES
+
+Developpement:
+- VS Code + extensions
+- Chrome DevTools
+- Lighthouse
+- WAVE Accessibility tool
+- Figma (design/prototyping)
+
+Testing:
+- Jest (unit tests)
+- Cypress (E2E tests)
+- Accessibility testing (axe-core)
+- Responsive testing (ViewportResizer)
+
+Deployment:
+- GitHub Actions (CI/CD)
+- Vercel/Netlify (auto-deploy)
+- Docker containers
+
+58. METRIQUES DE SUCCES
+
+Performance:
+- Lighthouse score 90+ (desktop & mobile)
+- FCP < 1.8s
+- LCP < 2.5s
+- CLS < 0.1
+- First Interactive < 3.8s
+
+SEO:
+- Ranking for target keywords
+- Organic traffic growth
+- Low bounce rate
+- High average session duration
+
+User Experience:
+- Mobile usability perfect
+- Zero accessibility violations
+- Smooth interactions (60fps animations)
+- Fast form submissions
+
+59. TIMELINE ESTIMEE (FULL REBUILD)
+
+Phase 1 - Setup & Structure: 2-3 weeks
+  - Frontend setup
+  - API integration
+  - Database schema
+  - Component library
+
+Phase 2 - Core Pages: 4-5 weeks
+  - Homepage
+  - Shop page
+  - Product detail
+  - Navigation
+  - Search
+
+Phase 3 - Content Pages: 2-3 weeks
+  - Blog
+  - Recipes
+  - About/Contact
+  - FAQs
+
+Phase 4 - E-commerce: 3-4 weeks
+  - Cart system
+  - Checkout
+  - Payment integration
+  - Order confirmation
+
+Phase 5 - Polish & Testing: 2-3 weeks
+  - Cross-browser testing
+  - Performance optimization
+  - Accessibility audit
+  - Security review
+
+Phase 6 - Launch: 1 week
+  - Migration
+  - Monitoring
+  - Hotfixes
+
+TOTAL: 3-4 mois (1 developer full-time)
+TOTAL: 6-8 weeks (2-3 developers)
+
+60. RESUME DE LA DOCUMENTATION
+
+Ce guide complet couvre:
+
+✓ 15 sections techniques detaillees
+✓ 60+ points de reference
+✓ 14 pages du site analysees
+✓ Architecture HTML/CSS/JS complete
+✓ Systeme de design avec couleurs & typography
+✓ Composants reusables documentes
+✓ User flows & interactions mapping
+✓ Data structures JSON
+✓ Responsive design breakpoints
+✓ Accessibilite WCAG 2.1 guidelines
+✓ Performance optimization checklist
+✓ Code examples (HTML, CSS, JS)
+✓ Implementation timeline
+✓ Tech stack recommendations
+✓ Tools & resources list
+
+Cette documentation est suffisante pour:
+- Reconstruire le site de maniere fidele
+- Creer une version mobile-first optimisee
+- Implementer toutes les fonctionnalites
+- Garantir la qualite et les bonnes pratiques
+- Former une equipe de developpement
+
+FIN DE LA DOCUMENTATION - VERSION COMPLETE & EXHAUSTIVE
+
+

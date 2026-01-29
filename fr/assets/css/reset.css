@@ -1,0 +1,276 @@
+/*------------------------------------------------------------------
+[CSS Reset - Modern Reset for 2026]
+
+Reset CSS moderne pour AVANTI Frontend v2.0
+Basé sur les meilleures pratiques modernes (Josh Comeau, Andy Bell)
+-------------------------------------------------------------------*/
+
+/* ==================== Box Sizing ==================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ==================== Remove Default Margin ==================== */
+* {
+  margin: 0;
+}
+
+/* ==================== HTML & Body ==================== */
+html {
+  /* Prevent iOS font size adjust */
+  -webkit-text-size-adjust: 100%;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Reset */
+  padding: 0;
+  /* Line height for better readability */
+  line-height: 1.5;
+  /* Allow percentage-based heights in children */
+  min-height: 100vh;
+}
+
+/* ==================== Typography ==================== */
+h1, h2, h3, h4, h5, h6 {
+  /* Remove default margins */
+  margin: 0;
+  /* Tighter line height for headings */
+  line-height: 1.2;
+  /* Prevent text overflow */
+  overflow-wrap: break-word;
+}
+
+p, li, figcaption {
+  /* Prevent orphans in text */
+  orphans: 2;
+  widows: 2;
+  /* Prevent text overflow */
+  overflow-wrap: break-word;
+}
+
+/* ==================== Lists ==================== */
+ul, ol {
+  /* Remove default padding */
+  padding: 0;
+  /* Remove default list styles only when class is present (styled lists) */
+  &[class] {
+    list-style: none;
+  }
+}
+
+/* ==================== Images & Media ==================== */
+img,
+picture,
+video,
+canvas,
+svg {
+  /* Make images responsive by default */
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove gap below images */
+img {
+  vertical-align: middle;
+}
+
+/* ==================== Forms ==================== */
+input,
+button,
+textarea,
+select {
+  /* Inherit font from parent */
+  font: inherit;
+  /* Remove default spacing */
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* Allow text wrapping in buttons */
+  white-space: normal;
+}
+
+/* Remove spinner from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Remove default search input styling */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* ==================== Tables ==================== */
+table {
+  /* Remove default spacing */
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ==================== Links ==================== */
+a {
+  /* Remove default underline */
+  text-decoration: none;
+  /* Inherit color from parent (override with specific styles) */
+  color: inherit;
+}
+
+/* Add underline on hover for better UX */
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==================== Interactive Elements ==================== */
+/* Pointer cursor on interactive elements */
+button,
+[role="button"],
+select,
+summary {
+  cursor: pointer;
+}
+
+/* Disabled state */
+:disabled {
+  cursor: not-allowed;
+}
+
+/* ==================== Focus Styles (Accessibility) ==================== */
+/* Remove default focus outline */
+:focus {
+  outline: none;
+}
+
+/* Add visible focus for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--focus-ring-color, #FFC107);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ==================== Reduced Motion ==================== */
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==================== High Contrast Mode ==================== */
+@media (prefers-contrast: high) {
+  :focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* ==================== Print Styles ==================== */
+@media print {
+  /* Hide non-essential elements */
+  nav,
+  footer,
+  aside,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Optimize for printing */
+  body {
+    background: white;
+    color: black;
+  }
+
+  /* Prevent page breaks inside elements */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Show link URLs in print */
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  /* Don't show URLs for anchor links */
+  a[href^="#"]::after {
+    content: "";
+  }
+}
+
+/* ==================== Selection Styles ==================== */
+::selection {
+  background-color: var(--color-accent, #FFC107);
+  color: var(--color-black, #000000);
+}
+
+::-moz-selection {
+  background-color: var(--color-accent, #FFC107);
+  color: var(--color-black, #000000);
+}
+
+/* ==================== Scrollbar Styles (Webkit) ==================== */
+/* Custom scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-gray-light, #F5F5F5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-medium, #CCCCCC);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-light, #6A6A6A);
+}
+
+/* ==================== Hidden Utilities ==================== */
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Hidden but still taking space */
+.invisible {
+  visibility: hidden;
+}
+
+/* Completely hidden */
+.hidden {
+  display: none !important;
+}

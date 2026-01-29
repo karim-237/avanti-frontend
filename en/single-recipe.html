@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title id="site-title">Loading...</title>
+    <!-- /SEO Ultimate -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-icon-180x180.png">
+    <link id="favicon" rel="icon" type="image/png" sizes="192x192">
+    <link id="favicon" rel="icon" type="image/png">
+    <link id="favicon" rel="icon" type="image/png" sizes="96x96">
+    <link id="favicon" rel="icon" type="image/png" sizes="16x16">
+    <link rel="manifest" href="./assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- ========== NEW CSS ARCHITECTURE (Tilda Design System) ========== -->
+    <!-- 1. CSS Reset (modern reset) -->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <!-- 2. CSS Variables (design tokens) -->
+    <link href="assets/css/variables.css" rel="stylesheet" type="text/css">
+    <!-- 3. Typography -->
+    <link href="assets/css/typography.css" rel="stylesheet" type="text/css">
+    <!-- 4. Components -->
+    <link href="assets/css/components.css" rel="stylesheet" type="text/css">
+    <!-- 5. Single Blog CSS -->
+    <link href="assets/css/sections/single-recipe.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/header.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/footer.css" rel="stylesheet" type="text/css">
+    <!-- 6. Splide Carousel CSS -->
+    <link href="assets/vendor/splide/splide.min.css" rel="stylesheet" type="text/css">
+
+    <!-- ========== EXISTING CSS (Legacy - will be phased out) ========== -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/js/bootstrap.min.js">
+    <!-- Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- StyleSheet link CSS -->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/homepage.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sections/single-blog.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/blog.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.carousel.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/aos.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/single-bloc.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Back to top button -->
+    <a id="button"></a>
+    <div class="sub_banner position-relative">
+        <header class="header">
+            <div class="header__container">
+                <div class="header__left">
+                    <a href="index.html" class="header__logo">
+                        <img id="site-logo" alt="Logo" class="img-fluid">
+                    </a>
+                    <div class="header__country-selector">
+                        <button class="country-dropdown lang-dropdown" aria-label="Sélectionner pays/région"
+                            aria-expanded="false">
+                            <img src="assets/images/header-flag2.png" alt="English" class="country-dropdown__flag"
+                                onerror="this.style.display='none'">
+                            <span>EN</span>
+                            <i class="fa-solid fa-chevron-down country-dropdown__arrow"></i>
+                        </button>
+                        <div id="lang-dropdown" role="menu">
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="en">
+                                <img src="assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>English</span>
+                            </div>
+                            <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
+                                <img src="assets/images/header-flag1.png" alt="France" class="lang-dropdown-item__flag"
+                                    onerror="this.style.display='none'">
+                                <span>French</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header__search">
+                    <form role="search" id="searchform" method="get">
+                        <input type="search" id="search-input" name="q" class="search-input" placeholder="Research..."
+                            aria-label="Rechercher">
+                        <button type="submit" class="search-button" aria-label="Rechercher">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <nav class="header__nav" id="headerNav">
+                    <ul class="nav-menu">
+                        <li class="nav-menu__item">
+                            <a href="index.html" class="nav-menu__link">Home</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="products.html" class="nav-menu__link">Our products</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="contact.html" class="nav-menu__link">Contacts</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="recette.html" class="nav-menu__link active">Our recipes</a>
+                        </li>
+                        <li class="nav-menu__item">
+                            <a href="blog.html" class="nav-menu__link">Blogs</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+
+
+                    <button class="header__mobile-toggle" aria-label="Menu navigation" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- Single Blog Hero -->
+        <section class="single-recipe-hero">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="index.html" class="breadcrumb__link">Home</a>
+                    <span class="breadcrumb__separator">></span>
+                    <span class="breadcrumb__current">Follow the recipe</span>
+                </nav>
+                <h1 class="single-recipe-hero__title">THE GUIDE TO THIS RECIPE</h1>
+                <div class="tab-selector">
+                    <button class="tab-selector__button active" onclick="window.location.href='recette.html'">All recipes</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- Single Recipe -->
+    <section class="singleblog-section blogpage-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                    <div class="main-box">
+                        <figure class="image1 mb-3 single-recipe-image" data-aos="fade-up" data-aos-duration="700">
+                            <img src="" id="recipe-main-image" alt="" class="img-fluid" loading="lazy">
+                        </figure>
+                        <div class="content1 single-recipe-content" data-aos="fade-up" data-aos-duration="700">
+                            <h4 id="recipe-title">Loading...</h4>
+                            <div class="span-fa-outer-con single-recipe-meta">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <span class="text-size-14 text-mr author" id="recipe-author"></span>
+                                <i class="mb-0 calendar fa-solid fa-utensils"></i>
+                                <span class="mb-0 text-size-14 date" id="recipe-meta">Loading</span>
+                            </div>
+                            <p class="text-size-16 single-recipe-text" id="recipe-intro">
+                                Loading
+                            </p>
+                        </div>
+
+                        <p class="text text-size-16" id="recipe-paragraph-1" data-aos="fade-up" data-aos-duration="700">
+                            Loading
+                        </p>
+                        <div class="content3" data-aos="fade-up" data-aos-duration="700">
+                            <p class="text text-size-16" id="recipe-paragraph-2">
+                                Loading
+                            </p>
+                        </div>
+                        <div class="content4" data-aos="fade-up" data-aos-duration="700">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="tag">
+                                        <h4>Related tags</h4>
+                                        <ul class="mb-0 list-unstyled single-recipe-tags">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="icon">
+                                        <h4>Share the recipe</h4>
+                                        <div class="social-icons position-absolute">
+                                            <ul class="mb-0 list-unstyled ">
+                                                <li><a href="https://www.linkedin.com/login"
+                                                        class="text-decoration-none"><i
+                                                            class="fa-brands fa-linkedin-in social-networks"></i></a>
+                                                </li>
+                                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                                                        class="text-decoration-none"><i
+                                                            class="fa-brands fa-instagram social-networks"></i></a></li>
+                                                <li><a href="https://www.facebook.com/share/1BKmEkWbke/"
+                                                        class="text-decoration-none"><i
+                                                            class="fa-brands fa-facebook-f social-networks"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="buttons aos-init aos-animate" data-aos="fade-up">
+                            <a href="single-blog.html" class="prev">
+
+                            </a>
+                            <a href="single-blog.html" class="next">
+
+                            </a>
+                        </div>
+                        <div class="content5 blog-author" data-aos="fade-up" data-aos-duration="700">
+
+
+                        </div>
+                        <div class="content6" data-aos="fade-up" data-aos-duration="700">
+                            <h4 id="comments-count">0 Comment(s)</h4>
+                            <div id="blog-comments" class="comment blog-comments">
+
+                            </div>
+                        </div>
+                        <div class="content7" data-aos="fade-up" data-aos-duration="700">
+                            <h4>Leave a Comment</h4>
+                            <form id="recipe-comment-form" action="#" novalidate>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group mb-0">
+                                            <textarea class="form_style" id="comment-message"
+                                                placeholder="Your opinion on the article here..." rows="3"
+                                                name="msg"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="text" id="comment-author" class="form_style"
+                                                placeholder="Your name" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group mb-0">
+                                            <input type="email" id="comment-email" class="form_style"
+                                                placeholder="Your e-mail" name="emailid">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button text-center">
+                                    <button type="submit" class="post_comment">Publish the comment</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12 column">
+                    <div class="box1" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Search for recipes</h4>
+                        <form method="POST">
+                            <div class="form-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" name="search" id="searchrecipe" class="form-control upper_layer"
+                                        placeholder="Search for a title here...">
+                                    <div class="input-group-append form-button">
+                                        <button class="btn search" name="btnsearch" id="searchbtn"><i
+                                                class="fa-solid fa-magnifying-glass"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="box1 box2" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Recent recipes</h4>
+                        <ul id="latest-blogs" class="list-unstyled mb-0 featured-posts">
+
+                        </ul>
+                    </div>
+
+                    <div class="box1 box4" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Tags</h4>
+                        <ul class="tag mb-0 list-unstyled sidebar-tags">
+
+                        </ul>
+                    </div>
+
+
+                    <div class="box1 box3" data-aos="fade-up" data-aos-duration="700">
+                        <h4>Follow us</h4>
+                        <div class="social-icons">
+                            <ul class="mb-0 list-unstyled ">
+                                <li><a href="https://www.linkedin.com/login" class="text-decoration-none"><i
+                                            class="fa-brands fa-linkedin-in social-networks"></i></a>
+                                </li>
+                                <li><a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                                        class="text-decoration-none"><i
+                                            class="fa-brands fa-instagram social-networks"></i></a></li>
+                                <li><a href="https://www.facebook.com/share/1BKmEkWbke/" class="text-decoration-none"><i
+                                            class="fa-brands fa-facebook-f social-networks"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__grid">
+                    <div class="footer__section">
+                        <img id="footer-logo" src="" alt="Logo" class="footer__logo">
+                        <p class="footer__text">Discover our selection of premium quality rice, carefully chosen for your table.</p>
+                        <div class="footer__social">
+                            <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link" aria-label="Facebook"
+                                target="_blank" rel="noopener">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="footer__social-link" aria-label="Instagram"
+                                target="_blank" rel="noopener">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link" aria-label="YouTube"
+                                target="_blank" rel="noopener">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__section">
+                        <h3 class="footer__title">Navigation</h3>
+                        <ul class="footer__links">
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="index.html" class="footer__link">Home</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="products.html" class="footer__link">Our products</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="about.html" class="footer__link">About us</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="blog.html" class="footer__link">Blog</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="recette.html" class="footer__link">Recipes</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="contact.html" class="footer__link">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h3 class="footer__title">Help</h3>
+                        <ul class="footer__links">
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="term-of-use.html" class="footer__link">Terms of use</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="privacy-policy.html" class="footer__link">Privacy policy</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="cookie-policy.html" class="footer__link">Cookie Policy</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="faq.html" class="footer__link">FAQ</a>
+                            </li>
+                            <li class="footer__link-item">
+                                <i class="fa-solid fa-angle-right"></i>
+                                <a href="contact.html" class="footer__link">Customer guide</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer__section">
+                        <h3 class="footer__title">Contact Us</h3>
+                        <div class="footer__contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:+237123456789" class="footer__contact-link">+237 691 517 706</a>
+                        </div>
+                        <div class="footer__contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:avanticameroun@gmail.com"
+                                class="footer__contact-link">avanticameroun@gmail.com</a>
+                        </div>
+                        <div class="footer__contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>BP 3010, Douala - Cameroun</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p class="footer__copyright">Copyright © 2026 avanticameroun.cm. All rights reserved.</p>
+                    <div class="footer__legal-links">
+                        <a href="term-of-use.html" class="footer__legal-link">Terms and conditions</a>
+                        <a href="privacy-policy.html" class="footer__legal-link">Privacy-policy</a>
+                        <a href="cookie-policy.html" class="footer__legal-link">Cookie & Preferences</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <!-- PRE LOADER -->
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- Latest compiled JavaScript -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/search-recipes.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/owl.carousel.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/animation.js"></script>
+    <script src="assets/js/back-to-top-button.js"></script>
+    <script src="assets/js/preloader.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/country_dropdown.js"></script>
+    <script src="assets/api/global.js"></script>
+    <script src="assets/js/single-recipe.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/footer-loader.js"></script>
+    <script src="assets/js/recipe-comments.js"></script>
+
+</body>
+
+</html>
