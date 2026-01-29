@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     ? `<span class="price-old"></span>` : ''}
                   <span class="price-new"></span>
                 </div>
-                <a href="product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm">Voir</a>
+                <a href="/fr/product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm">Voir</a>
               </div>
             </div>
           </li>

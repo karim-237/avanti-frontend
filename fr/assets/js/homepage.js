@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const imageUrl = cat.image_path || cat.image_url || cat.category_image || cat.icon_url || cat.image || '';
             const fallbackSvg = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\'%3E%3Crect fill=\'%23F5F5F5\' width=\'200\' height=\'200\'/%3E%3Ctext fill=\'%236A6A6A\' font-family=\'Arial\' font-size=\'14\' x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\'%3ERiz%3C/text%3E%3C/svg%3E';
             return `
-            <a href="products.html?category=${cat.slug || ''}" class="category-card">
+            <a href="/fr/products.html?category=${cat.slug || ''}" class="category-card">
               <div class="category-card__image-wrapper">
                 <img src="${imageUrl || fallbackSvg}" alt="${cat.name || 'Category'}" class="category-card__image" loading="lazy" onerror="if(this.src.indexOf('data:image/svg')===-1){this.src='${fallbackSvg}';this.onerror=null;}">
               </div>
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     `<span class="price-old"></span>` : ''}
                   <span class="price-new"></span>
                 </div>
-                <a href="product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm" style="margin-top: auto;">Voir le produit</a> 
+                <a href="/fr/product-detail.html?slug=${product.slug || ''}" class="btn btn--primary btn--sm" style="margin-top: auto;">Voir le produit</a> 
               </div>
             </div>
           </li>
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <span class="recipe-card__badge">${recipe.category || 'Recette'}</span>
               <h3 class="recipe-card__title">${recipe.title || 'Recipe'}</h3>
               <p class="recipe-card__text">${recipe.short_description || ''}</p>
-              <a href="single-recipe.html?slug=${recipe.slug || ''}" class="btn btn--secondary btn--sm">Voir la recette</a>
+              <a href="/fr/single-recipe.html?slug=${recipe.slug || ''}" class="btn btn--secondary btn--sm">Voir la recette</a>
             </div>
           </div>
         `;
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <span class="blog-card__category">${post.category || 'Blog'}</span>
               <h3 class="blog-card__title">${post.title || 'Blog post'}</h3>
               <p class="blog-card__text">${post.short_description || ''}</p>
-              <a href="single-blog.html?slug=${post.slug || ''}" class="btn btn--primary btn--sm">Lire l'article</a>
+              <a href="/fr/single-blog.html?slug=${post.slug || ''}" class="btn btn--primary btn--sm">Lire l'article</a>
             </div>
           </div>
         `;

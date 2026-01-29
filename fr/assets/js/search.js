@@ -136,7 +136,7 @@ $(document).ready(function () {
       case 'product':
         return `/product-detail.html?slug=${slug}`;
       case 'blog':
-        return `/single-blog.html?slug=${slug}`;
+        return `/single-/fr/blog.html?slug=${slug}`;
       case 'recipe':
         return `/single-recipe.html?slug=${slug}`;
       default:

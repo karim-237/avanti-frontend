@@ -188,7 +188,7 @@ function displayFeaturedPosts(posts) {
             <p class="blog-card__description">
               ${post.short_description || ''}
             </p>
-            <a href="single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">
+            <a href="/fr/single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">
               Lire l'article →
             </a>
           </div>
@@ -248,7 +248,7 @@ function displayFeaturedPosts(posts) {
             <p class="blog-card__description">
               ${post.short_description || ''}
             </p>
-            <a href="single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">
+            <a href="/fr/single-blog.html?slug=${post.slug}" class="btn btn--primary btn--sm">
               Lire l'article →
             </a>
           </div>

@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
             f => `
               <div class="feed">
                 <img src="${f.image_url}" class="img-fluid" alt="${f.title}">
-                <a href="single-blog.html?slug=${f.slug}">${f.title}</a>
+                <a href="/fr/single-blog.html?slug=${f.slug}">${f.title}</a>
               </div>
             `
           ).join("")}`
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   style="width:60px;height:60px;object-fit:cover;border-radius:6px;margin-right:10px;"
                 >
                 <div style="text-align: left; flex: 1;">
-                  <a href="single-blog.html?slug=${b.slug}" class="fw-bold d-block">
+                  <a href="/fr/single-blog.html?slug=${b.slug}" class="fw-bold d-block">
                     ${b.title}
                   </a>
                   <small class="text-muted">

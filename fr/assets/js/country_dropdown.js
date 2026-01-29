@@ -28,7 +28,7 @@ $(document).ready(function () {
 
         // 1. Récupération des infos de l'URL actuelle
         const urlParams = new URLSearchParams(window.location.search);
-        const fileName = window.location.pathname.split('/').pop() || 'index.html';
+        const fileName = window.location.pathname.split('/').pop() || '/fr/index.html';
         const pathName = window.location.pathname;
 
         // Détection du paramètre de filtrage
