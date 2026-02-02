@@ -213,6 +213,24 @@
                         </button>
                     </form>
                 </div>
+                <div class="newsletter__video" id="newsletterVideoContainer">
+                    <!-- Video will be loaded from API -->
+                    <!-- API URL: https://avanti-backend-67wk.onrender.com/api/homepage/video -->
+                    <!-- Response example: {
+                            "success": true,
+                            "data": {
+                              "video_url": "https://www.youtube.com/watch?v=...",
+                              // OU
+                              "embed_code": "<iframe src='...'></iframe>",
+                              "title": "Titre de la vidéo (optionnel)",
+                              "poster_url": "URL de l'image de prévisualisation (optionnel)"
+                            }
+                          } -->
+                    <div class="newsletter__video-placeholder">
+                        <i class="fa-solid fa-video"></i>
+                        <p data-i18n="video.loading">Chargement de la vidéo...</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
