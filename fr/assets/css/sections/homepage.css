@@ -497,10 +497,15 @@ Sections homepage selon spécifications Tilda
   color: var(--color-white);
 }
 
+.newsletter__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
 .newsletter__content {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+  text-align: left;
 }
 
 .newsletter__title {
@@ -520,8 +525,7 @@ Sections homepage selon spécifications Tilda
 .newsletter-form {
   display: flex;
   gap: var(--spacing-sm);
-  max-width: 500px;
-  margin: 0 auto;
+  flex-direction: column;
 }
 
 .newsletter-form__input {
@@ -548,11 +552,52 @@ Sections homepage selon spécifications Tilda
   background-color: var(--color-accent);
   color: var(--color-black);
   border: none;
+  align-self: flex-start;
 }
 
 .newsletter-section .btn--primary:hover {
   background-color: #FFD54F;
   opacity: 1;
+}
+
+/* Video Container */
+.newsletter__video {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter__video-placeholder {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--spacing-xl);
+}
+
+.newsletter__video-placeholder i {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  display: block;
+  opacity: 0.5;
+}
+
+.newsletter__video-placeholder p {
+  font-size: var(--font-size-body);
+  margin: 0;
+}
+
+.newsletter__video iframe,
+.newsletter__video video {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border: none;
+  border-radius: var(--radius-md);
 }
 
 @media (max-width: 1023px) {
@@ -564,6 +609,31 @@ Sections homepage selon spécifications Tilda
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .newsletter__wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .newsletter__content {
+    text-align: center;
+  }
+
+  .newsletter-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .newsletter-section .btn--primary {
+    align-self: center;
+  }
+
+  .newsletter__video {
+    min-height: 250px;
+    order: -1; /* Video appears first on mobile */
+  }
+}
+
+@media (max-width: 767px) {
   .newsletter-form {
     flex-direction: column;
   }
