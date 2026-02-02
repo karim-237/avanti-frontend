@@ -201,22 +201,24 @@
         <!-- Newsletter Section -->
         <section class="section newsletter-section">
             <div class="container">
-                <div class="newsletter__content">
-                    <h2 class="newsletter__title">Restez informé</h2>
-                    <p class="newsletter__text">Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités
-                        et offres spéciales</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" id="newsletterEmail" class="newsletter-form__input"
-                            placeholder="Votre adresse email" required aria-label="Email">
-                        <button type="submit" class="btn btn--primary">
-                            S'abonner
-                        </button>
-                    </form>
-                </div>
-                <div class="newsletter__video" id="newsletterVideoContainer">
-                    <!-- Video will be loaded from API -->
-                    <!-- API URL: https://avanti-backend-67wk.onrender.com/api/homepage/video -->
-                    <!-- Response example: {
+                <div class="newsletter__wrapper">
+                    <div class="newsletter__content">
+                        <h2 class="newsletter__title">Restez informé</h2>
+                        <p class="newsletter__text">Inscrivez-vous à notre newsletter pour recevoir nos dernières
+                            actualités
+                            et offres spéciales</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input type="email" id="newsletterEmail" class="newsletter-form__input"
+                                placeholder="Votre adresse email" required aria-label="Email">
+                            <button type="submit" class="btn btn--primary">
+                                S'abonner
+                            </button>
+                        </form>
+                    </div>
+                    <div class="newsletter__video" id="newsletterVideoContainer">
+                        <!-- Video will be loaded from API -->
+                        <!-- API URL: https://avanti-backend-67wk.onrender.com/api/homepage/video -->
+                        <!-- Response example: {
                             "success": true,
                             "data": {
                               "video_url": "https://www.youtube.com/watch?v=...",
@@ -226,9 +228,10 @@
                               "poster_url": "URL de l'image de prévisualisation (optionnel)"
                             }
                           } -->
-                    <div class="newsletter__video-placeholder">
-                        <i class="fa-solid fa-video"></i>
-                        <p data-i18n="video.loading">Chargement de la vidéo...</p>
+                        <div class="newsletter__video-placeholder">
+                            <i class="fa-solid fa-video"></i>
+                            <p data-i18n="video.loading">Chargement de la vidéo...</p>
+                        </div>
                     </div>
                 </div>
             </div>

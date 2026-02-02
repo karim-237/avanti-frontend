@@ -73,13 +73,13 @@
                         </button>
                         <div id="lang-dropdown" role="menu">
                             <div class="lang-dropdown-item" role="menuitem" data-lang="en">
-                                <img src="/en/assets/images/header-flag2.png" alt="English" class="lang-dropdown-item__flag"
-                                    onerror="this.style.display='none'">
+                                <img src="/en/assets/images/header-flag2.png" alt="English"
+                                    class="lang-dropdown-item__flag" onerror="this.style.display='none'">
                                 <span>English</span>
                             </div>
                             <div class="lang-dropdown-item" role="menuitem" data-lang="fr">
-                                <img src="/en/assets/images/header-flag1.png" alt="france" class="lang-dropdown-item__flag"
-                                    onerror="this.style.display='none'">
+                                <img src="/en/assets/images/header-flag1.png" alt="france"
+                                    class="lang-dropdown-item__flag" onerror="this.style.display='none'">
                                 <span>French</span>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                 </div>
                 <nav class="header__nav" id="headerNav">
                     <ul class="nav-menu">
-                         <li class="nav-menu__item">
+                        <li class="nav-menu__item">
                             <a href="/en/index.html" class="nav-menu__link active">Home</a>
                         </li>
 
@@ -200,21 +200,23 @@
         <!-- Newsletter Section -->
         <section class="section newsletter-section">
             <div class="container">
-                <div class="newsletter__content">
-                    <h2 class="newsletter__title">Stay informed</h2>
-                    <p class="newsletter__text">Sign up for our newsletter to receive our latest news and special offers</p>
-                    <form class="newsletter-form" id="newsletterForm">
-                        <input type="email" id="newsletterEmail" class="newsletter-form__input"
-                            placeholder="Your email address" required aria-label="Email">
-                        <button type="submit" class="btn btn--primary">
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-                 <div class="newsletter__video" id="newsletterVideoContainer">
+                <div class="newsletter__wrapper">
+                    <div class="newsletter__content">
+                        <h2 class="newsletter__title">Stay informed</h2>
+                        <p class="newsletter__text">Sign up for our newsletter to receive our latest news and special
+                            offers</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input type="email" id="newsletterEmail" class="newsletter-form__input"
+                                placeholder="Your email address" required aria-label="Email">
+                            <button type="submit" class="btn btn--primary">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                    <div class="newsletter__video" id="newsletterVideoContainer">
                         <!-- Video will be loaded from API -->
-                         <!-- API URL: https://avanti-backend-67wk.onrender.com/api/homepage/video -->
-                         <!-- Response example: {
+                        <!-- API URL: https://avanti-backend-67wk.onrender.com/api/homepage/video -->
+                        <!-- Response example: {
                             "success": true,
                             "data": {
                               "video_url": "https://www.youtube.com/watch?v=...",
@@ -224,117 +226,119 @@
                               "poster_url": "URL de l'image de prévisualisation (optionnel)"
                             }
                           } -->
-                         <div class="newsletter__video-placeholder">
+                        <div class="newsletter__video-placeholder">
                             <i class="fa-solid fa-video"></i>
                             <p data-i18n="video.loading">Video loading...</p>
                         </div>
                     </div>
+                </div>
             </div>
         </section>
     </main>
     <!-- Footer -->
     <footer class="footer">
-            <div class="footer__container">
-                <div class="footer__grid">
-                    <div class="footer__section">
-                        <img id="footer-logo" src="" alt="Logo" class="footer__logo">
-                        <p class="footer__text">Discover our selection of premium quality rice, carefully chosen for your table.</p>
-                        <div class="footer__social">
-                            <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link" aria-label="Facebook"
-                                target="_blank" rel="noopener">
-                                <i class="fa-brands fa-facebook-f"></i>
-                            </a>
-                            <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h" class="footer__social-link" aria-label="Instagram"
-                                target="_blank" rel="noopener">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link" aria-label="YouTube"
-                                target="_blank" rel="noopener">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer__section">
-                        <h3 class="footer__title">Navigation</h3>
-                        <ul class="footer__links">
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/index.html" class="footer__link">Home</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/products.html" class="footer__link">Our products</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/about.html" class="footer__link">About us</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/blog.html" class="footer__link">Blog</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/recette.html" class="footer__link">Recipes</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/contact.html" class="footer__link">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__section">
-                        <h3 class="footer__title">Help</h3>
-                        <ul class="footer__links">
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/term-of-use.html" class="footer__link">Terms of use</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/privacy-policy.html" class="footer__link">Privacy policy</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/cookie-policy.html" class="footer__link">Cookie Policy</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/faq.html" class="footer__link">FAQ</a>
-                            </li>
-                            <li class="footer__link-item">
-                                <i class="fa-solid fa-angle-right"></i>
-                                <a href="/en/contact.html" class="footer__link">Customer guide</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer__section">
-                        <h3 class="footer__title">Contact Us</h3>
-                        <div class="footer__contact-item">
-                            <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+237123456789" class="footer__contact-link">+237 691 517 706</a>
-                        </div>
-                        <div class="footer__contact-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <a href="mailto:avanticameroun@gmail.com"
-                                class="footer__contact-link">avanticameroun@gmail.com</a>
-                        </div>
-                        <div class="footer__contact-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>BP 3010, Douala - Cameroun</span>
-                        </div>
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__section">
+                    <img id="footer-logo" src="" alt="Logo" class="footer__logo">
+                    <p class="footer__text">Discover our selection of premium quality rice, carefully chosen for your
+                        table.</p>
+                    <div class="footer__social">
+                        <a href="https://www.facebook.com/share/1BKmEkWbke/" class="footer__social-link"
+                            aria-label="Facebook" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/avanticameroun?igsh=ZG5lZDBoeDAxeG5h"
+                            class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/avanti-cameroun/" class="footer__social-link"
+                            aria-label="YouTube" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="footer__bottom">
-                    <p class="footer__copyright">Copyright © 2026 avanticameroun.cm. All rights reserved.</p>
-                    <div class="footer__legal-links">
-                        <a href="/en/term-of-use.html" class="footer__legal-link">Terms and conditions</a>
-                        <a href="/en/privacy-policy.html" class="footer__legal-link">Privacy-policy</a>
-                        <a href="/en/cookie-policy.html" class="footer__legal-link">Cookie & Preferences</a>
+                <div class="footer__section">
+                    <h3 class="footer__title">Navigation</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/index.html" class="footer__link">Home</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/products.html" class="footer__link">Our products</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/about.html" class="footer__link">About us</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/blog.html" class="footer__link">Blog</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/recette.html" class="footer__link">Recipes</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/contact.html" class="footer__link">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Help</h3>
+                    <ul class="footer__links">
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/term-of-use.html" class="footer__link">Terms of use</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/privacy-policy.html" class="footer__link">Privacy policy</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/cookie-policy.html" class="footer__link">Cookie Policy</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/faq.html" class="footer__link">FAQ</a>
+                        </li>
+                        <li class="footer__link-item">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <a href="/en/contact.html" class="footer__link">Customer guide</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Contact Us</h3>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <a href="tel:+237123456789" class="footer__contact-link">+237 691 517 706</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:avanticameroun@gmail.com"
+                            class="footer__contact-link">avanticameroun@gmail.com</a>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>BP 3010, Douala - Cameroun</span>
                     </div>
                 </div>
             </div>
-        </footer>
+            <div class="footer__bottom">
+                <p class="footer__copyright">Copyright © 2026 avanticameroun.cm. All rights reserved.</p>
+                <div class="footer__legal-links">
+                    <a href="/en/term-of-use.html" class="footer__legal-link">Terms and conditions</a>
+                    <a href="/en/privacy-policy.html" class="footer__legal-link">Privacy-policy</a>
+                    <a href="/en/cookie-policy.html" class="footer__legal-link">Cookie & Preferences</a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Project SECTION POPUP -->
     <div class="project_modal">
         <div id="blog-model-1" class="modal fade blog-model-con" tabindex="-1" style="display: none;"
