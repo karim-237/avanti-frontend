@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
       footerLogo.src = siteLogo.src;
     } else {
       // Sinon charger depuis l'API
-      fetch('https://avanti-backend-67wk.onrender.com/api/site-settings')
+      fetch('https://avanti-backend-zeta.vercel.app/api/site-settings')
         .then(res => res.ok ? res.json() : {})
         .then(settings => {
           footerLogo.src = settings.logo_path || '/fr/assets/images/placeholder-logo.png';

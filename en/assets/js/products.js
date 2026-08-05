@@ -11,7 +11,7 @@ function truncateText(text, maxLength = 120) {
    INIT
 ===================================================== */
 document.addEventListener('DOMContentLoaded', function () {
-  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
+  const API_BASE = 'https://avanti-backend-zeta.vercel.app/api';
 
   const categoryRanges = document.getElementById('categoryRanges');
   const categoryRangesGrid = document.getElementById('categoryRangesGrid');

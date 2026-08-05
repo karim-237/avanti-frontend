@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ newsletter.js chargé");
 
-  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  const API_BASE = "https://avanti-backend-zeta.vercel.app/api";
 
   const formEl = document.getElementById("newsletterForm");
   const emailInputEl = document.getElementById("newsletterEmail");

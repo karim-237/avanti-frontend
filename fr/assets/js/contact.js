@@ -2,7 +2,7 @@
 // CONTACT FORM - Stockage en DB
 // =======================================================
 document.addEventListener("DOMContentLoaded", () => {
-  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  const API_BASE = "https://avanti-backend-zeta.vercel.app/api";
   const formEl = document.getElementById("contactForm");
 
   if (!formEl) {

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const response = await fetch(
-      "https://avanti-backend-67wk.onrender.com/api/homepage/video"
+      "https://avanti-backend-zeta.vercel.app/api/homepage/video"
     );
 
     const result = await response.json();

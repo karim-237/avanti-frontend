@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // FETCH SITE SETTINGS
   // ===============================
-  fetch("https://avanti-backend-67wk.onrender.com/api/site-settings")
+  fetch("https://avanti-backend-zeta.vercel.app/api/site-settings")
     .then(res => {
       if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return {};
       return res.json().catch(() => ({}));
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // FETCH HOME BANNERS
   // ===============================
-  fetch("https://avanti-backend-67wk.onrender.com/api/home-banners")
+  fetch("https://avanti-backend-zeta.vercel.app/api/home-banners")
     .then(res => {
       if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return [];
       return res.json().catch(() => []);
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // FETCH DISCOUNT SECTION
   // ===============================
-  fetch("https://avanti-backend-67wk.onrender.com/api/discount-sections")
+  fetch("https://avanti-backend-zeta.vercel.app/api/discount-sections")
     .then(res => {
       if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return [];
       return res.json().catch(() => []);
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================
   // FETCH CHOOSE SECTION
   // ===============================
-  fetch("https://avanti-backend-67wk.onrender.com/api/choose-section")
+  fetch("https://avanti-backend-zeta.vercel.app/api/choose-section")
     .then(res => {
       if (!res.ok || res.headers.get("content-type")?.includes("text/html")) return {};
       return res.json().catch(() => ({}));
@@ -180,9 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // FETCH CATEGORIES + PRODUCTS
   // ===============================
   Promise.all([
-    fetch("https://avanti-backend-67wk.onrender.com/api/product-categories")
+    fetch("https://avanti-backend-zeta.vercel.app/api/product-categories")
       .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? [] : res.json().catch(() => []))),
-    fetch("https://avanti-backend-67wk.onrender.com/api/products")
+    fetch("https://avanti-backend-zeta.vercel.app/api/products")
       .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? [] : res.json().catch(() => [])))
   ])
     .then(([categories, products]) => {
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerSection = document.querySelector(".footer-con");
   if (footerSection) {
     // Contacts
-    fetch("https://avanti-backend-67wk.onrender.com/api/footer/contacts")
+    fetch("https://avanti-backend-zeta.vercel.app/api/footer/contacts")
       .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? { success: false, data: null } : res.json().catch(() => ({ success: false, data: null }))))
       .then(result => {
         if (!result.success || !result.data) return;
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(err => console.error("Erreur contacts footer:", err));
 
     // Social Links
-    fetch("https://avanti-backend-67wk.onrender.com/api/footer/social-links")
+    fetch("https://avanti-backend-zeta.vercel.app/api/footer/social-links")
       .then(res => (!res.ok || res.headers.get("content-type")?.includes("text/html") ? { success: false, data: [] } : res.json().catch(() => ({ success: false, data: [] }))))
       .then(result => {
         if (!result.success || !result.data) return;
@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Contacts html
 document.addEventListener("DOMContentLoaded", () => {
 
-  fetch("https://avanti-backend-67wk.onrender.com/api/site-contact")
+  fetch("https://avanti-backend-zeta.vercel.app/api/site-contact")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Site contact API returned HTML instead of JSON');
@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // -------------------------------
 // DYNAMISE LES BLOGS
 // -------------------------------
-fetch("https://avanti-backend-67wk.onrender.com/api/blogs")
+fetch("https://avanti-backend-zeta.vercel.app/api/blogs")
   .then(res => {
     if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
       console.warn('Blogs API returned HTML instead of JSON');
@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function loadBlogs(categorySlug = null, tagSlug = null) {
     blogsContainer.innerHTML = "<p>Chargement...</p>";
 
-    let url = "https://avanti-backend-67wk.onrender.com/api/blogs";
+    let url = "https://avanti-backend-zeta.vercel.app/api/blogs";
     const params = [];
 
     if (categorySlug) {
@@ -544,7 +544,7 @@ if (sidebarTagsEl) {
     ? "/fr/recette.html"
     : "/fr/blog.html"; // fallback par défaut blog
 
-  fetch("https://avanti-backend-67wk.onrender.com/api/tags")
+  fetch("https://avanti-backend-zeta.vercel.app/api/tags")
     .then(res => {
       if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
         console.warn('Tags API returned HTML instead of JSON');
@@ -587,7 +587,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   ]; // ID des <a> dans ton HTML correspondant aux tabs
 
   try {
-    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/blog-categories");
+    const res = await fetch("https://avanti-backend-zeta.vercel.app/api/blog-categories");
     const data = await res.json();
 
     if (!data.success || !Array.isArray(data.data)) return;
@@ -625,7 +625,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      Charger dynamiquement les catégories
      =============================== */
   try {
-    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/product-categories?limit=5");
+    const res = await fetch("https://avanti-backend-zeta.vercel.app/api/product-categories?limit=5");
     const data = await res.json();
 
     if (!data.success || !Array.isArray(data.data)) return;
@@ -655,7 +655,7 @@ document.addEventListener("DOMContentLoaded", async () => {
      Fonction pour charger les produits
      =============================== */
   function loadProductsByCategory(slug) {
-    fetch(`https://avanti-backend-67wk.onrender.com/api/products?category=${encodeURIComponent(slug)}&limit=6`)
+    fetch(`https://avanti-backend-zeta.vercel.app/api/products?category=${encodeURIComponent(slug)}&limit=6`)
       .then(res => {
         if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
           console.warn('Products API returned HTML instead of JSON');
@@ -739,7 +739,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!slug) return;
 
   try {
-    const res = await fetch(`https://avanti-backend-67wk.onrender.com/api/products/slug?slug=${encodeURIComponent(slug)}`);
+    const res = await fetch(`https://avanti-backend-zeta.vercel.app/api/products/slug?slug=${encodeURIComponent(slug)}`);
     const data = await res.json();
     if (!data.success || !data.data.length) return;
     const product = data.data[0];
@@ -775,7 +775,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Récupérer les produits
-    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/products?limit=8");
+    const res = await fetch("https://avanti-backend-zeta.vercel.app/api/products?limit=8");
     if (!res.ok || res.headers.get('content-type')?.includes('text/html')) {
       console.warn('Products API returned HTML instead of JSON');
       return;
@@ -837,7 +837,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // 1️⃣ Récupérer les catégories de recettes
-    const res = await fetch("https://avanti-backend-67wk.onrender.com/api/recipes/recipe-categories?limit=6");
+    const res = await fetch("https://avanti-backend-zeta.vercel.app/api/recipes/recipe-categories?limit=6");
     const data = await res.json();
 
     if (!data.success || !Array.isArray(data.data)) return;
@@ -894,7 +894,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     container.innerHTML = "<p>Chargement...</p>";
 
     try {
-      const res = await fetch(`https://avanti-backend-67wk.onrender.com/api/recipes/category/${encodeURIComponent(slug)}`);
+      const res = await fetch(`https://avanti-backend-zeta.vercel.app/api/recipes/category/${encodeURIComponent(slug)}`);
       const data = await res.json();
 
       if (!data.success || !data.data?.recipes?.length) {
@@ -969,7 +969,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  const API_BASE = "https://avanti-backend-zeta.vercel.app/api";
   let CURRENT_RECIPE_ID = null;
 
   fetch(`${API_BASE}/recipes/${slug}`)

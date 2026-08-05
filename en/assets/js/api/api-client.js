@@ -18,7 +18,7 @@ class APIClient {
    * Constructeur
    * @param {string} baseURL - URL de base de l'API (default: localhost:5000)
    */
-  constructor(baseURL = 'https://avanti-backend-67wk.onrender.com/api') {
+  constructor(baseURL = 'https://avanti-backend-zeta.vercel.app/api') {
     this.baseURL = baseURL;
     this.cache = new Map();
     this.cacheTimeout = 5 * 60 * 1000; // 5 minutes en millisecondes

@@ -86,7 +86,7 @@ $(document).ready(function () {
         // 3. Traduction du slug si nécessaire
         if (type && slugToTranslate) {
             try {
-                const apiUrl = `https://avanti-backend-67wk.onrender.com/api/translate-slug?slug=${encodeURIComponent(slugToTranslate)}&type=${type}&targetLang=${OTHER_LANG}`;
+                const apiUrl = `https://avanti-backend-zeta.vercel.app/api/translate-slug?slug=${encodeURIComponent(slugToTranslate)}&type=${type}&targetLang=${OTHER_LANG}`;
 
                 console.log("🚀 Fetching translation with:", apiUrl);
 

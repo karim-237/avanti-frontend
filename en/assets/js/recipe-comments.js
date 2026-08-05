@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ recipe-comments.js chargé");
 
-  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  const API_BASE = "https://avanti-backend-zeta.vercel.app/api";
 
   const commentsCountEl = document.getElementById("comments-count");
   const commentsListEl = document.getElementById("blog-comments");

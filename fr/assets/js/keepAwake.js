@@ -1,7 +1,7 @@
 // keepAwake.js
 function keepBackendAlive(options = {}) {
   const intervalMinutes = options.intervalMinutes || 5; // toutes les X minutes
-  const backendUrl = options.backendUrl || 'https://avanti-backend-67wk.onrender.com/health'; // endpoint health
+  const backendUrl = options.backendUrl || 'https://avanti-backend-zeta.vercel.app/health'; // endpoint health
   const onPing = options.onPing || null; // callback optionnel après chaque ping
 
   async function pingBackend() {

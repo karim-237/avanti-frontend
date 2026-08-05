@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slug = params.get("slug");
   console.log("🔎 Slug extrait :", slug);
 
-  const API_BASE = "https://avanti-backend-67wk.onrender.com/api";
+  const API_BASE = "https://avanti-backend-zeta.vercel.app/api";
   let CURRENT_BLOG_ID = null;
 
   // =======================================================

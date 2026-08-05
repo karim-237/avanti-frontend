@@ -2,7 +2,7 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  const API_BASE = 'https://avanti-backend-67wk.onrender.com/api';
+  const API_BASE = 'https://avanti-backend-zeta.vercel.app/api';
   const urlParams = new URLSearchParams(window.location.search);
   const slug = urlParams.get('slug');
 

@@ -65,7 +65,7 @@
      */
     initAPIClient() {
       console.log('[App] Initializing API Client...');
-      this.state.apiClient = new APIClient('https://avanti-backend-67wk.onrender.com/api'); 
+      this.state.apiClient = new APIClient('https://avanti-backend-zeta.vercel.app/api'); 
       window.api = this.state.apiClient;
       console.log('[App] API Client initialized');
     },
